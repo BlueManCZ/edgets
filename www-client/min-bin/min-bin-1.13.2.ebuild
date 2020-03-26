@@ -10,20 +10,23 @@ MY_PN="${PN/-bin/}"
 UP_PN="${MY_PN^}"
 
 DESCRIPTION="Min is a fast, minimal browser that protects your privacy"
-HOMEPAGE="https://minbrowser.github.io"
+HOMEPAGE="https://minbrowser.github.io/min/"
 SRC_URI="https://github.com/minbrowser/min/releases/download/v${PV}/${MY_PN}_${PV}_amd64.deb -> ${P}.deb"
 
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="libnotify xscreensaver xtest"
+IUSE="gnome-keyring libnotify pulseaudio xscreensaver xtest"
 
 RDEPEND="dev-libs/libgcrypt
 	dev-libs/nss
 	gnome-base/gconf
+	gnome-keyring? ( gnome-base/gnome-keyring )
 	gnome-base/gvfs
 	libnotify? ( x11-libs/libnotify )
 	media-libs/alsa-lib
+	pulseaudio? ( media-sound/pulseaudio )
+	sys-apps/lsb-release
 	sys-apps/util-linux
 	sys-fs/eudev
 	sys-libs/libcap
