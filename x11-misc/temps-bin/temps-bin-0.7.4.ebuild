@@ -26,19 +26,19 @@ BDEPEND=""
 
 S="${WORKDIR}/${DEF_PN}"
 
-QA_PREBUILT="/opt/${PN}/Temps
-	/opt/${PN}/libnode.so
-	/opt/${PN}/libffmpeg.so"
+QA_PREBUILT="/opt/${MY_PN}/Temps
+	/opt/${MY_PN}/libnode.so
+	/opt/${MY_PN}/libffmpeg.so"
 
 src_install() {
-	insinto /opt/${PN}
+	insinto /opt/${MY_PN}
 	doins -r *
 
-	exeinto /opt/${PN}
+	exeinto /opt/${MY_PN}
 	doexe Temps libnode.so
 
-	dosym /opt/${PN}/${UP_PN} /usr/bin/${MY_PN}
-	dosym /opt/${PN}/ /usr/share/${MY_PN}
+	dosym /opt/${MY_PN}/${UP_PN} /usr/bin/${MY_PN}
+	dosym /opt/${MY_PN}/ /usr/share/${MY_PN}
 
 	make_desktop_entry ${MY_PN} ${UP_PN} ${MY_PN} "Utility" "StartupWMClass=${UP_PN}"
 }

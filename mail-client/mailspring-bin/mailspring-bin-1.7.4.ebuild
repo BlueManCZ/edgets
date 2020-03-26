@@ -11,7 +11,7 @@ UP_PN="${MY_PN^}"
 
 DESCRIPTION="The best email app for people and teams at work"
 HOMEPAGE="https://getmailspring.com"
-SRC_URI="https://github.com/Foundry376/Mailspring/releases/download/${PV}/${MY_PN}-${PV}-amd64.deb -> ${P}.deb" 
+SRC_URI="https://github.com/Foundry376/Mailspring/releases/download/${PV}/${MY_PN}-${PV}-amd64.deb -> ${P}.deb"
 
 LICENSE="GPLv3"
 SLOT="0"
@@ -33,15 +33,15 @@ RDEPEND="app-crypt/libsecret
 
 S="${WORKDIR}"
 
-QA_PREBUILT="/opt/${PN}/*.so
-	/opt/${PN}/resources/app.asar.unpacked/*.so*
-	/opt/${PN}/resources/app.asar.unpacked/mailsync*
-	/opt/${PN}/mailspring"
+QA_PREBUILT="/opt/${MY_PN}/*.so
+	/opt/${MY_PN}/resources/app.asar.unpacked/*.so*
+	/opt/${MY_PN}/resources/app.asar.unpacked/mailsync*
+	/opt/${MY_PN}/mailspring"
 
 src_install() {
 	dodoc -r usr/share/doc/*
 
-	insinto /opt/${PN}
+	insinto /opt/${MY_PN}
 	doins -r usr/share/mailspring/*
 
 	insinto /usr/share
@@ -50,14 +50,14 @@ src_install() {
 	insinto /usr/share/metainfo
 	doins -r usr/share/appdata/*
 
-	exeinto /opt/${PN}
+	exeinto /opt/${MY_PN}
 	doexe usr/share/mailspring/mailspring usr/share/mailspring/{libEGL,libGLESv2,libVkICD_mock_icd,libffmpeg}.so
 
-	exeinto /opt/${PN}/resources/app.asar.unpacked/
+	exeinto /opt/${MY_PN}/resources/app.asar.unpacked/
 	doexe usr/share/mailspring/resources/app.asar.unpacked/mailsync usr/share/mailspring/resources/app.asar.unpacked/mailsync.bin
 
-	dosym /opt/${PN}/${MY_PN} /usr/bin/${MY_PN}
-	dosym /opt/${PN}/ /usr/share/${MY_PN}
+	dosym /opt/${MY_PN}/${MY_PN} /usr/bin/${MY_PN}
+	dosym /opt/${MY_PN}/ /usr/share/${MY_PN}
 
 	doicon usr/share/pixmaps/${MY_PN}.png
 }
