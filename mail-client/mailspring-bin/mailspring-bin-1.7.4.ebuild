@@ -46,7 +46,7 @@ src_install() {
 	doins -r usr/share/mailspring/*
 
 	insinto /usr/share
-	doins -r usr/share/lintian usr/share/pixmaps
+	doins -r usr/share/lintian usr/share/pixmaps usr/share/applications
 
 	insinto /usr/share/metainfo
 	doins -r usr/share/appdata/*
@@ -61,8 +61,6 @@ src_install() {
 	dosym /opt/${PN}/ /usr/share/${MY_PN}
 
 	doicon usr/share/pixmaps/${MY_PN}.png
-
-	make_desktop_entry "${MY_PN} %U" ${UP_PN} ${MY_PN} "Network;Email;ContactManagement" "Keywords=email;internet;\nStartupWMClass=${MY_PN}\nStartupNotify=true\nMimeType=x-scheme-handler/mailto;x-scheme-handler/mailspring;"
 }
 
 pkg_postinst() {
