@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <upstream>
+    <changelog>https://github.com/Foundry376/Mailspring/blob/master/CHANGELOG.md</changelog>
+    <doc>https://github.com/Foundry376/Mailspring/blob/master/README.md</doc>
+  </upstream>
+  <longdescription>
+    The best email app for people and teams at work
+  </longdescription>
+</pkgmetadata>
