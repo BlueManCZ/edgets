@@ -24,23 +24,23 @@ BDEPEND=""
 
 S="${WORKDIR}"
 
-QA_PREBUILT="/opt/${PN}/*.so
-	/opt/${PN}/swiftshader/*.so
-	/opt/${PN}/simplenote
-	/opt/${PN}/chrome-sandbox"
+QA_PREBUILT="/opt/${MY_PN}/*.so
+	/opt/${MY_PN}/swiftshader/*.so
+	/opt/${MY_PN}/simplenote
+	/opt/${MY_PN}/chrome-sandbox"
 
 src_install() {
-	insinto /opt/${PN}
+	insinto /opt/${MY_PN}
 	doins -r opt/${UP_PN}/*
 
-	exeinto /opt/${PN}
+	exeinto /opt/${MY_PN}
 	doexe opt/${UP_PN}/simplenote opt/${UP_PN}/chrome-sandbox opt/${UP_PN}/*.so
 
-	exeinto /opt/${PN}/swiftshader/
+	exeinto /opt/${MY_PN}/swiftshader/
 	doexe opt/${UP_PN}/swiftshader/*.so
 
-	dosym /opt/${PN}/${MY_PN} /usr/bin/${MY_PN}
-	dosym /opt/${PN}/ /usr/share/${MY_PN}
+	dosym /opt/${MY_PN}/${MY_PN} /usr/bin/${MY_PN}
+	dosym /opt/${MY_PN}/ /usr/share/${MY_PN}
 
 	doicon usr/share/icons/hicolor/512x512/apps/${MY_PN}.png
 
