@@ -31,20 +31,20 @@ QA_PREBUILT="/opt/${PN}/*.so
 
 src_install() {
 	insinto /opt/${PN}
-	doins -r opt/${UP_PN^}/*
+	doins -r opt/${UP_PN}/*
 
 	exeinto /opt/${PN}
-	doexe opt/${UP_PN^}/simplenote opt/${UP_PN^}/chrome-sandbox opt/${UP_PN^}/*.so
+	doexe opt/${UP_PN}/simplenote opt/${UP_PN}/chrome-sandbox opt/${UP_PN}/*.so
 
 	exeinto /opt/${PN}/swiftshader/
-	doexe opt/${UP_PN^}/swiftshader/*.so
+	doexe opt/${UP_PN}/swiftshader/*.so
 
 	dosym /opt/${PN}/${MY_PN} /usr/bin/${MY_PN}
 	dosym /opt/${PN}/ /usr/share/${MY_PN}
 
 	doicon usr/share/icons/hicolor/512x512/apps/${MY_PN}.png
 
-	make_desktop_entry ${MY_PN} ${UP_PN^} ${MY_PN} "Office" "GenericName=Note Taking Application\nStartupNotify=true\nStartupWMClass=${UP_PN^}"
+	make_desktop_entry ${MY_PN} ${UP_PN} ${MY_PN} "Office" "GenericName=Note Taking Application\nStartupNotify=true\nStartupWMClass=${UP_PN}"
 }
 
 pkg_postinst() {
