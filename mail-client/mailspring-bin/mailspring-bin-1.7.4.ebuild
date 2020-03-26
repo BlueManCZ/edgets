@@ -1,12 +1,15 @@
 # Copyright 2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Source overlay: https://github.com/BlueManCZ/edgets
+
 EAPI=7
 inherit desktop unpacker xdg-utils
 
 MY_PN="${PN/-bin/}"
+UP_PN="${MY_PN^}"
 
-DESCRIPTION="Beautiful and fast email client"
+DESCRIPTION="The best email app for people and teams at work"
 HOMEPAGE="https://getmailspring.com"
 SRC_URI="https://github.com/Foundry376/Mailspring/releases/download/${PV}/${MY_PN}-${PV}-amd64.deb -> ${P}.deb" 
 
@@ -42,6 +45,12 @@ src_install() {
 	insinto /opt/${PN}
 	doins -r usr/share/mailspring/*
 
+	insinto /usr/share
+	doins -r usr/share/lintian usr/share/pixmaps
+
+	insinto /usr/share/metainfo
+	doins -r usr/share/appdata/*
+
 	exeinto /opt/${PN}
 	doexe usr/share/mailspring/mailspring usr/share/mailspring/{libEGL,libGLESv2,libVkICD_mock_icd,libffmpeg}.so
 
@@ -53,7 +62,7 @@ src_install() {
 
 	doicon usr/share/pixmaps/${MY_PN}.png
 
-	make_desktop_entry ${MY_PN} "Mailspring" ${MY_PN} "Network;Email;ContactManagement" "StartupWMClass=${MY_PN}"
+	make_desktop_entry "${MY_PN} %U" ${UP_PN} ${MY_PN} "Network;Email;ContactManagement" "Keywords=email;internet;\nStartupWMClass=${MY_PN}\nStartupNotify=true\nMimeType=x-scheme-handler/mailto;x-scheme-handler/mailspring;"
 }
 
 pkg_postinst() {
