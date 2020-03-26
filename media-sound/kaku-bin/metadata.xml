@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <upstream>
+    <changelog>https://github.com/EragonJ/Kaku/releases</changelog>
+    <doc>https://github.com/EragonJ/Kaku/blob/master/README.md</doc>
+  </upstream>
+  <longdescription>
+    Kaku is a highly integrated music player that supports different
+    online platforms like YouTube, SoundCloud, Vimeo and more.
+  </longdescription>
+  <use>
+    <flag name="appindicator">Enable usage of x11-libs/libXtst</flag>
+    <flag name="xtest">Enable usage of dev-libs/libappindicator</flag>
+  </use>
+</pkgmetadata>
