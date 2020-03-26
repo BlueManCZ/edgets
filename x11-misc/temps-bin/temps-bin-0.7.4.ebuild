@@ -1,6 +1,8 @@
 # Copyright 2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
+# Source overlay: https://github.com/BlueManCZ/edgets
+
 EAPI=7
 inherit desktop unpacker xdg-utils
 
@@ -22,7 +24,7 @@ DEPEND=""
 RDEPEND=""
 BDEPEND=""
 
-S="${WORKDIR}"
+S="${WORKDIR}/${DEF_PN}"
 
 QA_PREBUILT="/opt/${PN}/Temps
 	/opt/${PN}/libnode.so
@@ -30,10 +32,10 @@ QA_PREBUILT="/opt/${PN}/Temps
 
 src_install() {
 	insinto /opt/${PN}
-	doins -r ${DEF_PN}/*
+	doins -r *
 
 	exeinto /opt/${PN}
-	doexe ${DEF_PN}/Temps ${DEF_PN}/libnode.so
+	doexe Temps libnode.so
 
 	dosym /opt/${PN}/${UP_PN} /usr/bin/${MY_PN}
 	dosym /opt/${PN}/ /usr/share/${MY_PN}
