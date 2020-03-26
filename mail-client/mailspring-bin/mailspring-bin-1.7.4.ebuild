@@ -16,9 +16,9 @@ SRC_URI="https://github.com/Foundry376/Mailspring/releases/download/${PV}/${MY_P
 LICENSE="GPLv3"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE=""
+IUSE="+libnotify"
 
-DEPEND="app-crypt/libsecret
+RDEPEND="app-crypt/libsecret
 	dev-vcs/git
 	dev-libs/libgcrypt
 	dev-libs/nss
@@ -27,10 +27,9 @@ DEPEND="app-crypt/libsecret
 	gnome-base/gnome-keyring
 	gnome-base/gvfs
 	virtual/libudev
+	libnotify? ( x11-libs/libnotify )
 	x11-libs/libXtst
 	x11-misc/xdg-utils"
-RDEPEND="${DEPEND}"
-BDEPEND=""
 
 S="${WORKDIR}"
 
