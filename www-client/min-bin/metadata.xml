@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <upstream>
+    <changelog>https://minbrowser.github.io/min/releases/index.html</changelog>
+    <doc>https://github.com/minbrowser/min/blob/master/README.md</doc>
+  </upstream>
+  <longdescription>
+    Min is a fast, minimal browser that protects your privacy.
+    A web browser with smarter search, improved tab management, and built-in ad
+    blocking. Includes full-text history search, instant answers from DuckDuckGo,
+    the ability to split tabs into groups, and more.
+  </longdescription>
+  <use>
+    <flag name="xtest">Enable support for x11-libs/libXtst</flag>
+  </use>
+</pkgmetadata>
