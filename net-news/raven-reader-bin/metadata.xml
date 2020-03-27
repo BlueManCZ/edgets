@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <upstream>
+    <changelog>https://github.com/hello-efficiency-inc/raven-reader/releases</changelog>
+    <doc>https://github.com/hello-efficiency-inc/raven-reader/blob/master/README.md</doc>
+  </upstream>
+  <longdescription>
+    Raven is a desktop news reader with flexible settings to optimize your
+    experience. No login is required, and no personal data is collected.
+    Just select the websites you want to curate articles from and enjoy!
+  </longdescription>
+  <use>
+    <flag name="xtest">Enable support for x11-libs/libXtst</flag>
+  </use>
+</pkgmetadata>
