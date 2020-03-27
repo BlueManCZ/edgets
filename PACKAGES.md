@@ -48,7 +48,15 @@ online platforms like YouTube, SoundCloud, Vimeo and more.__
 
 ---
 
-### :umbrella: Temps ([x11-misc/temps-bin](https://github.com/BlueManCZ/edgets/tree/master/x11-misc/temps-bin))
+### :page_facing_up: gSubs ([app-misc/gsubs-bin](https://github.com/BlueManCZ/edgets/tree/master/app-misc/gsubs-bin))
+
+Homepage: https://github.com/sanjevirau/gsubs
+
+__A desktop app that finds you the perfect subtitle match for your videos.__
+
+---
+
+### :umbrella: Temps ([app-misc/temps-bin](https://github.com/BlueManCZ/edgets/tree/master/app-misc/temps-bin))
 
 Homepage: https://github.com/jackd248/temps<br>
 Used fork: https://github.com/musicpro/temps
