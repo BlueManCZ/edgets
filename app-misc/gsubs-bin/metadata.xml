@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <upstream>
+    <changelog>https://github.com/sanjevirau/gsubs/releases</changelog>
+    <doc>https://github.com/sanjevirau/gsubs/blob/master/README.md</doc>
+  </upstream>
+  <longdescription>
+    A desktop app that finds you the perfect subtitle match for your videos.
+    Simply download now and drag and drop videos to get started.
+    gSubs is multi-platform, open-source, and built entirely on web technology.
+  </longdescription>
+  <use>
+    <flag name="xtest">Enable support for x11-libs/libXtst</flag>
+  </use>
+</pkgmetadata>
