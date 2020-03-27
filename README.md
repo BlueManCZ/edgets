@@ -40,5 +40,5 @@ See [PACKAGES.md](https://github.com/BlueManCZ/edgets/blob/master/PACKAGES.md)
 
 ## Contribution
 
-If you want add, update or fix some package ebuild in edgets overlay,<br>
+If you want to add, update or fix some package ebuild in edgets overlay,<br>
 you can open new [issue](https://github.com/BlueManCZ/edgets/issues) or create a [pull request](https://github.com/BlueManCZ/edgets/pulls). Your contribution is welcome.
