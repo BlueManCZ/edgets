@@ -31,12 +31,20 @@ __Min is a fast, minimal browser that protects your privacy.__
 
 ---
 
+### :musical_note: Museeks ([media-sound/museeks-bin](https://github.com/BlueManCZ/edgets/tree/master/media-sound/museeks-bin))
+
+Homepage: https://github.com/martpie/museeks
+
+__A simple, clean and cross-platform music player.__
+
+---
+
 ### :notes: Kaku ([media-sound/kaku-bin](https://github.com/BlueManCZ/edgets/tree/master/media-sound/kaku-bin))
 
 Homepage: https://github.com/EragonJ/Kaku
 
-__Kaku is a highly integrated music player supports different<br>
-online platform like YouTube, SoundCloud, Vimeo and more.__
+__Kaku is a highly integrated music player. Supports different<br>
+online platforms like YouTube, SoundCloud, Vimeo and more.__
 
 ---
 
