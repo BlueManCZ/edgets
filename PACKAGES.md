@@ -56,6 +56,14 @@ online platforms like YouTube, SoundCloud, Vimeo and more.__
 
 ---
 
+### :closed_lock_with_key: Buttercup ([app-crypt/buttercup-desktop-bin](https://github.com/BlueManCZ/edgets/tree/master/app-crypt/buttercup-desktop-bin))
+
+Homepage: https://github.com/buttercup/buttercup-desktop
+
+__Cross-platform, free and open-source password manager based on NodeJS.__
+
+---
+
 ### :page_facing_up: gSubs ([app-misc/gsubs-bin](https://github.com/BlueManCZ/edgets/tree/master/app-misc/gsubs-bin))
 
 Homepage: https://github.com/sanjevirau/gsubs
