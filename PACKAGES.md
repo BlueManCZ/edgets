@@ -31,7 +31,7 @@ __Min is a fast, minimal browser that protects your privacy.__
 
 ---
 
-### :tv: WebTorrent Desktop ([www-client/min-bin](https://github.com/BlueManCZ/edgets/tree/master/net-p2p/webtorrent-desktop-bin))
+### :tv: WebTorrent Desktop ([net-p2p/webtorrent-desktop-bin](https://github.com/BlueManCZ/edgets/tree/master/net-p2p/webtorrent-desktop-bin))
 
 Homepage: https://github.com/webtorrent/webtorrent-desktop
 
