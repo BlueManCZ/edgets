@@ -1,6 +1,6 @@
 # Featured packages
 
-Below are the packages that can be installed from edgets overlay and that are worth mentioning.
+Below are the packages that can be installed from edgets Gentoo overlay and that are worth mentioning.
 
 For installation instructions, go to [README.md](https://github.com/BlueManCZ/edgets/blob/master/README.md)
 
