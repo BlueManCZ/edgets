@@ -31,6 +31,14 @@ __Min is a fast, minimal browser that protects your privacy.__
 
 ---
 
+### :tv: WebTorrent Desktop ([www-client/min-bin](https://github.com/BlueManCZ/edgets/tree/master/net-p2p/webtorrent-desktop-bin))
+
+Homepage: https://github.com/webtorrent/webtorrent-desktop
+
+__The streaming torrent app.__
+
+---
+
 ### :musical_note: Museeks ([media-sound/museeks-bin](https://github.com/BlueManCZ/edgets/tree/master/media-sound/museeks-bin))
 
 Homepage: https://github.com/martpie/museeks
