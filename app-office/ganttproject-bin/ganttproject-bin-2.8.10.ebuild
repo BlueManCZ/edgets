@@ -41,7 +41,7 @@ src_install() {
 
 	doicon usr/share/pixmaps/${MY_PN}.png
 
-	make_desktop_entry ${MY_PN} ${UP_PN} ${MY_PN} "Office" "MimeType=application/x-ganttproject;\nStartupWMClass=sun-awt-X11-XFramePeer"
+	make_desktop_entry ${MY_PN} ${UP_PN} ${MY_PN} "Office" "MimeType=application/x-ganttproject;\nStartupWMClass=org-bardsoftware-impl-eclipsito-BootImpl\$2"
 }
 
 pkg_postinst() {
