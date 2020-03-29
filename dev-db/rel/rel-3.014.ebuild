@@ -44,7 +44,6 @@ src_install() {
 	exeinto /opt/${PN}/jre/lib/server
 	doexe jre/lib/server/*.so
 
-	dosym /opt/${PN}/${UP_PN} /usr/bin/${PN}
 	dosym /opt/${PN}/ /usr/share/${PN}
 
 	doicon ${DISTDIR}/${PN}.png
