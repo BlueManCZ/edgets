@@ -49,7 +49,10 @@ src_install() {
 	doins -r *
 
 	exeinto /opt/${MY_PN}
-	doexe raven-reader AppRun chrome-sandbox *.so swiftshader/*.so
+	doexe raven-reader AppRun chrome-sandbox *.so
+
+	exeinto /opt/${MY_PN}/swiftshader
+	swiftshader/*.so
 
 	dosym /opt/${MY_PN}/${MY_PN} /usr/bin/${MY_PN}
 	dosym /opt/${MY_PN}/ /usr/share/${MY_PN}

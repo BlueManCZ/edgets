@@ -41,7 +41,10 @@ src_install() {
 	doins -r opt/${UP_PN}/*
 
 	exeinto /opt/${MY_PN}
-	doexe opt/${UP_PN}/buttercup-desktop opt/${UP_PN}/chrome-sandbox opt/${UP_PN}/*.so opt/${UP_PN}/swiftshader/*.so
+	doexe opt/${UP_PN}/buttercup-desktop opt/${UP_PN}/chrome-sandbox opt/${UP_PN}/*.so
+
+	exeinto /opt/${MY_PN}/swiftshader
+	doexe opt/${UP_PN}/swiftshader/*.so
 
 	dosym /opt/${MY_PN}/${MY_PN} /usr/bin/${MY_PN}
 	dosym /opt/${MY_PN}/ /usr/share/${MY_PN}

@@ -48,7 +48,10 @@ src_install() {
 	doins -r usr/share/lintian
 
 	exeinto /opt/${MY_PN}
-	doexe usr/lib/${MY_PN}/WebTorrent usr/lib/${MY_PN}/chrome-sandbox usr/lib/${MY_PN}/*.so usr/lib/${MY_PN}/swiftshader/*.so
+	doexe usr/lib/${MY_PN}/WebTorrent usr/lib/${MY_PN}/chrome-sandbox usr/lib/${MY_PN}/*.so
+
+	exeinto /opt/${MY_PN}/swiftshader
+	doexe usr/lib/${MY_PN}/swiftshader/*.so
 
 	dosym /opt/${MY_PN}/WebTorrent /usr/bin/${MY_PN}
 	dosym /opt/${MY_PN}/ /usr/share/${MY_PN}
