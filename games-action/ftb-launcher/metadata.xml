@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <upstream>
+    <changelog>https://forum.feed-the-beast.com/forum/feed-the-beast-news.35/</changelog>
+    <doc>https://ftb.gamepedia.com/FTB_Wiki</doc>
+  </upstream>
+  <longdescription>
+    Feed the Beast is a collection of modpacks for the popular sandbox-game Minecraft.
+  </longdescription>
+  <use>
+    <flag name="numix-circle-icon">Install icon that fits numix-circle icon theme</flag>
+  </use>
+</pkgmetadata>
