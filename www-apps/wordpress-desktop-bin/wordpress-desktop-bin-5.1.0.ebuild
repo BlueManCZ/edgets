@@ -13,7 +13,7 @@ NAME="WordPress.com"
 
 DESCRIPTION="WordPress.com Desktop Client"
 HOMEPAGE="https://github.com/Automattic/wp-desktop"
-SRC_URI="https://github.com/Automattic/wp-desktop/releases/download/v${PV}/${UP_PN}_${PV}_amd64.deb -> ${P}.deb"
+SRC_URI="https://github.com/Automattic/wp-desktop/releases/download/v${PV}/${NAME}-linux-deb-${PV}.deb -> ${P}.deb"
 
 LICENSE="GPLv2+"
 SLOT="0"
