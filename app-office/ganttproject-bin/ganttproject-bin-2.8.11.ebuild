@@ -15,7 +15,7 @@ SRC_URI="https://www.ganttproject.biz/dl/${PV}/lin -> ${P}.deb"
 
 LICENSE="GPLv3"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="|| ( virtual/jre virtual/jdk )"
