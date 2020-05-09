@@ -19,12 +19,12 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="app-misc/geoclue
-				 dev-libs/glib
-				 dev-libs/json-glib
-				 dev-libs/libgee
-				 net-libs/libsoup
-				 sci-geosciences/geocode-glib
-				 x11-libs/gtk+"
+         dev-libs/glib
+         dev-libs/json-glib
+         dev-libs/libgee
+         net-libs/libsoup
+         sci-geosciences/geocode-glib
+         x11-libs/gtk+"
 
 DEPEND="$(vala_depend)"
 
