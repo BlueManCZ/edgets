@@ -39,6 +39,7 @@ src_prepare() {
 
 src_configure() {
 	meson_src_configure
+	echo "Comment=${DESCRIPTION}" >> data/com.github.nick92.coffee.desktop
 }
 
 src_install() {
