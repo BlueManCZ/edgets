@@ -38,7 +38,7 @@ src_prepare() {
 }
 
 src_configure() {
-  meson_src_configure
+	meson_src_configure
 }
 
 src_install() {
