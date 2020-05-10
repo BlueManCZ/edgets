@@ -64,7 +64,7 @@ __Cross-platform, free and open-source password manager based on NodeJS.__
 
 ---
 
-### :page_facing_up: gSubs ([app-misc/gsubs-bin](https://github.com/BlueManCZ/edgets/tree/master/app-misc/gsubs-bin))
+### :page_facing_up: gSubs ([x11-misc/gsubs-bin](https://github.com/BlueManCZ/edgets/tree/master/x11-misc/gsubs-bin))
 
 Homepage: https://github.com/sanjevirau/gsubs
 
@@ -72,7 +72,15 @@ __A desktop app that finds you the perfect subtitle match for your videos.__
 
 ---
 
-### :umbrella: Temps ([app-misc/temps-bin](https://github.com/BlueManCZ/edgets/tree/master/app-misc/temps-bin))
+### :newspaper: Coffee ([x11-misc/coffee](https://github.com/BlueManCZ/edgets/tree/master/x11-misc/coffee))
+
+Homepage: https://github.com/nick92/coffee
+
+__A news and weather feed for Linux.__
+
+---
+
+### :umbrella: Temps ([x11-misc/temps-bin](https://github.com/BlueManCZ/edgets/tree/master/x11-misc/temps-bin))
 
 Homepage: https://github.com/jackd248/temps<br>
 Used fork: https://github.com/musicpro/temps
