@@ -1,7 +1,7 @@
 # Copyright 2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=4
+EAPI=6
 inherit gnome2
 
 DESCRIPTION="A weather monitoring program"
