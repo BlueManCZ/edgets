@@ -15,7 +15,7 @@ SRC_URI="https://github.com/Foundry376/Mailspring/releases/download/${PV}/${MY_P
 
 LICENSE="GPLv3"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="amd64"
 IUSE="+libnotify"
 
 RDEPEND="app-crypt/libsecret
