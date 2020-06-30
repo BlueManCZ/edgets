@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <upstream>
+    <changelog>https://github.com/numixproject/numix-core/commits/master</changelog>
+    <doc>https://numixproject.github.io</doc>
+  </upstream>
+  <longdescription>
+    Numix is the official icon theme from the Numix Project. It is heavily
+    inspired by, and based upon parts of the Elementary, Humanity and Gnome
+    icon themes. Numix is designed to be used along-side an application icon
+    theme like Numix Circle or Numix Square.
+  </longdescription>
+  <use>
+    <flag name="circle">Build package with Numix-Circle included</flag>
+    <flag name="square">Build package with Numix-Square included</flag>
+  </use>
+</pkgmetadata>
