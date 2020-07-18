@@ -11,8 +11,8 @@ UP_PN="${MY_PN^}"
 
 DESCRIPTION="Simple program to pause games & applications"
 HOMEPAGE="https://github.com/Merrit/nyrna"
-SRC_URI="${HOMEPAGE}/releases/download/v${PV}/${MY_PN}
-	https://raw.githubusercontent.com/Merrit/nyrna/master/nyrna/icons/${MY_PN}.png"
+SRC_URI="${HOMEPAGE}/releases/download/v${PV}/${MY_PN} -> ${P}
+	https://raw.githubusercontent.com/Merrit/nyrna/master/icons/${MY_PN}.png"
 
 LICENSE="GPLv3"
 SLOT="0"
@@ -26,7 +26,7 @@ S="${WORKDIR}"
 QA_PREBUILT="/usr/bin/${MY_PN}"
 
 src_unpack() {
-	cp "${DISTDIR}/${MY_PN}" "${S}"
+	cp "${DISTDIR}/${P}" "${S}/${MY_PN}"
 	cp "${DISTDIR}/${MY_PN}.png" "${S}"
 }
 
