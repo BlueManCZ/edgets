@@ -11,11 +11,13 @@ UP_PN="${MY_PN^}"
 
 DESCRIPTION="The simplest way to keep notes"
 HOMEPAGE="https://simplenote.com"
-SRC_URI="https://github.com/Automattic/simplenote-electron/releases/download/v${PV}/${UP_PN}-linux-${PV}-amd64.deb -> ${P}.deb"
+SRC_URI="amd64? ( https://github.com/Automattic/simplenote-electron/releases/download/v${PV}/${UP_PN}-linux-${PV}-amd64.deb -> ${P}-amd64.deb )
+				arm64? ( https://github.com/Automattic/simplenote-electron/releases/download/v${PV}/${UP_PN}-linux-${PV}-arm64.deb -> ${P}-arm64.deb )
+				x86? ( https://github.com/Automattic/simplenote-electron/releases/download/v${PV}/${UP_PN}-linux-${PV}-i386.deb -> ${P}-i386.deb )"
 
 LICENSE="GPLv2"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64 ~x86"
 IUSE=""
 
 DEPEND="gnome-base/gconf"
