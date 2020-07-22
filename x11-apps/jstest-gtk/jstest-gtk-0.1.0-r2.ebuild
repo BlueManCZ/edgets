@@ -33,7 +33,7 @@ src_prepare(){
 	# include unistd.h to allow usage of open/close functions
 	sed -i '34i#include <unistd.h>' src/joystick.cpp || die "sed failed"
 
-	cp data/generic.png data/${PN}.png
+	cp "data/generic.png" "data/${PN}.png"
 	default
 }
 
@@ -44,11 +44,11 @@ src_compile() {
 src_install() {
 	dobin "${S}/${PN}"
 	insinto "/usr/share/${PN}"
-	doins -r "${S}"/data
+	doins -r "${S}/data"
 
-	doicon ${S}/data/${PN}.png
+	doicon "${S}/data/${PN}.png"
 
-	make_desktop_entry "${PN}" "Joystick" ${PN} "Utility" "Path=/usr/share/${PN}\nStartupWMClass=${PN}"
+	make_desktop_entry ${PN} "Joystick" ${PN} "Utility" "Path=/usr/share/${PN}\nStartupWMClass=${PN}"
 }
 
 pkg_postinst() {
