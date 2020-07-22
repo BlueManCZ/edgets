@@ -5,7 +5,7 @@
 
 EAPI=6
 
-inherit cmake-utils git-r3
+inherit cmake-utils git-r3 xdg-utils
 CMAKE_BUILD_TYPE="Release"
 
 DESCRIPTION="Joystick testing and configuration tool"
@@ -38,4 +38,9 @@ src_install() {
 	doicon "${S}/data/${PN}.png"
 
 	make_desktop_entry ${PN} "Joystick" ${PN} "Utility" "Path=/usr/share/${PN}\nStartupWMClass=${PN}"
+}
+
+pkg_postinst() {
+	xdg_desktop_database_update
+	xdg_icon_cache_update
 }
