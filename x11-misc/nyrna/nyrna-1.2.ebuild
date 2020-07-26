@@ -65,9 +65,7 @@ RDEPEND="appindicator? ( dev-libs/libappindicator )
   !x11-misc/nyrna-bin"
 
 src_install() {
-  debug-print-function ${FUNCNAME} "$@"
-
-  golang-common_src_install
+  golang-single_src_install
 
   insinto "/usr/share/pixmaps"
   doins "packaging/PKGBUILD/nyrna.png"
