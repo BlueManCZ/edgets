@@ -19,7 +19,9 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE="appindicator"
 
-RDEPEND="appindicator? ( dev-libs/libappindicator )"
+RDEPEND="appindicator? ( dev-libs/libappindicator )
+	gnome-extra/zenity
+	x11-libs/gtk+"
 
 S="${WORKDIR}"
 
