@@ -21,7 +21,8 @@ IUSE="appindicator"
 
 RDEPEND="appindicator? ( dev-libs/libappindicator )
 	gnome-extra/zenity
-	x11-libs/gtk+"
+	x11-libs/gtk+
+	!x11-misc/nyrna"
 
 S="${WORKDIR}"
 
