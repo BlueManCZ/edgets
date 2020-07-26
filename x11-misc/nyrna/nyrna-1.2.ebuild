@@ -15,8 +15,8 @@ GOLANG_PKG_USE_CGO=1
 
 GOLANG_PKG_DEPENDENCIES=(
   "github.com/adrg/xdg:fb8a0a2"
-	"github.com/BurntSushi/xgb:20f126e"
-	"github.com/BurntSushi/xgbutil:ad855c7"
+  "github.com/BurntSushi/xgb:20f126e"
+  "github.com/BurntSushi/xgbutil:ad855c7"
   "github.com/fsnotify/fsnotify:7f4cf4d"
   "github.com/gen2brain/beeep:e9c15c2"
   "github.com/getlantern/context:c447772"
@@ -62,14 +62,14 @@ IUSE="appindicator"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 
 RDEPEND="appindicator? ( dev-libs/libappindicator )
-	gnome-extra/zenity
-	x11-libs/gtk+
+  gnome-extra/zenity
+  x11-libs/gtk+
   !x11-misc/nyrna-bin"
 
 src_install() {
   debug-print-function ${FUNCNAME} "$@"
 
-	golang-common_src_install
+  golang-common_src_install
 
   doicon "packaging/PKGBUILD/nyrna.png"
 
@@ -78,6 +78,6 @@ src_install() {
 }
 
 pkg_postinst() {
-	xdg_desktop_database_update
-	xdg_icon_cache_update
+  xdg_desktop_database_update
+  xdg_icon_cache_update
 }
