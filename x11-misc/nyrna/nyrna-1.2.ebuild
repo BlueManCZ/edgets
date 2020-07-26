@@ -5,8 +5,6 @@
 
 EAPI=7
 
-UP_PN="${PN^}"
-
 DESCRIPTION="Simple program to pause games & applications"
 HOMEPAGE="https://github.com/Merrit/nyrna"
 
@@ -54,7 +52,7 @@ GOLANG_PKG_DEPENDENCIES=(
   "github.com/vcaesar/tt:f4f588f"
 )
 
-inherit desktop golang-single xdg-utils
+inherit golang-single xdg-utils
 
 LICENSE="GPLv3"
 SLOT="0"
@@ -71,7 +69,8 @@ src_install() {
 
   golang-common_src_install
 
-  doicon "packaging/PKGBUILD/nyrna.png"
+  insinto "/usr/share/pixmaps"
+  doins "packaging/PKGBUILD/nyrna.png"
 
   insinto "/usr/share/applications"
   doins "packaging/PKGBUILD/nyrna.desktop"
