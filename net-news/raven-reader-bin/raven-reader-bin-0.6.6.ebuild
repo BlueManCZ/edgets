@@ -29,11 +29,7 @@ RDEPEND="dev-libs/libappindicator
 S="${WORKDIR}"
 ARCHIVE_ROOT="squashfs-root"
 
-QA_PREBUILT="/opt/${MY_PN}/*.so
-	/opt/${MY_PN}/swiftshader/*.so
-	/opt/${MY_PN}/raven-reader
-	/opt/${MY_PN}/AppRun
-	/opt/${MY_PN}/chrome-sandbox"
+QA_PREBUILT="*"
 
 src_unpack() {
 	cp "${DISTDIR}/${P}".AppImage "${P}".AppImage
