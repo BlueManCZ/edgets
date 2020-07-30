@@ -52,7 +52,7 @@ src_install() {
 	doexe raven-reader AppRun chrome-sandbox *.so
 
 	exeinto /opt/${MY_PN}/swiftshader
-	swiftshader/*.so
+	doexe swiftshader/*.so
 
 	dosym /opt/${MY_PN}/${MY_PN} /usr/bin/${MY_PN}
 	dosym /opt/${MY_PN}/ /usr/share/${MY_PN}
@@ -63,11 +63,6 @@ src_install() {
 }
 
 pkg_postinst() {
-	xdg_desktop_database_update
-	xdg_icon_cache_update
-}
-
-pkg_postrm() {
 	xdg_desktop_database_update
 	xdg_icon_cache_update
 }
