@@ -17,7 +17,7 @@ SRC_URI="https://github.com/ytmdesktop/ytmdesktop/releases/download/v${PV}/YouTu
 LICENSE="CC0v1"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="-libnotify -xscreensaver"
+IUSE="-libnotify -xscreensaver -hardcode-tray-fix"
 
 RDEPEND="dev-libs/libappindicator
 	dev-libs/glib
@@ -59,7 +59,11 @@ src_install() {
 
 	doicon "usr/share/icons/hicolor/256x256/apps/${WORK_NAME}.png"
 
-	make_desktop_entry ${MY_PN} "YouTube Music" ${WORK_NAME} "AudioVideo;Player;Audio;" "StartupWMClass=${WORK_NAME}"
+	if use hardcode-tray-fix; then
+		make_desktop_entry "env XDG_CURRENT_DESKTOP=KDE ${MY_PN}" "YouTube Music" ${WORK_NAME} "AudioVideo;Player;Audio;" "StartupWMClass=${WORK_NAME}"
+	else
+		make_desktop_entry ${MY_PN} "YouTube Music" ${WORK_NAME} "AudioVideo;Player;Audio;" "StartupWMClass=${WORK_NAME}"
+	fi
 }
 
 pkg_postinst() {
