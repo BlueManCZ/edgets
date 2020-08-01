@@ -2,6 +2,8 @@
 
 The main goal of edgets overlay is to bring you the newest versions of modern software available across the internet.
 
+![edgets](https://user-images.githubusercontent.com/17854950/89108167-99178780-d436-11ea-9a0d-209319390f5b.png)
+
 ## Getting started
 
 Edgets is available through layman, so all you need to do is install layman (if you don't have already) and add an overlay.
