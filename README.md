@@ -11,7 +11,6 @@ Edgets is available through layman, so all you need to do is install layman (if 
 ```
 # emerge --ask app-portage/layman
 
-# layman --sync-all
 # layman --add edgets
 ```
 
