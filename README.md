@@ -1,5 +1,4 @@
-# edgets - Gentoo overlay
-
+![edgets](https://user-images.githubusercontent.com/17854950/89108167-99178780-d436-11ea-9a0d-209319390f5b.png)
 The main goal of edgets overlay is to bring you the newest versions of modern software available across the internet.
 
 ## Getting started
@@ -8,8 +7,6 @@ Edgets is available through layman, so all you need to do is install layman (if 
 
 ```
 # emerge --ask app-portage/layman
-
-# layman --sync-all
 # layman --add edgets
 ```
 
