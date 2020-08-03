@@ -40,7 +40,7 @@ src_install() {
   doins *
 
   exeinto /usr/share/${PN}
-	doexe "fix-wm-class.sh" "sif.py"
+  doexe "fix-wm-class.sh" "sif.py"
 
   dodoc LICENSE README.md
 
