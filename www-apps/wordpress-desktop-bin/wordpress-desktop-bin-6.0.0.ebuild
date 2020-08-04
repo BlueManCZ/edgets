@@ -13,7 +13,7 @@ NAME="WordPress.com"
 
 DESCRIPTION="WordPress.com Desktop Client"
 HOMEPAGE="https://github.com/Automattic/wp-desktop"
-SRC_URI="https://github.com/Automattic/wp-desktop/releases/download/v${PV}/${NAME}-linux-deb-${PV}.deb -> ${P}.deb"
+SRC_URI="${HOMEPAGE}/releases/download/v${PV}/${NAME}-linux-deb-${PV}.deb -> ${P}.deb"
 
 LICENSE="GPLv2+"
 SLOT="0"
@@ -27,24 +27,22 @@ RDEPEND="dev-libs/nss
 
 S="${WORKDIR}"
 
-QA_PREBUILT="/opt/${MY_PN}/*.so
-	/opt/${MY_PN}/swiftshader/*.so
-	/opt/${MY_PN}/wpcom"
+QA_PREBUILT="*"
 
 src_install() {
-	insinto /opt/${MY_PN}
-	doins -r opt/${NAME}/*
+	insinto "/opt/${MY_PN}"
+	doins -r "opt/${NAME}/"*
 
-	exeinto /opt/${MY_PN}
-	doexe opt/${NAME}/wpcom opt/${NAME}/*.so
+	exeinto "/opt/${MY_PN}"
+	doexe "opt/${NAME}/wpcom" "opt/${NAME}/"*".so"
 
-	exeinto /opt/${MY_PN}/swiftshader
-	doexe opt/${NAME}/swiftshader/*.so
+	exeinto "/opt/${MY_PN}/swiftshader"
+	doexe "opt/${NAME}/swiftshader/"*".so"
 
-	dosym /opt/${MY_PN}/wpcom /usr/bin/${MY_PN}
-	dosym /opt/${MY_PN}/ /usr/share/${MY_PN}
+	dosym "/opt/${MY_PN}/wpcom" "/usr/bin/${MY_PN}"
+	dosym "/opt/${MY_PN}/" "/usr/share/${MY_PN}"
 
-	doicon usr/share/icons/hicolor/512x512/apps/${ICON}.png
+	doicon "usr/share/icons/hicolor/512x512/apps/${ICON}.png"
 
 	make_desktop_entry ${MY_PN} ${NAME} ${ICON} "Development" "StartupWMClass=${UP_PN}\nStartupNotify=true"
 }
@@ -56,5 +54,4 @@ pkg_postinst() {
 
 pkg_postrm() {
 	xdg_desktop_database_update
-	xdg_icon_cache_update
 }
