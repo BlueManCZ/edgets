@@ -57,7 +57,7 @@ src_install() {
 	dosym "/opt/${MY_PN}/${WORK_NAME}" "/usr/bin/${MY_PN}"
 	dosym "/opt/${MY_PN}/" "/usr/share/${MY_PN}"
 
-	doicon "usr/share/icons/hicolor/256x256/apps/${WORK_NAME}.png"
+	doicon "usr/share/icons/hicolor/0x0/apps/${WORK_NAME}.png"
 
 	if use hardcode-tray-fix; then
 		make_desktop_entry "env XDG_CURRENT_DESKTOP=KDE ${MY_PN}" "YouTube Music" ${WORK_NAME} "AudioVideo;Player;Audio;" "StartupWMClass=${WORK_NAME}"
@@ -69,4 +69,8 @@ src_install() {
 pkg_postinst() {
 	xdg_desktop_database_update
 	xdg_icon_cache_update
+}
+
+pkg_postrm() {
+	xdg_desktop_database_update
 }
