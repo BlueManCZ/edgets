@@ -7,12 +7,12 @@ EAPI=7
 inherit desktop xdg-utils
 
 MY_PN="${PN/-bin/}"
-UP_PN="${MY_PN^}"
 WORK_NAME="youtube-music-desktop-app"
 
 DESCRIPTION="A Desktop App for YouTube Music"
 HOMEPAGE="https://ytmdesktop.app/"
-SRC_URI="https://github.com/ytmdesktop/ytmdesktop/releases/download/v${PV}/YouTube.Music.Desktop.App-${PV}.AppImage -> ${P}.AppImage"
+GITHUB="https://github.com/ytmdesktop/ytmdesktop"
+SRC_URI="${GITHUB}/releases/download/v${PV}/YouTube.Music.Desktop.App-${PV}.AppImage -> ${P}.AppImage"
 
 LICENSE="CC0v1"
 SLOT="0"
@@ -25,39 +25,49 @@ RDEPEND="dev-libs/libappindicator
 	dev-libs/nss
 	gnome-base/gconf
 	libnotify? ( x11-libs/libnotify )
+	media-libs/libglvnd
+	media-libs/mesa
+	media-libs/vulkan-loader
+	media-video/ffmpeg
 	sys-apps/dbus
 	xscreensaver? ( x11-libs/libXScrnSaver )
 	x11-libs/libXtst
 	x11-libs/gtk+"
 
-S="${WORKDIR}"
-ARCHIVE_ROOT="squashfs-root"
-
 QA_PREBUILT="*"
+
+ARCHIVE_ROOT="squashfs-root"
+S="${WORKDIR}/${ARCHIVE_ROOT}"
 
 src_unpack() {
 	cp "${DISTDIR}/${P}".AppImage "${P}".AppImage
 	chmod u+x ${P}.AppImage
-	./${P}.AppImage --appimage-extract || die "extract appimage failed."
+	./${P}.AppImage --appimage-extract || die "Appimage extraction failed."
 	rm -r ${ARCHIVE_ROOT}/usr/lib
 }
 
-S="${WORKDIR}/${ARCHIVE_ROOT}"
+src_prepare() {
+	rm *".so"
+	rm -r "swiftshader"
+	rm "${WORK_NAME}.png"
+	mv "usr/share/icons/hicolor/0x0/apps/${WORK_NAME}.png" "${WORK_NAME}.png"
+	rm -r "usr"
+	default
+}
 
 src_install() {
 	insinto "/opt/${MY_PN}"
 	doins -r *
 
 	exeinto "/opt/${MY_PN}"
-	doexe ${WORK_NAME} "AppRun" "chrome-sandbox" *.so
+	doexe ${WORK_NAME} "AppRun" "chrome-sandbox"
 
-	exeinto "/opt/${MY_PN}/swiftshader"
-	doexe swiftshader/*.so
+	dosym "/usr/lib64/chromium/libffmpeg.so" "/opt/${MY_PN}/libffmpeg.so"
 
 	dosym "/opt/${MY_PN}/${WORK_NAME}" "/usr/bin/${MY_PN}"
 	dosym "/opt/${MY_PN}/" "/usr/share/${MY_PN}"
 
-	doicon "usr/share/icons/hicolor/0x0/apps/${WORK_NAME}.png"
+	doicon "${WORK_NAME}.png"
 
 	if use hardcode-tray-fix; then
 		make_desktop_entry "env XDG_CURRENT_DESKTOP=KDE ${MY_PN}" "YouTube Music" ${WORK_NAME} "AudioVideo;Player;Audio;" "StartupWMClass=${WORK_NAME}"
