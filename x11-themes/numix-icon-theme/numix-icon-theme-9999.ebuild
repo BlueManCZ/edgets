@@ -19,8 +19,9 @@ SLOT="0"
 KEYWORDS=""
 IUSE="+circle +square"
 
-RDEPEND="circle? ( !x11-themes/numix-icon-theme-circle )
-         square? ( !x11-themes/numix-icon-theme-square )"
+RDEPEND="x11-libs/cairo
+  circle? ( !x11-themes/numix-icon-theme-circle )
+  square? ( !x11-themes/numix-icon-theme-square )"
 
 DEFAULT_WORKDIR="${WORKDIR}"
 
