@@ -50,7 +50,8 @@ src_prepare() {
 	rm *".so"
 	rm -r "swiftshader"
 	rm "${WORK_NAME}.png"
-	mv "usr/share/icons/hicolor/0x0/apps/${WORK_NAME}.png" "${WORK_NAME}.png"
+	rm "${WORK_NAME}.desktop"
+	mv "usr/share/icons/hicolor/0x0/apps/${WORK_NAME}.png" "../${WORK_NAME}.png"
 	rm -r "usr"
 	default
 }
@@ -64,15 +65,15 @@ src_install() {
 
 	dosym "/usr/lib64/chromium/libffmpeg.so" "/opt/${MY_PN}/libffmpeg.so"
 
-	dosym "/opt/${MY_PN}/${WORK_NAME}" "/usr/bin/${MY_PN}"
+	dosym "/opt/${MY_PN}/AppRun" "/usr/bin/${MY_PN}"
 	dosym "/opt/${MY_PN}/" "/usr/share/${MY_PN}"
 
-	doicon "${WORK_NAME}.png"
+	doicon "../${WORK_NAME}.png"
 
 	if use hardcode-tray-fix; then
-		make_desktop_entry "env XDG_CURRENT_DESKTOP=KDE ${MY_PN}" "YouTube Music" ${WORK_NAME} "AudioVideo;Player;Audio;" "StartupWMClass=${WORK_NAME}"
+		make_desktop_entry "env XDG_CURRENT_DESKTOP=KDE ${MY_PN}" "YouTube Music" ${WORK_NAME} "AudioVideo;Player;Audio;" "MimeType=x-scheme-handler/ytmd;\nStartupWMClass=${WORK_NAME}"
 	else
-		make_desktop_entry ${MY_PN} "YouTube Music" ${WORK_NAME} "AudioVideo;Player;Audio;" "StartupWMClass=${WORK_NAME}"
+		make_desktop_entry ${MY_PN} "YouTube Music" ${WORK_NAME} "AudioVideo;Player;Audio;" "MimeType=x-scheme-handler/ytmd;\nStartupWMClass=${WORK_NAME}"
 	fi
 }
 
