@@ -27,7 +27,7 @@ RDEPEND="dev-python/pygobject
 BDEPEND=""
 
 src_prepare() {
-  rm -r images
+  rm -r "images"
   default
 }
 
@@ -36,13 +36,13 @@ src_compile() {
 }
 
 src_install() {
-  insinto /usr/share/${PN}
-  doins *
+  insinto "/usr/share/${PN}"
+  doins "fix-wm-class.sh" "sif.py" "wm-class-database.json"
 
-  exeinto /usr/share/${PN}
+  exeinto "/usr/share/${PN}"
   doexe "fix-wm-class.sh" "sif.py"
 
-  dodoc LICENSE README.md
+  dodoc "LICENSE" "README.md"
 
-  dosym /usr/share/${PN}/sif.py /usr/bin/${PN}
+  dosym "/usr/share/${PN}/sif.py" "/usr/bin/${PN}"
 }
