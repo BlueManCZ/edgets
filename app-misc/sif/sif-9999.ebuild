@@ -20,11 +20,9 @@ IUSE="doc"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-DEPEND=""
 RDEPEND="dev-python/pygobject
   dev-python/urllib3
   dev-python/vdf"
-BDEPEND=""
 
 src_prepare() {
   rm -r "images"
@@ -37,7 +35,7 @@ src_compile() {
 
 src_install() {
   insinto "/usr/share/${PN}"
-  doins "fix-wm-class.sh" "sif.py" "wm-class-database.json"
+  doins "wm-class-database.json"
 
   exeinto "/usr/share/${PN}"
   doexe "fix-wm-class.sh" "sif.py"
