@@ -23,21 +23,29 @@ IUSE="libnotify"
 RDEPEND="dev-libs/nss
 	gnome-base/gconf
 	libnotify? ( x11-libs/libnotify )
+	media-libs/libglvnd
+	media-libs/vulkan-loader
+	media-video/ffmpeg
 	x11-libs/libXtst"
 
 S="${WORKDIR}"
 
 QA_PREBUILT="*"
 
+src_prepare() {
+	rm "opt/${NAME}/"*".so"
+	rm -r "opt/${NAME}/swiftshader"
+	default
+}
+
 src_install() {
 	insinto "/opt/${MY_PN}"
 	doins -r "opt/${NAME}/"*
 
 	exeinto "/opt/${MY_PN}"
-	doexe "opt/${NAME}/wpcom" "opt/${NAME}/"*".so"
+	doexe "opt/${NAME}/wpcom"
 
-	exeinto "/opt/${MY_PN}/swiftshader"
-	doexe "opt/${NAME}/swiftshader/"*".so"
+	dosym "/usr/lib64/chromium/libffmpeg.so" "/opt/${MY_PN}/libffmpeg.so"
 
 	dosym "/opt/${MY_PN}/wpcom" "/usr/bin/${MY_PN}"
 	dosym "/opt/${MY_PN}/" "/usr/share/${MY_PN}"
