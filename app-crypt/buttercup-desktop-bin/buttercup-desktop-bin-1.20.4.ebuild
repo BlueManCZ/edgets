@@ -24,6 +24,8 @@ RDEPEND="app-accessibility/at-spi2-core
 	dev-libs/nss
 	gnome-keyring? ( gnome-base/gnome-keyring )
 	libnotify? ( x11-libs/libnotify )
+	media-libs/libglvnd
+	media-video/ffmpeg
 	sys-apps/util-linux
 	x11-libs/gtk+
 	xscreensaver? ( x11-libs/libXScrnSaver )
@@ -32,20 +34,26 @@ RDEPEND="app-accessibility/at-spi2-core
 
 S="${WORKDIR}"
 
-QA_PREBUILT="/opt/${MY_PN}/*.so
-	/opt/${MY_PN}/swiftshader/*.so
-	/opt/${MY_PN}/buttercup-desktop
-	/opt/${MY_PN}/chrome-sandbox"
+QA_PREBUILT="*"
+
+src_prepare() {
+	rm "opt/${UP_PN}/"*".so"
+	rm -r "opt/${UP_PN}/swiftshader"
+	default
+}
 
 src_install() {
 	insinto /opt/${MY_PN}
 	doins -r opt/${UP_PN}/*
 
 	exeinto /opt/${MY_PN}
-	doexe opt/${UP_PN}/buttercup-desktop opt/${UP_PN}/chrome-sandbox opt/${UP_PN}/*.so
+	doexe opt/${UP_PN}/buttercup-desktop opt/${UP_PN}/chrome-sandbox
 
-	exeinto /opt/${MY_PN}/swiftshader
-	doexe opt/${UP_PN}/swiftshader/*.so
+	if [[ $(tc-arch) = amd64 ]] ; then
+		dosym "/usr/lib64/chromium/libffmpeg.so" "/opt/${MY_PN}/libffmpeg.so"
+	else
+		dosym "/usr/lib/chromium/libffmpeg.so" "/opt/${MY_PN}/libffmpeg.so"
+	fi
 
 	dosym /opt/${MY_PN}/${MY_PN} /usr/bin/${MY_PN}
 	dosym /opt/${MY_PN}/ /usr/share/${MY_PN}
@@ -64,5 +72,4 @@ pkg_postinst() {
 pkg_postrm() {
 	xdg_desktop_database_update
 	xdg_mimeinfo_database_update
-	xdg_icon_cache_update
 }
