@@ -13,8 +13,8 @@ DESCRIPTION="The simplest way to keep notes"
 HOMEPAGE="https://simplenote.com"
 GITHUB="https://github.com/Automattic/simplenote-electron"
 SRC_URI="amd64? ( ${GITHUB}/releases/download/v${PV}/${UP_PN}-linux-${PV}-amd64.deb -> ${P}-amd64.deb )
-				arm64? ( ${GITHUB}/releases/download/v${PV}/${UP_PN}-linux-${PV}-arm64.deb -> ${P}-arm64.deb )
-				x86? ( ${GITHUB}/releases/download/v${PV}/${UP_PN}-linux-${PV}-i386.deb -> ${P}-i386.deb )"
+				 arm64? ( ${GITHUB}/releases/download/v${PV}/${UP_PN}-linux-${PV}-arm64.deb -> ${P}-arm64.deb )
+				 x86? ( ${GITHUB}/releases/download/v${PV}/${UP_PN}-linux-${PV}-i386.deb -> ${P}-i386.deb )"
 
 LICENSE="GPLv2"
 SLOT="0"
@@ -36,18 +36,22 @@ src_prepare() {
 }
 
 src_install() {
-	insinto /opt/${MY_PN}
-	doins -r opt/${UP_PN}/*
+	insinto "/opt/${MY_PN}"
+	doins -r "opt/${UP_PN}/"*
 
-	exeinto /opt/${MY_PN}
-	doexe opt/${UP_PN}/simplenote opt/${UP_PN}/chrome-sandbox
+	exeinto "/opt/${MY_PN}"
+	doexe "opt/${UP_PN}/simplenote" "opt/${UP_PN}/chrome-sandbox"
 
-	dosym "/usr/lib64/chromium/libffmpeg.so" "/opt/${MY_PN}/libffmpeg.so"
+	if [[ $(tc-arch) = amd64 ]] ; then
+		dosym "/usr/lib64/chromium/libffmpeg.so" "/opt/${MY_PN}/libffmpeg.so"
+	else
+		dosym "/usr/lib/chromium/libffmpeg.so" "/opt/${MY_PN}/libffmpeg.so"
+	fi
 
-	dosym /opt/${MY_PN}/${MY_PN} /usr/bin/${MY_PN}
-	dosym /opt/${MY_PN}/ /usr/share/${MY_PN}
+	dosym "/opt/${MY_PN}/${MY_PN}" "/usr/bin/${MY_PN}"
+	dosym "/opt/${MY_PN}/" "/usr/share/${MY_PN}"
 
-	doicon usr/share/icons/hicolor/512x512/apps/${MY_PN}.png
+	doicon "usr/share/icons/hicolor/512x512/apps/${MY_PN}.png"
 
 	make_desktop_entry ${MY_PN} ${UP_PN} ${MY_PN} "Office" "GenericName=Note Taking Application\nStartupNotify=true\nStartupWMClass=${UP_PN}"
 }
