@@ -22,7 +22,8 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="dev-python/pygobject
   dev-python/urllib3
-  dev-python/vdf"
+  dev-python/vdf
+  x11-apps/xprop"
 
 src_prepare() {
   rm -r "images"
