@@ -25,7 +25,7 @@ RDEPEND="dev-libs/nss
 	libnotify? ( x11-libs/libnotify )
 	media-libs/libglvnd
 	media-libs/vulkan-loader
-	media-video/ffmpeg
+	media-video/ffmpeg[chromium]
 	x11-libs/libXtst"
 
 S="${WORKDIR}"

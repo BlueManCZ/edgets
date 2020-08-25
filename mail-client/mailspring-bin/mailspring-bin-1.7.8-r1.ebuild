@@ -28,7 +28,7 @@ RDEPEND="app-crypt/libsecret
 	gnome-base/gvfs
 	media-libs/libglvnd
 	media-libs/mesa
-	media-video/ffmpeg
+	media-video/ffmpeg[chromium]
 	virtual/libudev
 	libnotify? ( x11-libs/libnotify )
 	x11-libs/libXtst

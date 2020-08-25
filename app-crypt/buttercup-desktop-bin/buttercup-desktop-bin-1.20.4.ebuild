@@ -25,7 +25,7 @@ RDEPEND="app-accessibility/at-spi2-core
 	gnome-keyring? ( gnome-base/gnome-keyring )
 	libnotify? ( x11-libs/libnotify )
 	media-libs/libglvnd
-	media-video/ffmpeg
+	media-video/ffmpeg[chromium]
 	sys-apps/util-linux
 	x11-libs/gtk+
 	xscreensaver? ( x11-libs/libXScrnSaver )

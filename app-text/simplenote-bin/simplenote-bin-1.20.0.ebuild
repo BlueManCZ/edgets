@@ -23,7 +23,7 @@ KEYWORDS="~amd64 ~arm64 ~x86"
 RDEPEND="gnome-base/gconf
 	media-libs/libglvnd
 	media-libs/vulkan-loader
-	media-video/ffmpeg"
+	media-video/ffmpeg[chromium]"
 
 S="${WORKDIR}"
 
