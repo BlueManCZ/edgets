@@ -14,7 +14,7 @@ HOMEPAGE="https://buttercup.pw"
 SRC_URI="amd64? ( https://github.com/buttercup/buttercup-desktop/releases/download/v${PV}/${MY_PN}_${PV}_amd64.deb -> ${P}-amd64.deb )
 	x86? ( https://github.com/buttercup/buttercup-desktop/releases/download/v${PV}/${MY_PN}_${PV}_i386.deb -> ${P}-i386.deb )"
 
-LICENSE="GPLv3"
+LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="gnome-keyring libnotify xscreensaver xtest"

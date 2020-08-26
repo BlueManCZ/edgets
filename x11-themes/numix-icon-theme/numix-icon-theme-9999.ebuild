@@ -14,7 +14,7 @@ NUMIX_CIRCLE="https://github.com/numixproject/numix-icon-theme-circle"
 NUMIX_SQUARE="https://github.com/numixproject/numix-icon-theme-square"
 NUMIX_CORE="https://github.com/numixproject/numix-core"
 
-LICENSE="GPLv3"
+LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS=""
 IUSE="+circle +square"

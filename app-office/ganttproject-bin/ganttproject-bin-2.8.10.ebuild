@@ -13,7 +13,7 @@ DESCRIPTION="A tool for creating a project schedule by means of Gantt chart and 
 HOMEPAGE="https://www.ganttproject.biz"
 SRC_URI="https://www.ganttproject.biz/dl/${PV}/lin -> ${P}.deb"
 
-LICENSE="GPLv3"
+LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""

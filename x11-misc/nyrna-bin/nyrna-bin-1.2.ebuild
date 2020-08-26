@@ -14,7 +14,7 @@ HOMEPAGE="https://github.com/Merrit/nyrna"
 SRC_URI="${HOMEPAGE}/releases/download/v${PV}/${MY_PN} -> ${P}
 	https://raw.githubusercontent.com/Merrit/nyrna/master/icons/${MY_PN}.png"
 
-LICENSE="GPLv3"
+LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE="appindicator"

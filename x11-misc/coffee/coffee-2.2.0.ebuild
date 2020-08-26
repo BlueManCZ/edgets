@@ -13,7 +13,7 @@ DESCRIPTION="A news and weather feed for Linux"
 HOMEPAGE="https://nick92.github.io/coffee/"
 SRC_URI="https://github.com/nick92/${MY_PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="GPLv3"
+LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""

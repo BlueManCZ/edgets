@@ -12,7 +12,7 @@ DESCRIPTION="A fast, lightweight, vim-like browser based on webkit"
 HOMEPAGE="https://github.com/fanglingsu/vimb"
 SRC_URI="${HOMEPAGE}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="GPLv3"
+LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 IUSE="gtk3"

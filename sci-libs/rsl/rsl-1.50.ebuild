@@ -9,7 +9,7 @@ DESCRIPTION="Radar Software Library"
 HOMEPAGE="http://trmm-fc.gsfc.nasa.gov/trmm_gv/software/rsl/index.html"
 SRC_URI="https://github.com/adokter/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
-LICENSE="LGPLv2"
+LICENSE="LGPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc"

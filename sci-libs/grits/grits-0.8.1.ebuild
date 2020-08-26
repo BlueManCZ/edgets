@@ -8,7 +8,7 @@ DESCRIPTION="Virtual Globe library"
 HOMEPAGE="http://pileus.org/aweather/grits"
 SRC_URI="http://pileus.org/grits/files/${P}.tar.gz"
 
-LICENSE="GPLv3"
+LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="doc"

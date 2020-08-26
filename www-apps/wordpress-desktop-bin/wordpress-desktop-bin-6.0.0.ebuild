@@ -15,7 +15,7 @@ DESCRIPTION="WordPress.com Desktop Client"
 HOMEPAGE="https://github.com/Automattic/wp-desktop"
 SRC_URI="${HOMEPAGE}/releases/download/v${PV}/${NAME}-linux-deb-${PV}.deb -> ${P}.deb"
 
-LICENSE="GPLv2+"
+LICENSE="GPL-2+"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE="libnotify"

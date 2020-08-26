@@ -15,7 +15,7 @@ else
 	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 fi
 
-LICENSE="GPLv3"
+LICENSE="GPL-3"
 SLOT="0"
 IUSE=""
 

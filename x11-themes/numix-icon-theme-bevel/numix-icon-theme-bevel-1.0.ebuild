@@ -9,7 +9,7 @@ DESCRIPTION="The archived and no longer maintained version of Numix Circle"
 HOMEPAGE="https://github.com/numixproject/numix-core/"
 SRC_URI="${HOMEPAGE}/archive/v1.tar.gz -> ${P}.tar.gz"
 
-LICENSE="GPLv3"
+LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 IUSE=""

@@ -13,7 +13,7 @@ DESCRIPTION="The best email app for people and teams at work"
 HOMEPAGE="https://getmailspring.com"
 SRC_URI="https://github.com/Foundry376/Mailspring/releases/download/${PV}/${MY_PN}-${PV}-amd64.deb -> ${P}.deb"
 
-LICENSE="GPLv3"
+LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE="+libnotify"

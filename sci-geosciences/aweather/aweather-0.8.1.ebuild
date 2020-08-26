@@ -8,7 +8,7 @@ DESCRIPTION="A weather monitoring program"
 HOMEPAGE="http://pileus.org/aweather"
 SRC_URI="http://pileus.org/aweather/files/${P}.tar.gz"
 
-LICENSE="GPLv3"
+LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""

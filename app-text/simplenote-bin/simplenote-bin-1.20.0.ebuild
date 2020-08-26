@@ -16,7 +16,7 @@ SRC_URI="amd64? ( ${GITHUB}/releases/download/v${PV}/${UP_PN}-linux-${PV}-amd64.
 				 arm64? ( ${GITHUB}/releases/download/v${PV}/${UP_PN}-linux-${PV}-arm64.deb -> ${P}-arm64.deb )
 				 x86? ( ${GITHUB}/releases/download/v${PV}/${UP_PN}-linux-${PV}-i386.deb -> ${P}-i386.deb )"
 
-LICENSE="GPLv2"
+LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
 

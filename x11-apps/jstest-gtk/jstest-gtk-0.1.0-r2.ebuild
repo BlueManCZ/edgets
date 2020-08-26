@@ -10,7 +10,7 @@ inherit scons-utils eutils xdg-utils
 DESCRIPTION="Joystick testing and configuration tool"
 HOMEPAGE="https://jstest-gtk.gitlab.io/"
 
-LICENSE="GPLv3"
+LICENSE="GPL-3"
 SLOT="0"
 
 KEYWORDS="~amd64 ~x86"

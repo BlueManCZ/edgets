@@ -12,7 +12,7 @@ DESCRIPTION="Joystick testing and configuration tool"
 HOMEPAGE="https://jstest-gtk.gitlab.io/"
 EGIT_REPO_URI="https://gitlab.com/jstest-gtk/jstest-gtk.git"
 
-LICENSE="GPLv3"
+LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS=""
 

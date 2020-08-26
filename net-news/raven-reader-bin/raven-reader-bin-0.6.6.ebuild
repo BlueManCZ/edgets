@@ -13,7 +13,7 @@ DESCRIPTION="All your articles in one place. Beautiful."
 HOMEPAGE="https://github.com/hello-efficiency-inc/raven-reader"
 SRC_URI="https://github.com/hello-efficiency-inc/raven-reader/releases/download/v${PV}/Raven-Reader-${PV}.AppImage -> ${P}.AppImage"
 
-LICENSE="LGPLv3"
+LICENSE="LGPL-3"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE="-libnotify -xscreensaver -xtest"

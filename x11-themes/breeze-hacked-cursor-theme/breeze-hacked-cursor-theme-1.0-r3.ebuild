@@ -10,7 +10,7 @@ DESCRIPTION="Breeze cursor theme with hacked style"
 HOMEPAGE="https://github.com/codejamninja/breeze-hacked-cursor-theme"
 SRC_URI="https://code.jpope.org/jpope/breeze_cursor_sources/raw/master/${PN}.zip -> ${P}.zip"
 
-LICENSE="GPLv2"
+LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 IUSE=""

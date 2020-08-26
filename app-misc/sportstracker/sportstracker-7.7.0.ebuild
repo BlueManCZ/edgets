@@ -12,7 +12,7 @@ DESCRIPTION="Application for people who want to record and analyze their sportin
 HOMEPAGE="https://github.com/ssaring/sportstracker"
 SRC_URI="https://sourceforge.net/projects/sportstracker/files/SportsTracker/SportsTracker%20${PV}/Ubuntu/sportstracker-${PV}.deb"
 
-LICENSE="GPLv3"
+LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~arm ~arm64 ~ppc64 ~x86"
 IUSE=""
