@@ -25,16 +25,17 @@ RDEPEND="net-libs/libsoup
 DEPEND="${RDEPEND}
 	virtual/pkgconfig"
 
-src_install() {
+src_prepare() {
+	sed -i '/Icon/s/$/browser/' vimb.desktop
 	default
-
-	make_desktop_entry ${PN} ${UP_PN} "browser" "Network;WebBrowser;" "StartupWMClass=${PN}"
 }
 
 pkg_postinst() {
 	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 }
 
 pkg_postrm() {
 	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 }
