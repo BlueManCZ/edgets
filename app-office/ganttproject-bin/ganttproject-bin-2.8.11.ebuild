@@ -16,30 +16,37 @@ SRC_URI="https://www.ganttproject.biz/dl/${PV}/lin -> ${P}.deb"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="doc"
 
 RDEPEND="|| ( virtual/jre virtual/jdk )"
 
 S="${WORKDIR}"
 
-QA_PREBUILT=""
+QA_PREBUILT="*"
+
+src_prepare() {
+	rm "usr/share/doc/${MY_PN}/changelog.Debian.gz"
+	default
+}
 
 src_install() {
-	dodoc -r usr/share/doc/*
+	if use doc; then
+		dodoc -r "usr/share/doc/${MY_PN}/"*
+	fi
 
-	insinto /opt/${MY_PN}
-	doins -r usr/share/${MY_PN}/*
+	insinto "/opt/${MY_PN}"
+	doins -r "usr/share/${MY_PN}/"*
 
-	insinto /usr/share
-	doins -r usr/share/pixmaps usr/share/mime
+	insinto "/usr/share"
+	doins -r "usr/share/pixmaps" "usr/share/mime"
 
-	exeinto /opt/${MY_PN}
-	doexe usr/share/${MY_PN}/${MY_PN}
+	exeinto "/opt/${MY_PN}"
+	doexe "usr/share/${MY_PN}/${MY_PN}"
 
-	dosym /opt/${MY_PN}/${MY_PN} /usr/bin/${MY_PN}
-	dosym /opt/${MY_PN}/ /usr/share/${MY_PN}
+	dosym "/opt/${MY_PN}/${MY_PN}" "/usr/bin/${MY_PN}"
+	dosym "/opt/${MY_PN}/" "/usr/share/${MY_PN}"
 
-	doicon usr/share/pixmaps/${MY_PN}.png
+	doicon "usr/share/pixmaps/${MY_PN}.png"
 
 	make_desktop_entry ${MY_PN} ${UP_PN} ${MY_PN} "Office" "MimeType=application/x-ganttproject;\nStartupWMClass=org-bardsoftware-impl-eclipsito-BootImpl\$2"
 }
@@ -53,5 +60,4 @@ pkg_postinst() {
 pkg_postrm() {
 	xdg_desktop_database_update
 	xdg_mimeinfo_database_update
-	xdg_icon_cache_update
 }
