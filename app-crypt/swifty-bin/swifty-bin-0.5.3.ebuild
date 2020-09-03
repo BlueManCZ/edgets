@@ -57,7 +57,7 @@ src_install() {
 	dosym "/opt/${MY_PN}/${MY_PN}" "/usr/bin/${MY_PN}"
 	dosym "/opt/${MY_PN}" "/usr/share/${MY_PN}"
 
-	make_desktop_entry ${MY_PN} ${UP_PN} ${MY_PN} "Utility;" "StartupWMClass=${MY_PN}"
+	make_desktop_entry ${MY_PN} ${UP_PN} ${MY_PN} "Utility;" "MimeType=application/vnd.swftx;\nStartupWMClass=${MY_PN}"
 }
 
 pkg_postinst() {
