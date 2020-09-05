@@ -56,7 +56,7 @@ src_install() {
   dosym "/opt/${MY_PN}/" "/usr/share/${MY_PN}"
 
   make_desktop_entry ${MY_PN} ${UP_PN} ${MY_PN} "Network;InstantMessaging;P2P" \
-    "MimeType=x-scheme-handler/viber;\nStartupWMClass=${MY_PN}"
+    "MimeType=x-scheme-handler/viber;\nStartupWMClass=ViberPC"
 }
 
 pkg_postinst() {
