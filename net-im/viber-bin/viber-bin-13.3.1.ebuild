@@ -4,10 +4,10 @@
 # Source overlay: https://github.com/BlueManCZ/edgets
 
 EAPI=7
+inherit desktop unpacker xdg-utils
 
 MY_PN="${PN/-bin/}"
-
-inherit desktop unpacker xdg-utils
+UP_PN="${MY_PN^}"
 
 DESCRIPTION="Free calls, text and picture sharing with anyone, anywhere!"
 HOMEPAGE="http://www.viber.com"
@@ -34,20 +34,28 @@ QA_PREBUILT="*"
 
 S="${WORKDIR}"
 
+src_prepare() {
+  mv "usr/share/icons/hicolor/scalable/apps/Viber.svg" "usr/share/icons/hicolor/scalable/apps/viber.svg"
+  default
+}
+
 src_install() {
-  insinto "/opt/${MY_PN}"
-	doins -r "opt/viber/."
+  insinto "/opt"
+	doins -r "opt/${MY_PN}"
+
+  insinto "/usr/share/"
+  doins -r "usr/share/icons" "usr/share/pixmaps"
 
   exeinto "/opt/${MY_PN}"
   doexe "opt/viber/Viber"
+
   exeinto "/opt/${MY_PN}/libexec"
   doexe "opt/viber/libexec/QtWebEngineProcess"
 
   dosym "/opt/${MY_PN}/Viber" "/usr/bin/${MY_PN}"
+  dosym "/opt/${MY_PN}/" "/usr/share/${MY_PN}"
 
-  newicon "usr/share/icons/hicolor/scalable/apps/Viber.svg" viber.svg
-
-  make_desktop_entry ${MY_PN} "Viber" ${MY_PN} "Network;InstantMessaging;P2P" \
+  make_desktop_entry ${MY_PN} ${UP_PN} ${MY_PN} "Network;InstantMessaging;P2P" \
     "MimeType=x-scheme-handler/viber;\nStartupWMClass=${MY_PN}"
 }
 
@@ -55,4 +63,9 @@ pkg_postinst() {
 	xdg_desktop_database_update
 	xdg_mimeinfo_database_update
   xdg_icon_cache_update
+}
+
+pkg_postrm() {
+	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 }
