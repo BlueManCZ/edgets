@@ -40,10 +40,10 @@ ARCHIVE_ROOT="squashfs-root"
 S="${WORKDIR}/${ARCHIVE_ROOT}"
 
 src_unpack() {
-	cp "${DISTDIR}/${P}".AppImage "${P}".AppImage
-	chmod u+x ${P}.AppImage
+	cp "${DISTDIR}/${P}.AppImage" "${P}.AppImage"
+	chmod u+x "${P}.AppImage"
 	./${P}.AppImage --appimage-extract || die "Appimage extraction failed."
-	rm -r ${ARCHIVE_ROOT}/usr/lib
+	rm -r "${ARCHIVE_ROOT}/usr/lib"
 }
 
 src_prepare() {
@@ -83,9 +83,11 @@ src_install() {
 
 pkg_postinst() {
 	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 	xdg_icon_cache_update
 }
 
 pkg_postrm() {
 	xdg_desktop_database_update
+	xdg_mimeinfo_database_update
 }
