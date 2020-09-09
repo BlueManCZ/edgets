@@ -43,22 +43,18 @@ src_prepare() {
 }
 
 src_install() {
-	insinto /opt/${MY_PN}
-	doins -r opt/${UP_PN}/*
+	insinto "/opt/${MY_PN}"
+	doins -r "opt/${UP_PN}/"*
 
-	exeinto /opt/${MY_PN}
-	doexe opt/${UP_PN}/buttercup-desktop opt/${UP_PN}/chrome-sandbox
+	exeinto "/opt/${MY_PN}"
+	doexe "opt/${UP_PN}/buttercup-desktop" "opt/${UP_PN}/chrome-sandbox"
 
-	if [[ $(tc-arch) = amd64 ]] ; then
-		dosym "/usr/lib64/chromium/libffmpeg.so" "/opt/${MY_PN}/libffmpeg.so"
-	else
-		dosym "/usr/lib/chromium/libffmpeg.so" "/opt/${MY_PN}/libffmpeg.so"
-	fi
+	dosym "/usr/"$(get_libdir)"/chromium/libffmpeg.so" "/opt/${MY_PN}/libffmpeg.so"
 
-	dosym /opt/${MY_PN}/${MY_PN} /usr/bin/${MY_PN}
-	dosym /opt/${MY_PN}/ /usr/share/${MY_PN}
+	dosym "/opt/${MY_PN}/${MY_PN}" "/usr/bin/${MY_PN}"
+	dosym "/opt/${MY_PN}/" "/usr/share/${MY_PN}"
 
-	doicon usr/share/icons/hicolor/256x256/apps/${MY_PN}.png
+	doicon "usr/share/icons/hicolor/256x256/apps/${MY_PN}.png"
 
 	make_desktop_entry ${MY_PN} ${UP_PN} ${MY_PN} "Utility;" "MimeType=x-scheme-handler/buttercup;\nStartupWMClass=${UP_PN}"
 }
