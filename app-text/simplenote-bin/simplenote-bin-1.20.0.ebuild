@@ -13,20 +13,20 @@ DESCRIPTION="The simplest way to keep notes"
 HOMEPAGE="https://simplenote.com"
 GITHUB="https://github.com/Automattic/simplenote-electron"
 SRC_URI="amd64? ( ${GITHUB}/releases/download/v${PV}/${UP_PN}-linux-${PV}-amd64.deb -> ${P}-amd64.deb )
-				 arm64? ( ${GITHUB}/releases/download/v${PV}/${UP_PN}-linux-${PV}-arm64.deb -> ${P}-arm64.deb )
-				 x86? ( ${GITHUB}/releases/download/v${PV}/${UP_PN}-linux-${PV}-i386.deb -> ${P}-i386.deb )"
+	arm64? ( ${GITHUB}/releases/download/v${PV}/${UP_PN}-linux-${PV}-arm64.deb -> ${P}-arm64.deb )
+	x86? ( ${GITHUB}/releases/download/v${PV}/${UP_PN}-linux-${PV}-i386.deb -> ${P}-i386.deb )"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~arm64 ~x86"
 
-RDEPEND="gnome-base/gconf
+RDEPEND="dev-libs/nss
+	gnome-base/gconf
 	media-libs/libglvnd
 	media-libs/vulkan-loader
 	media-video/ffmpeg[chromium]
-	x11-libs/libXScrnSaver
 	net-print/cups
-	dev-libs/nss"
+	x11-libs/libXScrnSaver"
 
 S="${WORKDIR}"
 
@@ -45,11 +45,7 @@ src_install() {
 	exeinto "/opt/${MY_PN}"
 	doexe "opt/${UP_PN}/simplenote" "opt/${UP_PN}/chrome-sandbox"
 
-	if [[ $(tc-arch) = amd64 ]] ; then
-		dosym "/usr/lib64/chromium/libffmpeg.so" "/opt/${MY_PN}/libffmpeg.so"
-	else
-		dosym "/usr/lib/chromium/libffmpeg.so" "/opt/${MY_PN}/libffmpeg.so"
-	fi
+	dosym "/usr/"$(get_libdir)"/chromium/libffmpeg.so" "/opt/${MY_PN}/libffmpeg.so"
 
 	dosym "/opt/${MY_PN}/${MY_PN}" "/usr/bin/${MY_PN}"
 	dosym "/opt/${MY_PN}/" "/usr/share/${MY_PN}"
