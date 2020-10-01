@@ -23,23 +23,23 @@ RDEPEND="dev-qt/qtcore"
 DEPEND="${RDEPEND}"
 
 src_compile() {
-  mkdir build
-  cd build
+  mkdir "build"
+  cd "build"
   eqmake5 ../
   make -j$(nproc)
-  rm Makefile
+  rm "Makefile"
 }
 
 src_install() {
-  insinto /usr/share/${PN}
-  doins -r ${S}/build/*
+  insinto "/usr/share/${PN}"
+  doins -r "${S}/build/"*
 
-  exeinto /usr/share/${PN}
-	doexe ${S}/build/laigter
+  exeinto "/usr/share/${PN}"
+	doexe "${S}/build/laigter"
 
-  dosym /usr/share/${PN}/laigter /usr/bin/${PN}
+  dosym "/usr/share/${PN}/laigter" "/usr/bin/${PN}"
 
-  newicon images/laigter_icon.png laigter.png
+  newicon "images/laigter_icon.png" "laigter.png"
 
   make_desktop_entry ${PN} "Laigter" ${PN} "Development;Graphics" "StartupWMClass=${PN}"
 }
@@ -47,4 +47,8 @@ src_install() {
 pkg_postinst() {
 	xdg_desktop_database_update
 	xdg_icon_cache_update
+}
+
+pkg_postrm() {
+	xdg_desktop_database_update
 }
