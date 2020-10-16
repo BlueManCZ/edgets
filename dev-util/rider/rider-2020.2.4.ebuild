@@ -13,11 +13,10 @@ SRC_URI="https://download-cf.jetbrains.com/rider/JetBrains.Rider-${PV}.tar.gz ->
 LICENSE="IDEA"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="+bundled-jdk mono"
+IUSE="mono"
 
 RDEPEND="|| ( dev-dotnet/dotnetcore-sdk-bin dev-dotnet/dotnetcore-sdk )
-	mono? ( dev-lang/mono )
-	!bundled-jdk? ( >=virtual/jre-1.8 )"
+	mono? ( dev-lang/mono )"
 
 QA_PREBUILT="*"
 
@@ -27,12 +26,7 @@ src_install() {
 	insinto "/opt/${PN}"
 	doins -r *
 
-	if use bundled-jdk; then
-		fperms -R a+x "/opt/${PN}/jbr/bin/"
-	else
-		rm -r "${D}/opt/rider/jbr/" || die
-	fi
-
+	fperms -R a+x "/opt/${PN}/jbr/bin/"
 	fperms a+x "/opt/${PN}/bin/"{"rider.sh","fsnotifier"{,"64"},"inspect.sh"}
 	fperms a+x "/opt/${PN}/lib/ReSharperHost/linux-x64/dotnet/dotnet"
 
