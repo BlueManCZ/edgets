@@ -13,12 +13,11 @@ DESCRIPTION="The simplest way to keep notes"
 HOMEPAGE="https://simplenote.com"
 GITHUB="https://github.com/Automattic/simplenote-electron"
 SRC_URI="amd64? ( ${GITHUB}/releases/download/v${PV}/${UP_PN}-linux-${PV}-amd64.deb -> ${P}-amd64.deb )
-	arm64? ( ${GITHUB}/releases/download/v${PV}/${UP_PN}-linux-${PV}-arm64.deb -> ${P}-arm64.deb )
 	x86? ( ${GITHUB}/releases/download/v${PV}/${UP_PN}-linux-${PV}-i386.deb -> ${P}-i386.deb )"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS="~amd64 ~arm64 ~x86"
+KEYWORDS="~amd64 ~x86"
 
 RDEPEND="dev-libs/nss
 	gnome-base/gconf
