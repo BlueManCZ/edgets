@@ -11,7 +11,7 @@ UP_PN="Gmail Desktop"
 
 DESCRIPTION="Nifty Gmail desktop app"
 HOMEPAGE="https://github.com/timche/gmail-desktop"
-SRC_URI="${HOMEPAGE}/releases/download/v${PV}/${MY_PN}-${PV}-linux.deb -> ${P}.deb"
+SRC_URI="${HOMEPAGE}/releases/download/${PV}/${MY_PN}-${PV}-linux.deb -> ${P}.deb"
 
 LICENSE="MIT"
 SLOT="0"
