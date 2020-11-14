@@ -27,7 +27,7 @@ RDEPEND="dev-libs/libgcrypt
 	media-libs/alsa-lib
 	media-libs/libglvnd
 	media-libs/vulkan-loader
-	media-video/ffmpeg[chromium]
+	<media-video/ffmpeg-4.3.1[chromium]
 	pulseaudio? ( media-sound/pulseaudio )
 	sys-apps/lsb-release
 	sys-apps/util-linux
