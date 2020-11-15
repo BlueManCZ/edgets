@@ -28,7 +28,7 @@ RDEPEND="dev-libs/libappindicator
 	media-libs/libglvnd
 	media-libs/mesa
 	media-libs/vulkan-loader
-	media-video/ffmpeg[chromium]
+	<media-video/ffmpeg-4.3.1[chromium]
 	sys-apps/dbus
 	xscreensaver? ( x11-libs/libXScrnSaver )
 	x11-libs/libXtst
