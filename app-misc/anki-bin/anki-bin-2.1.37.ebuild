@@ -6,7 +6,7 @@ EAPI=7
 MY_PN="${PN/-bin/}"
 UP_PN="${MY_PN^}"
 
-inherit desktop unpacker xdg
+inherit desktop unpacker xdg-utils
 
 DESCRIPTION="A spaced-repetition memory training program (flash cards)"
 HOMEPAGE="https://apps.ankiweb.net"
@@ -16,10 +16,13 @@ LICENSE="AGPL-3+ BSD MIT GPL-3+ CC-BY-SA-3.0 Apache-2.0 CC-BY-2.5"
 SLOT="0"
 KEYWORDS="~amd64"
 
-RDEPEND="!app-misc/anki"
+RDEPEND="!app-misc/anki
+	sys-apps/systemd"
 DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/${MY_PN}-${PV}-linux"
+
+QA_PREBUILT="*"
 
 src_install() {
 	insinto "/opt/${MY_PN}"
@@ -37,3 +40,11 @@ src_install() {
 	doman "${MY_PN}.1"
 }
 
+pkg_postinst() {
+	xdg_icon_cache_update
+	xdg_desktop_database_update
+}
+
+pkg_postrm() {
+	xdg_desktop_database_update
+}
