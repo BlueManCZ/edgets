@@ -16,6 +16,9 @@ LICENSE="AGPL-3+ BSD MIT GPL-3+ CC-BY-SA-3.0 Apache-2.0 CC-BY-2.5"
 SLOT="0"
 KEYWORDS="~amd64"
 
+RDEPEND="!app-misc/anki"
+DEPEND="${RDEPEND}"
+
 S="${WORKDIR}/${MY_PN}-${PV}-linux"
 
 src_install() {
