@@ -22,25 +22,35 @@ RDEPEND="dev-libs/libappindicator
 	dev-libs/nss
 	gnome-base/gconf
 	libnotify? ( x11-libs/libnotify )
+	media-libs/libglvnd
+	media-libs/vulkan-loader
+	media-video/ffmpeg[chromium]
 	xscreensaver? ( x11-libs/libXScrnSaver )
 	xtest? ( x11-libs/libXtst )"
 
 S="${WORKDIR}"
 
-QA_PREBUILT="/opt/${MY_PN}/*.so
-	/opt/${MY_PN}/gsubs"
+QA_PREBUILT="*"
+
+src_prepare() {
+	rm "opt/${UP_PN}/"*".so"
+	rm -r "opt/${UP_PN}/swiftshader"
+	default
+}
 
 src_install() {
-	insinto /opt/${MY_PN}
-	doins -r opt/${UP_PN}/*
+	insinto "/opt/${MY_PN}"
+	doins -r "opt/${UP_PN}/"*
 
-	exeinto /opt/${MY_PN}
-	doexe opt/${UP_PN}/gsubs opt/${UP_PN}/*.so
+	exeinto "/opt/${MY_PN}"
+	doexe "opt/${UP_PN}/gsubs"
 
-	dosym /opt/${MY_PN}/${MY_PN} /usr/bin/${MY_PN}
-	dosym /opt/${MY_PN}/ /usr/share/${MY_PN}
+	dosym "/usr/lib64/chromium/libffmpeg.so" "/opt/${MY_PN}/libffmpeg.so"
 
-	doicon usr/share/icons/hicolor/0x0/apps/${MY_PN}.png
+	dosym "/opt/${MY_PN}/${MY_PN}" "/usr/bin/${MY_PN}"
+	dosym "/opt/${MY_PN}/" "/usr/share/${MY_PN}"
+
+	doicon "usr/share/icons/hicolor/0x0/apps/${MY_PN}.png"
 
 	make_desktop_entry ${MY_PN} ${UP_PN} ${MY_PN} "Utility;" "StartupWMClass=${MY_PN}"
 }
@@ -52,5 +62,4 @@ pkg_postinst() {
 
 pkg_postrm() {
 	xdg_desktop_database_update
-	xdg_icon_cache_update
 }
