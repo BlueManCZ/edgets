@@ -38,22 +38,22 @@ src_prepare() {
 }
 
 src_install() {
-	insinto "/usr/share/${PN}"
-	doins -r "share/${PN}"
+  insinto "/usr/share/${PN}"
+  doins -r "share/${PN}"
 
-	exeinto "/usr/bin"
-	doexe "bin/${PN}"
+  exeinto "/usr/bin"
+  doexe "bin/${PN}"
 
-	doicon "rescuetime.png"
+  doicon "rescuetime.png"
 
   make_desktop_entry ${PN} ${PN^} ${PN} "System;Utility;"
 }
 
 pkg_postinst() {
-	xdg_desktop_database_update
-	xdg_icon_cache_update
+  xdg_desktop_database_update
+  xdg_icon_cache_update
 }
 
 pkg_postrm() {
-	xdg_desktop_database_update
+  xdg_desktop_database_update
 }

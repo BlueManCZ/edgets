@@ -9,10 +9,10 @@ HOMEPAGE="https://github.com/azagaya/laigter"
 
 if [[ ${PV} == 9999 ]]; then
   EGIT_REPO_URI="https://github.com/azagaya/${PN}.git"
-	inherit git-r3
+  inherit git-r3
 else
-	SRC_URI="https://github.com/azagaya/laigter/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+  SRC_URI="https://github.com/azagaya/laigter/archive/${PV}.tar.gz -> ${P}.tar.gz"
+  KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 fi
 
 LICENSE="GPL-3"
@@ -35,7 +35,7 @@ src_install() {
   doins -r "${S}/build/"*
 
   exeinto "/usr/share/${PN}"
-	doexe "${S}/build/laigter"
+  doexe "${S}/build/laigter"
 
   dosym "/usr/share/${PN}/laigter" "/usr/bin/${PN}"
 
@@ -45,10 +45,10 @@ src_install() {
 }
 
 pkg_postinst() {
-	xdg_desktop_database_update
-	xdg_icon_cache_update
+  xdg_desktop_database_update
+  xdg_icon_cache_update
 }
 
 pkg_postrm() {
-	xdg_desktop_database_update
+  xdg_desktop_database_update
 }
