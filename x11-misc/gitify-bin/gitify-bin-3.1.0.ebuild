@@ -22,6 +22,9 @@ RDEPEND="app-accessibility/at-spi2-core
 	app-crypt/libsecret
 	dev-libs/libappindicator
 	dev-libs/nss
+	media-libs/libglvnd
+	media-libs/vulkan-loader
+	media-video/ffmpeg[chromium]
 	sys-apps/util-linux
 	x11-libs/gtk+
 	libnotify? ( x11-libs/libnotify )
@@ -33,20 +36,25 @@ S="${WORKDIR}"
 
 QA_PREBUILT="*"
 
+src_prepare() {
+	rm "opt/${UP_PN}/"*".so"
+	rm -r "opt/${UP_PN}/swiftshader"
+	default
+}
+
 src_install() {
-	insinto /opt/${MY_PN}
-	doins -r opt/${UP_PN}/*
+	insinto "/opt/${MY_PN}"
+	doins -r "opt/${UP_PN}/"*
 
-	exeinto /opt/${MY_PN}
-	doexe opt/${UP_PN}/{gitify,chrome-sandbox} opt/${UP_PN}/*.so
+	exeinto "/opt/${MY_PN}"
+	doexe "opt/${UP_PN}/gitify"
 
-	exeinto /opt/${MY_PN}/swiftshader
-	doexe opt/${UP_PN}/swiftshader/*.so
+	dosym "/usr/lib64/chromium/libffmpeg.so" "/opt/${MY_PN}/libffmpeg.so"
 
-	dosym /opt/${MY_PN}/${MY_PN} /usr/bin/${MY_PN}
-	dosym /opt/${MY_PN}/ /usr/share/${MY_PN}
+	dosym "/opt/${MY_PN}/${MY_PN}" "/usr/bin/${MY_PN}"
+	dosym "/opt/${MY_PN}/" "/usr/share/${MY_PN}"
 
-	doicon usr/share/icons/hicolor/128x128/apps/${MY_PN}.png
+	doicon "usr/share/icons/hicolor/128x128/apps/${MY_PN}.png"
 
 	make_desktop_entry ${MY_PN} ${UP_PN} ${MY_PN} "Development;" "StartupWMClass=${MY_PN}"
 }
@@ -54,4 +62,8 @@ src_install() {
 pkg_postinst() {
 	xdg_desktop_database_update
 	xdg_icon_cache_update
+}
+
+pkg_postrm() {
+	xdg_desktop_database_update
 }
