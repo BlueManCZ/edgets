@@ -5,7 +5,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7} )
+PYTHON_COMPAT=( python3_{6,7,8,9} )
 
 inherit git-r3 distutils-r1
 
@@ -20,9 +20,9 @@ IUSE="doc"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
-RDEPEND="dev-python/pygobject
-  dev-python/urllib3
-  dev-python/vdf
+RDEPEND="dev-python/pygobject[${PYTHON_USEDEP}]
+  dev-python/urllib3[${PYTHON_USEDEP}]
+  dev-python/vdf[${PYTHON_USEDEP}]
   x11-apps/xprop"
 
 src_prepare() {
