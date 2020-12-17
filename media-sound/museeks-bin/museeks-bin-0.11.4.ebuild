@@ -11,38 +11,42 @@ UP_PN="${MY_PN^}"
 
 DESCRIPTION="A simple, clean and cross-platform music player, written with Node.js, Electron and React.js"
 HOMEPAGE="https://github.com/martpie/museeks"
-SRC_URI="https://github.com/martpie/museeks/releases/download/${PV}/${MY_PN}-amd64.deb -> ${P}.deb"
+SRC_URI="amd64? ( https://github.com/martpie/museeks/releases/download/${PV}/${MY_PN}-amd64.deb -> ${P}-amd64.deb )
+	i386? ( https://github.com/martpie/museeks/releases/download/${PV}/${MY_PN}-i386.deb -> ${P}-i386.deb )"
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~i386"
 IUSE=""
 
 RDEPEND="dev-libs/glib
+	media-libs/libglvnd
+	<media-video/ffmpeg-4.3.1[chromium]
 	sys-apps/dbus"
 
 S="${WORKDIR}"
 
-QA_PREBUILT="/opt/${MY_PN}/*.so
-	/opt/${MY_PN}/swiftshader/*.so
-	/opt/${MY_PN}/museeks
-	/opt/${MY_PN}/crashpad_handler
-	/opt/${MY_PN}/chrome-sandbox"
+QA_PREBUILT="*"
+
+src_prepare() {
+	rm "opt/${UP_PN}/"*".so"
+	rm -r "opt/${UP_PN}/swiftshader"
+	default
+}
 
 src_install() {
-	insinto /opt/${MY_PN}
-	doins -r opt/${UP_PN}/*
+	insinto "/opt/${MY_PN}"
+	doins -r "opt/${UP_PN}/"*
 
-	exeinto /opt/${MY_PN}
-	doexe opt/${UP_PN}/museeks opt/${UP_PN}/crashpad_handler opt/${UP_PN}/chrome-sandbox opt/${UP_PN}/*.so
+	exeinto "/opt/${MY_PN}"
+	doexe "opt/${UP_PN}/museeks" "opt/${UP_PN}/crashpad_handler" "opt/${UP_PN}/chrome-sandbox"
 
-	exeinto /opt/${MY_PN}/swiftshader
-	doexe opt/${UP_PN}/swiftshader/*.so
+	dosym "/usr/"$(get_libdir)"/chromium/libffmpeg.so" "/opt/${MY_PN}/libffmpeg.so"
 
-	dosym /opt/${MY_PN}/${MY_PN} /usr/bin/${MY_PN}
-	dosym /opt/${MY_PN}/ /usr/share/${MY_PN}
+	dosym "/opt/${MY_PN}/${MY_PN}" "/usr/bin/${MY_PN}"
+	dosym "/opt/${MY_PN}/" "/usr/share/${MY_PN}"
 
-	doicon usr/share/icons/hicolor/512x512/apps/${MY_PN}.png
+	doicon "usr/share/icons/hicolor/512x512/apps/${MY_PN}.png"
 
 	make_desktop_entry ${MY_PN} ${UP_PN} ${MY_PN} "Audio;AudioVideo;Player;Utility;" "StartupWMClass=${UP_PN}"
 }
@@ -54,5 +58,4 @@ pkg_postinst() {
 
 pkg_postrm() {
 	xdg_desktop_database_update
-	xdg_icon_cache_update
 }
