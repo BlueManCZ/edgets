@@ -39,7 +39,7 @@ src_install() {
 	doins -r "opt/${UP_PN}/"*
 
 	exeinto "/opt/${MY_PN}"
-	doexe "opt/${UP_PN}/museeks" "opt/${UP_PN}/crashpad_handler" "opt/${UP_PN}/chrome-sandbox"
+	doexe "opt/${UP_PN}/museeks" "opt/${UP_PN}/chrome-sandbox"
 
 	dosym "/usr/"$(get_libdir)"/chromium/libffmpeg.so" "/opt/${MY_PN}/libffmpeg.so"
 
