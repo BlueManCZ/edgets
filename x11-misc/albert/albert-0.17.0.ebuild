@@ -1,13 +1,13 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2019 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit cmake-utils xdg-utils
 
 PLUGINS_HASH="792f30b3ef1d17ed351b56ec345c828e2f2c0a4a"
 PYBIND11_VERSION="2.6.1"
+inherit cmake-utils xdg-utils
 
-DESCRIPTION="A fast and flexible keyboard launcher"
+DESCRIPTION="Desktop agnostic launcher"
 HOMEPAGE="https://albertlauncher.github.io/"
 # plugins is a git submodule. the hash is taken from the submodule reference in the ${PV} tag.
 SRC_URI="https://github.com/albertlauncher/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
@@ -48,16 +48,17 @@ src_prepare() {
 src_configure() {
 	local mycmakeargs=(
 		-DBUILD_DEBUG=$(usex debug)
+		#-DBUILD_PYTHON=OFF #plugin directory is empty causing build failure
+		#-DBUILD_VIRTUALBOX=OFF #plugin needs virtualbox installed to build, untested
 	)
 
 	cmake-utils_src_configure
 }
 
 pkg_postinst() {
-  xdg_desktop_database_update
-  xdg_icon_cache_update
+	xdg_icon_cache_update
 }
 
 pkg_postrm() {
-  xdg_desktop_database_update
+	xdg_icon_cache_update
 }
