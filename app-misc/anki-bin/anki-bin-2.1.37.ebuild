@@ -15,9 +15,10 @@ SRC_URI="https://github.com/ankitects/anki/releases/download/${PV}/${MY_PN}-${PV
 LICENSE="AGPL-3+ BSD MIT GPL-3+ CC-BY-SA-3.0 Apache-2.0 CC-BY-2.5"
 SLOT="0"
 KEYWORDS="~amd64"
+IUSE="systemd"
 
 RDEPEND="!app-misc/anki
-	sys-apps/systemd"
+	systemd? ( sys-apps/systemd )"
 DEPEND="${RDEPEND}"
 
 S="${WORKDIR}/${MY_PN}-${PV}-linux"
@@ -34,6 +35,10 @@ src_install() {
 	doexe "bin/PyQt5/Qt/libexec/QtWebEngineProcess"
 
 	dosym "/opt/${MY_PN}/bin/${UP_PN}" "/usr/bin/${MY_PN}"
+
+	if ! use systemd; then
+		dosym "/usr/"$(get_libdir)"/libdbus-1.so.3" "/opt/${MY_PN}/bin/libdbus-1.so.3"
+	fi
 
 	doicon "${MY_PN}.png"
 	domenu "${MY_PN}.desktop"
