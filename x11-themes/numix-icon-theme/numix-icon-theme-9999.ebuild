@@ -91,3 +91,7 @@ src_install() {
 		doins -r ../numix-icon-theme-square/Numix-Square{,-Light}
 	fi
 }
+
+pkg_postinst() {
+  xdg_icon_cache_update
+}
