@@ -16,39 +16,39 @@ SRC_URI="https://sourceforge.net/projects/dbappbuilder/files/${UP_PN}/${UP_PN}%2
 LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE=""
+IUSE="doc"
 
 RDEPEND=""
 
 S="${WORKDIR}/${UP_PN}"
 
-QA_PREBUILT="/opt/${PN}/Rel
-	/opt/rel/jre/lib/*.so
-	/opt/rel/jre/bin/*"
+QA_PREBUILT="*"
 
 src_install() {
-	dodoc -r doc/* LICENSE.txt
+	if use doc; then
+		dodoc -r doc/* LICENSE.txt
+	fi
 
-	insinto /opt/${PN}
-	doins -r jre lib Rel
+	insinto "/opt/${PN}"
+	doins -r "jre" "lib" "Rel"
 
-	exeinto /opt/${PN}
-	doexe Rel
+	exeinto "/opt/${PN}"
+	doexe "Rel"
 
-	exeinto /opt/${PN}/jre/bin
-	doexe jre/bin/*
+	exeinto "/opt/${PN}/jre/bin"
+	doexe "jre/bin/"*
 
-	exeinto /opt/${PN}/jre/lib
-	doexe jre/lib/*.so jre/lib/{jexec,jspawnhelper}
+	exeinto "/opt/${PN}/jre/lib"
+	doexe "jre/lib/"*".so" "jre/lib/"{"jexec","jspawnhelper"}
 
-	exeinto /opt/${PN}/jre/lib/server
-	doexe jre/lib/server/*.so
+	exeinto "/opt/${PN}/jre/lib/server"
+	doexe "jre/lib/server/"*".so"
 
-	dosym /opt/${PN}/ /usr/share/${PN}
+	dosym "/opt/${PN}/" "/usr/share/${PN}"
 
-	doicon ${DISTDIR}/${PN}.png
+	doicon "${DISTDIR}/${PN}.png"
 
-	make_desktop_entry /opt/${PN}/${UP_PN} ${UP_PN} ${PN} "Development;Utility;"
+	make_desktop_entry "/opt/${PN}/${UP_PN}" ${UP_PN} ${PN} "Development;Utility;" "StartupWMClass=${UP_PN}"
 }
 
 pkg_postinst() {
@@ -58,5 +58,4 @@ pkg_postinst() {
 
 pkg_postrm() {
 	xdg_desktop_database_update
-	xdg_icon_cache_update
 }
