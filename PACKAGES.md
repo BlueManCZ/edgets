@@ -39,7 +39,7 @@ __The streaming torrent app.__
 
 ---
 
-### :musical_note: Museeks ([media-sound/museeks-bin](https://github.com/BlueManCZ/edgets/tree/master/media-sound/museeks-bin))
+### :musical_note: Museeks ([media-sound/museeks](https://github.com/BlueManCZ/edgets/tree/master/media-sound/museeks))
 
 Homepage: https://github.com/martpie/museeks
 
@@ -47,7 +47,7 @@ __A simple, clean and cross-platform music player.__
 
 ---
 
-### :notes: Kaku ([media-sound/kaku-bin](https://github.com/BlueManCZ/edgets/tree/master/media-sound/kaku-bin))
+### :notes: Kaku ([media-sound/kaku](https://github.com/BlueManCZ/edgets/tree/master/media-sound/kaku))
 
 Homepage: https://github.com/EragonJ/Kaku
 
