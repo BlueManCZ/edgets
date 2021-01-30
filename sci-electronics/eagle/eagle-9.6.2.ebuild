@@ -4,11 +4,11 @@
 # Source overlay: https://github.com/BlueManCZ/edgets
 
 EAPI=7
-inherit desktop xdg-utils
+inherit desktop xdg
 
 DESCRIPTION="EAGLE schematic and printed circuit board (PCB) layout editor"
 HOMEPAGE="https://www.autodesk.com/products/eagle/overview"
-SRC_URI="http://trial2.autodesk.com/NET17SWDLD/2017/EGLPRM/ESD/Autodesk_EAGLE_${PV}_English_Linux_64bit.tar.gz"
+SRC_URI="http://trial2.autodesk.com/NET17SWDLD/2017/EGLPRM/ESD/Autodesk_EAGLE_${PV}_English_Linux_64bit.tar.gz -> ${P}.tar.gz"
 
 LICENSE="Autodesk-EULA"
 SLOT="0"
@@ -57,8 +57,6 @@ RDEPEND="app-arch/bzip2
 
 QA_PREBUILT="*"
 
-S="${WORKDIR}/${P}"
-
 src_install() {
 	doman "doc/eagle.1"
 	rm "doc/eagle.1"
@@ -83,13 +81,4 @@ src_install() {
 	dosym "/opt/${PN}/${PN}" "/usr/bin/${PN}"
 
 	make_desktop_entry ${PN} ${PN^} ${PN} "Graphics;Electronics" "StartupWMClass=${PN}"
-}
-
-pkg_postinst() {
-	xdg_desktop_database_update
-	xdg_icon_cache_update
-}
-
-pkg_postrm() {
-	xdg_desktop_database_update
 }
