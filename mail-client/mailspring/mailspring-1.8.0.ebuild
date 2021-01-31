@@ -51,7 +51,7 @@ src_prepare() {
 		rm -f  "usr/share/mailspring/libGLESv2.so" || die "rm failed"
 	fi
 
-	mv "usr/share/appdata" "usr/share/metainfo"
+	mv "usr/share/appdata" "usr/share/metainfo" || die "mv failed"
 }
 
 src_install() {
