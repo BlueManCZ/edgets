@@ -6,7 +6,7 @@ For installation instructions, go to [README.md](https://github.com/BlueManCZ/ed
 
 ---
 
-### :email: Mailspring ([mail-client/mailspring-bin](https://github.com/BlueManCZ/edgets/tree/master/mail-client/mailspring-bin))
+### :email: Mailspring ([mail-client/mailspring](https://github.com/BlueManCZ/edgets/tree/master/mail-client/mailspring))
 
 Homepage: https://github.com/Foundry376/Mailspring
 
