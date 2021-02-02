@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-  <upstream>
-    <changelog>https://minbrowser.github.io/min/releases/index.html</changelog>
-    <doc>https://github.com/minbrowser/min/blob/master/README.md</doc>
-  </upstream>
-  <longdescription>
-    Min is a fast, minimal browser that protects your privacy.
-    A web browser with smarter search, improved tab management, and built-in ad
-    blocking. Includes full-text history search, instant answers from DuckDuckGo,
-    the ability to split tabs into groups, and more.
-  </longdescription>
-  <use>
-    <flag name="xtest">Enable support for x11-libs/libXtst</flag>
-  </use>
+	<longdescription>
+		A web browser with smarter search, improved tab management, and built-in ad
+		blocking. Includes full-text history search, instant answers from DuckDuckGo,
+		the ability to split tabs into groups, and more.
+	</longdescription>
+	<use>
+		<flag name="alsa">Enable alsa support through media-libs/alsa-lib</flag>
+		<flag name="doc">Install package documentation</flag>
+		<flag name="system-ffmpeg">Use the system-wide media-video/ffmpeg instead of bundled</flag>
+		<flag name="system-mesa">Use the system-wide media-libs/mesa instead of bundled</flag>
+	</use>
 </pkgmetadata>
