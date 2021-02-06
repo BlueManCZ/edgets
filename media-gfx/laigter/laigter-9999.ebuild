@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit desktop qmake-utils xdg-utils
+inherit desktop qmake-utils xdg
 
 DESCRIPTION="Automatic normal map generator for sprites!"
 HOMEPAGE="https://github.com/azagaya/laigter"
@@ -18,14 +18,13 @@ fi
 LICENSE="GPL-3"
 SLOT="0"
 IUSE=""
-
+RESTRICT="mirror"
 RDEPEND="dev-qt/qtcore"
-DEPEND="${RDEPEND}"
 
 src_compile() {
   mkdir "build"
   cd "build"
-  eqmake5 ../
+  eqmake5 "../"
   make -j$(nproc)
   rm "Makefile"
 }
@@ -42,13 +41,4 @@ src_install() {
   newicon "images/laigter_icon.png" "laigter.png"
 
   make_desktop_entry ${PN} "Laigter" ${PN} "Development;Graphics" "StartupWMClass=${PN}"
-}
-
-pkg_postinst() {
-  xdg_desktop_database_update
-  xdg_icon_cache_update
-}
-
-pkg_postrm() {
-  xdg_desktop_database_update
 }
