@@ -5,7 +5,7 @@
 
 EAPI=7
 
-PYTHON_COMPAT=( python3_{6,7,8,9} )
+PYTHON_COMPAT=( python3_{7,8,9} )
 
 inherit git-r3 distutils-r1
 
@@ -31,17 +31,19 @@ src_prepare() {
 }
 
 src_compile() {
-  echo
+  not
 }
 
 src_install() {
   insinto "/usr/share/${PN}"
-  doins "wm-class-database.json"
+  doins "database.json"
 
   exeinto "/usr/share/${PN}"
   doexe "fix-wm-class.sh" "sif.py"
 
-  dodoc "LICENSE" "README.md"
+  if use doc; then
+    dodoc "LICENSE" "README.md"
+  fi
 
   dosym "/usr/share/${PN}/sif.py" "/usr/bin/${PN}"
 }
