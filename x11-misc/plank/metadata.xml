@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<longdescription>
+		Plank is meant to be the simplest dock on the planet. The goal is to
+		provide just what a dock needs and absolutely nothing more. It is,
+		however, a library which can be extended to create other dock programs
+		with more advanced features.
+	</longdescription>
+	<use>
+		<flag name="apport">Enable installation of Apport support files</flag>
+		<flag name="barriers">Enable use of barriers</flag>
+		<flag name="benchmark">Enable output of benchmarking data in logs</flag>
+		<flag name="dbus">Enable dynamic quicklist support provided over dbusmenu</flag>
+		<flag name="debug">Compile with debug code</flag>
+		<flag name="doc">Enable documentation generation</flag>
+	</use>
+</pkgmetadata>

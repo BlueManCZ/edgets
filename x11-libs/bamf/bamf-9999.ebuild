@@ -12,6 +12,7 @@ LICENSE="LGPL-3"
 SLOT="0"
 KEYWORDS=""
 IUSE="doc introspection"
+VALA_USE_DEPEND="vapigen"
 
 RDEPEND="dev-libs/dbus-glib
 	dev-util/gdbus-codegen
