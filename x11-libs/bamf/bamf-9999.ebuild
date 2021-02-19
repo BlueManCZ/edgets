@@ -2,15 +2,22 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
-inherit autotools git-r3 vala
+inherit autotools vala
 
 DESCRIPTION="BAMF Application Matching Framework"
 HOMEPAGE="https://launchpad.net/bamf"
-EGIT_REPO_URI="https://git.launchpad.net/bamf"
+
+if [[ ${PV} == 9999 ]]; then
+	inherit git-r3
+	EGIT_REPO_URI="https://git.launchpad.net/bamf"
+	KEYWORDS=""
+else
+	SRC_URI="${HOMEPAGE}/0.5/${PV}/+download/${P}.tar.xz"
+	KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
+fi
 
 LICENSE="LGPL-3"
 SLOT="0"
-KEYWORDS=""
 IUSE="doc introspection"
 VALA_USE_DEPEND="vapigen"
 
