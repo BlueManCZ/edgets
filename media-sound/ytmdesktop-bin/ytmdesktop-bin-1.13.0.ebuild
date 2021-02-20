@@ -1,10 +1,10 @@
-# Copyright 2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Source overlay: https://github.com/BlueManCZ/edgets
 
 EAPI=7
-inherit desktop xdg-utils
+inherit desktop xdg
 
 MY_PN="${PN/-bin/}"
 WORK_NAME="youtube-music-desktop-app"
@@ -17,9 +17,9 @@ SRC_URI="${GITHUB}/releases/download/v${PV}/YouTube-Music-Desktop-App-${PV}.AppI
 LICENSE="CC0-1"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="-libnotify -xscreensaver -hardcode-tray-fix"
+IUSE="appindicator libnotify system-ffmpeg system-mesa xscreensaver"
 
-RDEPEND="dev-libs/libappindicator
+RDEPEND="appindicator? ( dev-libs/libappindicator )
 	dev-libs/glib
 	dev-libs/libindicator
 	dev-libs/nss
@@ -47,13 +47,25 @@ src_unpack() {
 }
 
 src_prepare() {
-	rm *".so"
-	rm -r "swiftshader"
+	default
+
+	if use system-ffmpeg ; then
+		rm -f  "libffmpeg.so" || die "rm failed"
+	fi
+
+	if use system-mesa ; then
+		rm -fr "swiftshader" || die "rm failed"
+		rm -f  "libEGL.so" || die "rm failed"
+		rm -f  "libGLESv2.so" || die "rm failed"
+		rm -f  "libvk_swiftshader.so" || die "rm failed"
+		rm -f  "libvulkan.so" || die "rm failed"
+		rm -f  "vk_swiftshader_icd.json" || die "rm failed"
+	fi
+
 	rm "${WORK_NAME}.png"
 	rm "${WORK_NAME}.desktop"
 	mv "usr/share/icons/hicolor/0x0/apps/${WORK_NAME}.png" "../${WORK_NAME}.png"
 	rm -r "usr"
-	default
 }
 
 src_install() {
@@ -63,7 +75,9 @@ src_install() {
 	exeinto "/opt/${MY_PN}"
 	doexe ${WORK_NAME} "AppRun" "chrome-sandbox"
 
-	dosym "/usr/"$(get_libdir)"/chromium/libffmpeg.so" "/opt/${MY_PN}/libffmpeg.so"
+	if use system-ffmpeg ; then
+		dosym "/usr/"$(get_libdir)"/chromium/libffmpeg.so" "/opt/${MY_PN}/libffmpeg.so" || die "dosym failed"
+	fi
 
 	dosym "/opt/${MY_PN}/AppRun" "/usr/bin/${MY_PN}"
 	dosym "/opt/${MY_PN}/" "/usr/share/${MY_PN}"
@@ -74,20 +88,9 @@ src_install() {
 	MimeType="MimeType=x-scheme-handler/ytmd;"
 	WMClass="StartupWMClass=${WORK_NAME}"
 
-	if use hardcode-tray-fix; then
+	if use appindicator; then
 		make_desktop_entry "env XDG_CURRENT_DESKTOP=KDE ${MY_PN}" "YouTube Music" ${WORK_NAME} ${Categories} "${MimeType}\n${WMClass}"
 	else
 		make_desktop_entry ${MY_PN} "YouTube Music" ${WORK_NAME} ${Categories} "${MimeType};\n${WMClass}"
 	fi
-}
-
-pkg_postinst() {
-	xdg_desktop_database_update
-	xdg_mimeinfo_database_update
-	xdg_icon_cache_update
-}
-
-pkg_postrm() {
-	xdg_desktop_database_update
-	xdg_mimeinfo_database_update
 }
