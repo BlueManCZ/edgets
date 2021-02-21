@@ -19,20 +19,18 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE="appindicator libnotify system-ffmpeg system-mesa xscreensaver"
 
-RDEPEND="appindicator? ( dev-libs/libappindicator )
-	dev-libs/glib
+RDEPEND="dev-libs/glib
 	dev-libs/libindicator
 	dev-libs/nss
 	gnome-base/gconf
-	libnotify? ( x11-libs/libnotify )
-	media-libs/libglvnd
-	media-libs/mesa
-	media-libs/vulkan-loader
-	<media-video/ffmpeg-4.3.1[chromium]
 	sys-apps/dbus
-	xscreensaver? ( x11-libs/libXScrnSaver )
 	x11-libs/libXtst
-	x11-libs/gtk+"
+	x11-libs/gtk+
+	appindicator? ( dev-libs/libappindicator )
+	libnotify? ( x11-libs/libnotify )
+	xscreensaver? ( x11-libs/libXScrnSaver )
+	system-ffmpeg? ( <media-video/ffmpeg-4.3[chromium] )
+	system-mesa? ( media-libs/mesa )"
 
 QA_PREBUILT="*"
 
