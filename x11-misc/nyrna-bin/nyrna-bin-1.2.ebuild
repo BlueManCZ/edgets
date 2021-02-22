@@ -4,7 +4,7 @@
 # Source overlay: https://github.com/BlueManCZ/edgets
 
 EAPI=7
-inherit desktop unpacker xdg-utils
+inherit desktop unpacker xdg
 
 MY_PN="${PN/-bin/}"
 UP_PN="${MY_PN^}"
@@ -34,19 +34,10 @@ src_unpack() {
 }
 
 src_install() {
-	exeinto /usr/bin
+	exeinto "/usr/bin"
 	doexe ${MY_PN}
 
-	doicon ${MY_PN}.png
+	doicon "${MY_PN}.png"
 
 	make_desktop_entry ${MY_PN} ${UP_PN} ${MY_PN} "Utility;" "StartupWMClass=${MY_PN}"
-}
-
-pkg_postinst() {
-	xdg_desktop_database_update
-	xdg_icon_cache_update
-}
-
-pkg_postrm() {
-	xdg_desktop_database_update
 }

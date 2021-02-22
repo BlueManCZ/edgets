@@ -1,0 +1,1 @@
+nyrna-bin-1.2.ebuild
