@@ -16,6 +16,7 @@ LICENSE="LGPL-3"
 SLOT="0"
 KEYWORDS="-* ~amd64"
 IUSE="system-ffmpeg system-mesa"
+RESTRICT="bindist mirror"
 
 RDEPEND="dev-libs/libappindicator
 	dev-libs/glib
