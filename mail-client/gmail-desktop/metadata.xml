@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<longdescription>
+		Unofficial Gmail Desktop App
+	</longdescription>
+	<use>
+		<flag name="doc">Install package documentation</flag>
+		<flag name="system-ffmpeg">Use the system-wide media-video/ffmpeg instead of bundled</flag>
+		<flag name="system-mesa">Use the system-wide media-libs/mesa instead of bundled</flag>
+	</use>
+</pkgmetadata>

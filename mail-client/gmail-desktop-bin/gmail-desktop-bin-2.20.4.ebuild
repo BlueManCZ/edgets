@@ -1,1 +1,0 @@
-gmail-desktop-bin-2.20.2.ebuild
