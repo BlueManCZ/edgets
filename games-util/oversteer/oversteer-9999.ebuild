@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit meson udev xdg-utils
+inherit meson udev xdg
 
 DESCRIPTION="Steering Wheel Manager for Linux"
 HOMEPAGE="https://github.com/berarma/oversteer"
@@ -13,15 +13,17 @@ RESTRICT="mirror"
 SLOT="0"
 
 if [[ ${PV} == 9999 ]]; then
-	EGIT_REPO_URI="https://github.com/berarma/${PN}.git"
+	EGIT_REPO_URI="${HOMEPAGE}.git"
 	inherit git-r3
 else
-	SRC_URI="https://github.com/berarma/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="${HOMEPAGE}/archive/${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 fi
 
-DEPEND="dev-python/python-evdev
+DEPEND="dev-python/matplotlib
+	dev-python/python-evdev
 	dev-python/pyudev
+	dev-python/scipy
 	virtual/libudev"
 
 RDEPEND="${DEPEND}"
@@ -30,12 +32,4 @@ src_install() {
 	meson_src_install
 
 	udev_dorules "data/udev/99-logitech-wheel-perms.rules"
-}
-
-pkg_postinst() {
-	xdg_desktop_database_update
-}
-
-pkg_postrm() {
-	xdg_desktop_database_update
 }
