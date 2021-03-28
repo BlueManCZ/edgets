@@ -62,23 +62,23 @@ src_install() {
 	rm "doc/eagle.1"
 
 	if use doc ; then
-		dodoc "README"
-		dodoc -r "doc/"*
+		dodoc "README" || die "dodoc failed"
+		dodoc -r "doc/"* || die "dodoc failed"
 	fi
 
 	rm "README"
 	rm -rf "doc"
 
-	mkdir -p "${ED}/opt/${PN}" || die
-	cp -a * "${ED}/opt/${PN}" || die
+	mkdir -p "${ED}/opt/${PN}" || die "mkdir failed"
+	cp -a * "${ED}/opt/${PN}" || die "cp failed"
 
-	fperms 0755 "/opt/${PN}/${PN}"
-	fperms 0755 "/opt/${PN}/lib/"*
-	fperms 0755 "/opt/${PN}/libexec/QtWebEngineProcess"
+	fperms 0755 "/opt/${PN}/${PN}" || die "fperms failed"
+	fperms -R 0755 "/opt/${PN}/lib/" || die "fperms failed"
+	fperms 0755 "/opt/${PN}/libexec/QtWebEngineProcess" || die "fperms failed"
 
 	newicon "bin/${PN}-logo.png" "${PN}.png"
 
-	dosym "/opt/${PN}/${PN}" "/usr/bin/${PN}"
+	dosym "/opt/${PN}/${PN}" "/usr/bin/${PN}" || dosym "fperms failed"
 
 	make_desktop_entry ${PN} ${PN^} ${PN} "Graphics;Electronics" "StartupWMClass=${PN}"
 }
