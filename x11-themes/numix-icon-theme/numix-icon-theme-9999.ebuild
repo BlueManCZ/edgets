@@ -5,9 +5,9 @@
 
 EAPI=7
 
-inherit git-r3
+inherit git-r3 xdg
 
-DESCRIPTION="Icon theme from the numix project."
+DESCRIPTION="Icon theme from the Numix project."
 HOMEPAGE="https://numixproject.github.io/"
 EGIT_REPO_URI="https://github.com/numixproject/numix-icon-theme"
 NUMIX_CIRCLE="https://github.com/numixproject/numix-icon-theme-circle"
@@ -90,8 +90,4 @@ src_install() {
 	if use square; then
 		doins -r ../numix-icon-theme-square/Numix-Square{,-Light}
 	fi
-}
-
-pkg_postinst() {
-  xdg_icon_cache_update
 }
