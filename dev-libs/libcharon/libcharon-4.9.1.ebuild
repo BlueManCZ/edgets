@@ -18,7 +18,7 @@ SLOT="0/3"
 KEYWORDS="~amd64 ~arm64 ~x86"
 
 IUSE="+client +dbus test"
-RESTRICT="!test? ( test )"
+RESTRICT="mirror !test? ( test )"
 
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RDEPEND="
