@@ -2,6 +2,9 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=7
+
+VALA_USE_DEPEND="vapigen"
+
 inherit autotools vala
 
 DESCRIPTION="BAMF Application Matching Framework"
@@ -18,35 +21,46 @@ fi
 
 LICENSE="LGPL-3"
 SLOT="0"
-IUSE="doc introspection"
-VALA_USE_DEPEND="vapigen"
+IUSE="doc dbusmenu introspection test"
 
-RDEPEND="dev-libs/dbus-glib
-	dev-util/gdbus-codegen
+RDEPEND="
 	dev-libs/glib:2
-	gnome-base/libgtop
 	x11-libs/gtk+:3
+	gnome-base/libgtop
 	x11-libs/libwnck:3
-	x11-libs/libX11"
-
+	x11-libs/libX11
+	dev-libs/dbus-glib
+	dbusmenu? ( dev-libs/libdbusmenu )
+"
 DEPEND="${RDEPEND}
-	$(vala_depend)
-	dev-util/gtk-doc
-	virtual/pkgconfig
 	x11-libs/startup-notification
-	introspection? ( dev-libs/gobject-introspection )"
+	introspection? ( dev-libs/gobject-introspection )
+"
+BDEPEND="
+	$(vala_depend)
+	virtual/pkgconfig
+	gnome-base/gnome-common
+	dev-util/gdbus-codegen
+	doc? ( dev-util/gtk-doc )
+"
 
 src_prepare() {
 	eapply_user
 	eautoreconf
 	vala_src_prepare
+	export VALA_API_GEN="${VAPIGEN}"
 }
 
 src_configure() {
 	local econfargs=(
-		--disable-gtktest
 		$(use_enable doc gtk-doc)
-		$(use_enable introspection))
-
+		$(use_enable dbusmenu export-actions-menu)
+		$(use_enable introspection)
+		--disable-gtktest
+	)
 	econf "${econfargs[@]}" "$@"
+}
+
+src_test() {
+	emake check || die
 }
