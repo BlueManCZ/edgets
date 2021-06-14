@@ -22,7 +22,7 @@ fi
 
 LICENSE="LGPL-3"
 SLOT="0"
-IUSE="doc dbusmenu introspection test"
+IUSE="doc dbus introspection test"
 
 RDEPEND="
 	dev-libs/glib:2
@@ -31,7 +31,7 @@ RDEPEND="
 	x11-libs/libwnck:3
 	x11-libs/libX11
 	dev-libs/dbus-glib
-	dbusmenu? ( dev-libs/libdbusmenu )
+	dbus? ( dev-libs/libdbusmenu )
 "
 DEPEND="${RDEPEND}
 	x11-libs/startup-notification
@@ -55,7 +55,7 @@ src_prepare() {
 src_configure() {
 	local econfargs=(
 		$(use_enable doc gtk-doc)
-		$(use_enable dbusmenu export-actions-menu)
+		$(use_enable dbus export-actions-menu)
 		$(use_enable introspection)
 		--disable-gtktest
 	)
