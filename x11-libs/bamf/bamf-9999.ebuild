@@ -42,7 +42,7 @@ BDEPEND="
 	virtual/pkgconfig
 	gnome-base/gnome-common
 	dev-util/gdbus-codegen
-	doc? ( dev-util/gtk-doc )
+	dev-util/gtk-doc
 "
 
 src_prepare() {
