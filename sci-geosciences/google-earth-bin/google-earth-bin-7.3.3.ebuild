@@ -1,10 +1,10 @@
-# Copyright 2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Source overlay: https://github.com/BlueManCZ/edgets
 
 EAPI=7
-inherit desktop unpacker xdg-utils
+inherit desktop unpacker xdg
 
 MY_PN="${PN/-bin/}"
 UP_PN="Google Earth Pro"
@@ -18,6 +18,7 @@ LICENSE="google-earth" # Available here: https://earth.google.com/intl/en/licens
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
+RESTRICT="bindist mirror"
 
 RDEPEND="dev-libs/glib
 	dev-libs/libxml2
@@ -46,32 +47,24 @@ QA_PREBUILT="*"
 DIR_PATH="google/earth/pro"
 
 src_install() {
-	insinto /opt/${DIR_PATH}
-	doins -r opt/${DIR_PATH}/*
+	insinto "/opt/${DIR_PATH}"
+	doins -r "opt/${DIR_PATH}/"*
 
-	exeinto /opt/${DIR_PATH}
-	doexe opt/${DIR_PATH}/googleearth{,-bin} opt/${DIR_PATH}/*.so opt/${DIR_PATH}/*.so.*
-	doexe opt/${DIR_PATH}/{gpsbabel,repair_tool,xdg-mime,xdg-settings}
+	exeinto "/opt/${DIR_PATH}"
+	doexe "opt/${DIR_PATH}/googleearth"{,"-bin"} "opt/${DIR_PATH}/"*".so" "opt/${DIR_PATH}/"*".so."*
+	doexe "opt/${DIR_PATH}/"{"gpsbabel","repair_tool","xdg-mime","xdg-settings"}
 
-	dosym /opt/${DIR_PATH}/googleearth /usr/bin/${MY_PN}
-	dosym /opt/${DIR_PATH}/ /usr/share/${MY_PN}
+	dosym "/opt/${DIR_PATH}/googleearth" "/usr/bin/${MY_PN}"
+	dosym "/opt/${DIR_PATH}/" "/usr/share/${MY_PN}"
 
-	doicon ${DISTDIR}/${MY_PN}.svg
+	doicon "${DISTDIR}/${MY_PN}.svg"
 
-	make_desktop_entry ${MY_PN} "${UP_PN}" ${MY_PN} "Education;Network;Science" "GenericName=3D planet viewer\n\
+	make_desktop_entry "${MY_PN}" "${UP_PN}" "${MY_PN}" "Education;Network;Science" "GenericName=3D planet viewer\n\
 StartupWMClass=${UP_PN}\nMimeType=application/vnd.google-earth.kml+xml;\
 application/vnd.google-earth.kmz;application/earthviewer;application/keyhole"
 }
 
 pkg_postinst() {
+	xdg_pkg_postinst
 	elog "\nGoogle Earth is licensed under its own license available here: https://earth.google.com/intl/en/licensepro.html\n"
-	xdg_desktop_database_update
-	xdg_mimeinfo_database_update
-	xdg_icon_cache_update
-}
-
-pkg_postrm() {
-	xdg_desktop_database_update
-	xdg_mimeinfo_database_update
-	xdg_icon_cache_update
 }
