@@ -11,8 +11,7 @@ UP_PN="Google Earth Pro"
 
 DESCRIPTION="Explore, search and discover the planet."
 HOMEPAGE="https://www.google.com/earth/"
-SRC_URI="https://dl.google.com/dl/linux/direct/${MY_PN}-pro-stable_${PV}_amd64.deb -> ${P}.deb
-	https://upload.wikimedia.org/wikipedia/commons/e/e4/Google_Earth_icon.svg -> ${MY_PN}.svg"
+SRC_URI="https://dl.google.com/dl/linux/direct/${MY_PN}-pro-stable_${PV}_amd64.deb -> ${P}.deb"
 
 LICENSE="google-earth" # Available here: https://earth.google.com/intl/en/licensepro.html
 SLOT="0"
@@ -57,7 +56,7 @@ src_install() {
 	dosym "/opt/${DIR_PATH}/googleearth" "/usr/bin/${MY_PN}"
 	dosym "/opt/${DIR_PATH}/" "/usr/share/${MY_PN}"
 
-	doicon "${DISTDIR}/${MY_PN}.svg"
+	newicon "opt/${DIR_PATH}/product_logo_256.png" "${MY_PN}.png"
 
 	make_desktop_entry "${MY_PN}" "${UP_PN}" "${MY_PN}" "Education;Network;Science" "GenericName=3D planet viewer\n\
 StartupWMClass=${UP_PN}\nMimeType=application/vnd.google-earth.kml+xml;\
