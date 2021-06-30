@@ -9,8 +9,8 @@ inherit unpacker xdg
 
 DESCRIPTION="Min is a fast, minimal browser that protects your privacy."
 HOMEPAGE="https://minbrowser.github.io/min/"
-SRC_URI="amd64? ( https://github.com/minbrowser/min/releases/download/v${PV}/min_${PV}_amd64.deb -> min-${PV}-amd64.deb )
-	arm64? ( https://github.com/minbrowser/min/releases/download/v${PV}/min_${PV}_arm64.deb -> min-${PV}-arm64.deb )"
+SRC_URI="amd64? ( https://github.com/minbrowser/min/releases/download/v${PV}/min_${PV}_amd64.deb -> ${P}-amd64.deb )
+	arm64? ( https://github.com/minbrowser/min/releases/download/v${PV}/min_${PV}_arm64.deb -> ${P}-arm64.deb )"
 
 LICENSE="Apache-2.0"
 SLOT="0"
@@ -36,7 +36,7 @@ RDEPEND="app-accessibility/at-spi2-core
 	x11-misc/xdg-utils
 	alsa? ( media-libs/alsa-lib )
 	libnotify? ( x11-libs/libnotify )
-	system-ffmpeg? ( <media-video/ffmpeg-4.3[chromium] )
+	system-ffmpeg? ( media-video/ffmpeg[chromium] )
 	system-mesa? ( media-libs/mesa )
 	|| (
 		app-misc/trash-cli
@@ -65,7 +65,7 @@ src_prepare() {
 		rm -f  "usr/lib/min/libEGL.so" || die "rm failed"
 		rm -f  "usr/lib/min/libGLESv2.so" || die "rm failed"
 		rm -f  "usr/lib/min/libvk_swiftshader.so" || die "rm failed"
-		rm -f  "usr/lib/min/libvulkan.so" || die "rm failed"
+		rm -f  "usr/lib/min/libvulkan.so.1" || die "rm failed"
 		rm -f  "usr/lib/min/vk_swiftshader_icd.json" || die "rm failed"
 	fi
 }
