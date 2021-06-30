@@ -27,7 +27,7 @@ RDEPEND="app-accessibility/at-spi2-core
 	x11-misc/xdg-utils
 	appindicator? ( dev-libs/libappindicator )
 	libnotify? ( x11-libs/libnotify )
-	system-ffmpeg? ( <media-video/ffmpeg-4.3[chromium] )
+	system-ffmpeg? ( media-video/ffmpeg[chromium] )
 	system-mesa? ( media-libs/mesa )"
 
 QA_PREBUILT="*"
