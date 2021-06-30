@@ -22,7 +22,7 @@ RDEPEND="dev-libs/nss
 	gnome-base/gconf:2
 	net-print/cups
 	x11-libs/libXScrnSaver
-	system-ffmpeg? ( <media-video/ffmpeg-4.3[chromium] )
+	system-ffmpeg? ( media-video/ffmpeg[chromium] )
 	system-mesa? ( media-libs/mesa )"
 
 QA_PREBUILT="*"
