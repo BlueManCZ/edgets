@@ -21,16 +21,11 @@ IUSE="doc"
 REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 
 RDEPEND="dev-python/pygobject[${PYTHON_USEDEP}]
-	dev-python/urllib3[${PYTHON_USEDEP}]
+	dev-python/requests[${PYTHON_USEDEP}]
 	dev-python/vdf[${PYTHON_USEDEP}]
 	x11-misc/xdotool"
 
 DISTUTILS_USE_SETUPTOOLS="no"
-
-src_prepare() {
-	rm -r "images"
-	default
-}
 
 src_compile() {
 	not
