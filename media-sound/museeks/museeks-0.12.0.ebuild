@@ -45,7 +45,7 @@ src_prepare() {
 		rm -f  "opt/Museeks/libEGL.so" || die "rm failed"
 		rm -f  "opt/Museeks/libGLESv2.so" || die "rm failed"
 		rm -f  "opt/Museeks/libvk_swiftshader.so" || die "rm failed"
-		rm -f  "opt/Museeks/libvulkan.so" || die "rm failed"
+		rm -f  "opt/Museeks/libvulkan.so.1" || die "rm failed"
 		rm -f  "opt/Museeks/vk_swiftshader_icd.json" || die "rm failed"
 	fi
 }
