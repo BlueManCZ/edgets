@@ -25,7 +25,7 @@ RDEPEND="dev-libs/libappindicator
 	x11-libs/libnotify
 	x11-libs/libXScrnSaver
 	x11-libs/libXtst
-	system-ffmpeg? ( <media-video/ffmpeg-4.3[chromium] )
+	system-ffmpeg? ( media-video/ffmpeg[chromium] )
 	system-mesa? ( media-libs/mesa )"
 
 QA_PREBUILT="*"
