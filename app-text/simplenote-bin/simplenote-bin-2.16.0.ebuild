@@ -48,6 +48,7 @@ src_prepare() {
 		rm -f  "opt/Simplenote/libGLESv2.so" || die "rm failed"
 		rm -f  "opt/Simplenote/libvk_swiftshader.so" || die "rm failed"
 		rm -f  "opt/Simplenote/libvulkan.so" || die "rm failed"
+		rm -f  "opt/Simplenote/libvulkan.so.1" || die "rm failed"
 		rm -f  "opt/Simplenote/vk_swiftshader_icd.json" || die "rm failed"
 	fi
 }
