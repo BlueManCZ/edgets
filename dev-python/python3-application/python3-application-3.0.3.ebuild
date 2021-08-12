@@ -9,8 +9,8 @@ DISTUTILS_USE_SETUPTOOLS=no
 inherit distutils-r1
 
 DESCRIPTION="Basic building blocks for python applications"
-HOMEPAGE="https://pypi.org/project/python3-application/"
-SRC_URI="https://github.com/AGProjects/python3-application/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
+HOMEPAGE="https://github.com/AGProjects/python3-application"
+SRC_URI="${HOMEPAGE}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
 KEYWORDS="amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~riscv sparc x86"
 LICENSE="LGPL"
 SLOT="0"
