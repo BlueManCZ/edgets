@@ -11,7 +11,7 @@ inherit distutils-r1
 DESCRIPTION="Basic building blocks for python applications"
 HOMEPAGE="https://github.com/AGProjects/python3-application"
 SRC_URI="${HOMEPAGE}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
-KEYWORDS="amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~riscv sparc x86"
+KEYWORDS="~amd64 ~arm ~arm64 ~ia64 ~ppc ~ppc64 ~riscv ~sparc ~x86"
 RESTRICT="bindist"
 LICENSE="LGPL-2.1+"
 SLOT="0"
