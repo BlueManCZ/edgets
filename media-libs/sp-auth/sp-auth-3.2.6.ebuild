@@ -8,10 +8,10 @@ EAPI=7
 inherit unpacker
 
 DESCRIPTION="A p2p video streaming client"
-HOMEPAGE=""
-SRC_URI="https://launchpad.net/~linuxthebest.net/+archive/ubuntu/sopcast/+files/sp-auth_${PV}-1ubuntu3_amd64.deb -> ${P}.deb"
+HOMEPAGE="https://launchpad.net/~linuxthebest.net/+archive/ubuntu/sopcast"
+SRC_URI="${HOMEPAGE}/+files/sp-auth_${PV}-1ubuntu3_amd64.deb -> ${P}.deb"
 
-LICENSE=""
+LICENSE="all-rights-reserved"
 SLOT="0"
 KEYWORDS="-* ~amd64"
 RESTRICT="bindist mirror"
