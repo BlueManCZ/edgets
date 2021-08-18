@@ -13,7 +13,7 @@ DESCRIPTION="Explore, search and discover the planet."
 HOMEPAGE="https://www.google.com/earth/"
 SRC_URI="https://dl.google.com/dl/linux/direct/${MY_PN}-pro-stable_${PV}_amd64.deb -> ${P}.deb"
 
-LICENSE="google-earth" # Available here: https://earth.google.com/intl/en/licensepro.html
+LICENSE="all-rights-reserved" # License available here: https://earth.google.com/intl/en/licensepro.html
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
@@ -25,6 +25,7 @@ RDEPEND="dev-libs/glib
 	media-libs/fontconfig
 	media-libs/freetype
 	media-libs/glu
+	media-libs/gst-plugins-base
 	media-libs/gstreamer
 	net-libs/libproxy
 	net-print/cups
@@ -65,5 +66,5 @@ application/vnd.google-earth.kmz;application/earthviewer;application/keyhole"
 
 pkg_postinst() {
 	xdg_pkg_postinst
-	elog "\nGoogle Earth is licensed under its own license available here: https://earth.google.com/intl/en/licensepro.html\n"
+	elog "Google Earth is licensed under its own license available here: https://earth.google.com/intl/en/licensepro.html"
 }
