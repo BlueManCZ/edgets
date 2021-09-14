@@ -31,6 +31,7 @@ RDEPEND="dev-libs/atk
   dev-libs/glib:2
   dev-libs/libdbusmenu[gtk,gtk3]
   dev-libs/libgee
+	gnome-base/gnome-menus
   sys-libs/glibc
   x11-libs/bamf
   x11-libs/cairo
@@ -44,7 +45,6 @@ RDEPEND="dev-libs/atk
 
 DEPEND="${RDEPEND}
   $(vala_depend)
-	gnome-base/gnome-menus
   doc? ( dev-lang/vala[valadoc] )"
 
   src_prepare() {
