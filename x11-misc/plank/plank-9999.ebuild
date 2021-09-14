@@ -4,6 +4,10 @@
 # Source overlay: https://github.com/BlueManCZ/edgets
 
 EAPI=7
+
+VALA_USE_DEPEND="vapigen"
+VALA_MIN_API_VERSION="0.34"
+
 inherit autotools gnome2-utils vala xdg
 
 DESCRIPTION="Elegant, simple, clean dock"
@@ -23,9 +27,6 @@ SLOT="0"
 RESTRICT="mirror"
 IUSE="apport barriers benchmark dbus debug doc nls"
 
-VALA_MIN_API_VERSION="0.34"
-VALA_USE_DEPEND="vapigen"
-
 RDEPEND="dev-libs/atk
   dev-libs/glib:2
   dev-libs/libdbusmenu[gtk,gtk3]
@@ -43,6 +44,7 @@ RDEPEND="dev-libs/atk
 
 DEPEND="${RDEPEND}
   $(vala_depend)
+	gnome-base/gnome-menus
   doc? ( dev-lang/vala[valadoc] )"
 
   src_prepare() {
