@@ -4,7 +4,7 @@
 EAPI=7
 
 VALA_USE_DEPEND="vapigen"
-VALA_MIN_API_VERSION=0.34
+VALA_MIN_API_VERSION="0.34"
 
 inherit autotools vala
 
@@ -43,6 +43,7 @@ BDEPEND="
 	gnome-base/gnome-common
 	dev-util/gdbus-codegen
 	dev-util/gtk-doc
+	dev-util/gtk-doc-am
 "
 
 src_prepare() {
