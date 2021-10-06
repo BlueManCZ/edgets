@@ -35,6 +35,9 @@ python_prepare_all() {
 	sed \
 		-e 's:.extern.six:six:g' \
 		-i ${PN}/*py || die
+
+	sed -f <(printf '%ds/-/_/g\n' {5,7,10,11,51}) -i "setup.cfg"
+
 	distutils-r1_python_prepare_all
 }
 
