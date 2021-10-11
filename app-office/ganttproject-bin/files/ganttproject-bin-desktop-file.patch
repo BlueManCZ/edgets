@@ -1,0 +1,12 @@
+--- a/usr/share/applications/ganttproject.desktop
++++ b/usr/share/applications/ganttproject.desktop
+@@ -3,7 +3,8 @@
+ Type=Application
+ Terminal=false
+ Name=GanttProject
+-Icon=/usr/share/icons/gnome/scalable/mimetypes/application-x-ganttproject.svg
++Comment=A tool for creating a project schedule by means of Gantt chart and resource load chart
++Icon=ganttproject
+ Exec=/usr/bin/ganttproject %U
+ MimeType=application/x-ganttproject;
+ Categories=Office;
