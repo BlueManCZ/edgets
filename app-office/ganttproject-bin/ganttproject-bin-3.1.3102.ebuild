@@ -19,14 +19,14 @@ KEYWORDS="~amd64 ~x86"
 RESTRICT="mirror"
 IUSE="doc"
 
-RDEPEND="dev-java/bellsoft-jre-bin:13"
+RDEPEND="dev-java/liberica-jre-bin:13"
 
 S="${WORKDIR}"
 
 QA_PREBUILT="*"
 
 PATCHES=(
-	"${FILESDIR}/${PN}-bellsoft-jre-bin-13.patch"
+	"${FILESDIR}/${PN}-liberica-jre-bin-13.patch"
 	"${FILESDIR}/${PN}-desktop-file.patch"
 )
 

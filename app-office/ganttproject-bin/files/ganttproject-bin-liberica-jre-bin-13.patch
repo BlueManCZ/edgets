@@ -4,7 +4,7 @@
  # This script launches GanttProject. It can be symlinked and can be ran from
  # any working directory
 
-+CUSTOM_JAVA="/opt/bellsoft-jre-bin-13/"
++CUSTOM_JAVA="/opt/liberica-jre-bin-13/"
 +
  SCRIPT_FILE="$0"
 
