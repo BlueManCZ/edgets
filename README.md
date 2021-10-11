@@ -31,6 +31,19 @@ Now, when overlay is added and package unmasked, you are ready to install it.
 # emerge --ask <package-name>
 ```
 
+## Upgrading packages
+
+Synchronize overlay tree and unmask newest version of package.
+
+```
+# layman --sync edgets
+# emerge --ask <package-name> --autounmask   # type yes
+# dispatch-conf                              # press u
+# emerge --ask <package-name>
+```
+
+You can use `>=` in `/etc/portage/package.accept_keywords/package.accept_keywords` to avoid manual unmasking for every version bump.
+
 ## Featured packages
 
 See [PACKAGES.md](https://github.com/BlueManCZ/edgets/blob/master/PACKAGES.md)
