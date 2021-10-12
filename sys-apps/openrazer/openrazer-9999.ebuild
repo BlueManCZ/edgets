@@ -11,11 +11,11 @@ DESCRIPTION="Razer Drivers for Linux"
 HOMEPAGE="https://openrazer.github.io/"
 
 if [[ ${PV} == 9999 ]]; then
-  inherit git-r3
-  EGIT_REPO_URI="https://github.com/openrazer/openrazer.git"
+	inherit git-r3
+	EGIT_REPO_URI="https://github.com/openrazer/openrazer.git"
 else
-  SRC_URI="https://github.com/openrazer/openrazer/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-  KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+	SRC_URI="https://github.com/openrazer/openrazer/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 fi
 
 LICENSE="GPL-2"
