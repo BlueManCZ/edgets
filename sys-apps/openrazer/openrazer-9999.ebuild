@@ -37,7 +37,7 @@ RDEPEND="media-libs/libsdl2
 	dev-python/setproctitle[$PYTHON_USEDEP]
 	x11-misc/xautomation
 	x11-misc/xdotool
-  systemd? ( sys-apps/systemd )"
+	systemd? ( sys-apps/systemd )"
 
 DEPEND="${RDEPEND}
 	app-misc/jq"
@@ -89,11 +89,11 @@ src_install() {
 		pushd daemon
 		distutils-r1_python_install
 
-    if use systemd ; then
-  		emake DESTDIR="${D}" install
-    else
-      emake DESTDIR="${D}" ubuntu_install
-  	fi
+	if use systemd ; then
+		emake DESTDIR="${D}" install
+	else
+		emake DESTDIR="${D}" ubuntu_install
+	fi
 
 		popd
 	}
