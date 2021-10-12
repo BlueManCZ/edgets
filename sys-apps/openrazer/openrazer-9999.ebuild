@@ -89,13 +89,14 @@ src_install() {
 		pushd daemon
 		distutils-r1_python_install
 
-	if use systemd ; then
-		emake DESTDIR="${D}" install
-	else
-		emake DESTDIR="${D}" ubuntu_install
-	fi
+		if use systemd ; then
+			emake DESTDIR="${D}" install
+		else
+			emake DESTDIR="${D}" ubuntu_install
+		fi
 
 		popd
+		emake DESTDIR="${D}" xdg_install
 	}
 
 	python_foreach_impl mypython_install
