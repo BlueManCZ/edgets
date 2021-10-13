@@ -17,6 +17,7 @@ else
 fi
 
 LICENSE="GPL-3"
+RESTRICT="mirror"
 SLOT="0"
 
 DEPEND="dev-libs/libappindicator:3
