@@ -10,12 +10,12 @@ MY_PN="buttercup"
 
 DESCRIPTION="A free, open-source and cross-platform password manager."
 HOMEPAGE="https://github.com/buttercup/buttercup-desktop"
-SRC_URI="${HOMEPAGE}/releases/download/v${PV}/Buttercup-linux-x64.AppImage -> ${P}.AppImage"
+SRC_URI="${HOMEPAGE}/releases/download/v${PV}/Buttercup-linux-x86_64.AppImage -> ${P}.AppImage"
 
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="-* ~amd64"
-IUSE="system-ffmpeg system-mesa"
+IUSE="system-mesa"
 RESTRICT="bindist mirror"
 
 RDEPEND="dev-libs/libappindicator
@@ -25,7 +25,6 @@ RDEPEND="dev-libs/libappindicator
 	x11-libs/libnotify
 	x11-libs/libXScrnSaver
 	x11-libs/libXtst
-	system-ffmpeg? ( media-video/ffmpeg[chromium] )
 	system-mesa? ( media-libs/mesa )"
 
 QA_PREBUILT="*"
@@ -47,19 +46,17 @@ src_prepare() {
 
 	rm "${MY_PN}.png" || die "rm failed"
 	rm ".DirIcon" || die "rm failed"
-  rm "${MY_PN}.desktop"
+	rm "${MY_PN}.desktop"
 	cp "usr/share/icons/hicolor/256x256/apps/${MY_PN}.png" "${MY_PN}.png" || die "cp failed"
 
 	rm -fr "usr" || die "rm failed"
 
-	if use system-ffmpeg ; then
-		rm -f  "libffmpeg.so" || die "rm failed"
-	fi
-
 	if use system-mesa ; then
 		rm -fr "swiftshader" || die "rm failed"
-		rm -f  *".so" || die "rm failed"
-		rm -f  *".so.1" || die "rm failed"
+		rm -f  "libEGL.so" || die "rm failed"
+		rm -f  "libGLESv2.so" || die "rm failed"
+		rm -f  "libvk_swiftshader.so" || die "rm failed"
+		rm -f  "libvulkan.so.1" || die "rm failed"
 		rm -f  "vk_swiftshader_icd.json" || die "rm failed"
 	fi
 }
@@ -73,10 +70,6 @@ src_install() {
 
 	dosym "/opt/${MY_PN}/${MY_PN}" "/usr/bin/${MY_PN}" || die "dosym failed"
 	dosym "/opt/${MY_PN}/" "/usr/share/${MY_PN}" || die "dosym failed"
-
-	if use system-ffmpeg ; then
-		dosym "/usr/"$(get_libdir)"/chromium/libffmpeg.so" "/opt/${MY_PN}/libffmpeg.so" || die "dosym failed"
-	fi
 
 	doicon "${MY_PN}.png" || die "doicon failed"
 
