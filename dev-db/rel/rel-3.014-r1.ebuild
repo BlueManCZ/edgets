@@ -1,10 +1,10 @@
-# Copyright 2020 Gentoo Authors
+# Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Source overlay: https://github.com/BlueManCZ/edgets
 
 EAPI=7
-inherit desktop unpacker xdg-utils
+inherit desktop unpacker xdg
 
 UP_PN="${PN^}"
 
@@ -15,7 +15,7 @@ SRC_URI="https://sourceforge.net/projects/dbappbuilder/files/${UP_PN}/${UP_PN}%2
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64"
+KEYWORDS="-* ~amd64"
 IUSE="doc"
 
 RDEPEND=""
@@ -26,7 +26,7 @@ QA_PREBUILT="*"
 
 src_install() {
 	if use doc; then
-		dodoc -r doc/* LICENSE.txt
+		dodoc -r "doc/"* "LICENSE.txt"
 	fi
 
 	insinto "/opt/${PN}"
@@ -49,13 +49,4 @@ src_install() {
 	doicon "${DISTDIR}/${PN}.png"
 
 	make_desktop_entry "/opt/${PN}/${UP_PN}" ${UP_PN} ${PN} "Development;Utility;" "StartupWMClass=${UP_PN}"
-}
-
-pkg_postinst() {
-	xdg_desktop_database_update
-	xdg_icon_cache_update
-}
-
-pkg_postrm() {
-	xdg_desktop_database_update
 }
