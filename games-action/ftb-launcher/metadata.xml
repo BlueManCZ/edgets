@@ -9,6 +9,5 @@
     Feed the Beast is a collection of modpacks for the popular sandbox-game Minecraft.
   </longdescription>
   <use>
-    <flag name="numix-circle-icon">Install icon that fits numix-circle icon theme</flag>
   </use>
 </pkgmetadata>
