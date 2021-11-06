@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<longdescription>
+		Free and secure calls and messages to anyone, anywhere, on any device and network, in any country!
+		Viber for Desktop syncs your contacts, messages and call history with your mobile device.
+	</longdescription>
+	<use>
+		<flag name="alsa">Enable alsa support through media-libs/alsa-lib</flag>
+	</use>
+</pkgmetadata>

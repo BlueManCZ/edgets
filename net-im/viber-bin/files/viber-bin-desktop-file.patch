@@ -1,0 +1,13 @@
+--- a/usr/share/applications/viber.desktop
++++ b/usr/share/applications/viber.desktop
+@@ -2,8 +2,9 @@
+ Name=Viber
+ Comment=Viber VoIP and messenger
+ Exec=/opt/viber/Viber %u
+-Icon=/usr/share/pixmaps/viber.png
++Icon=viber
+ Terminal=false
+ Type=Application
+ Categories=Network;InstantMessaging;P2P;
+ MimeType=x-scheme-handler/viber;
++StartupWMClass=Viber
