@@ -4,14 +4,13 @@
 # Source overlay: https://github.com/BlueManCZ/edgets
 
 EAPI=7
-inherit unpacker xdg git-r3
+inherit git-r3 xdg
 
 DESCRIPTION="Breeze cursor theme with hacked style"
 HOMEPAGE="https://github.com/codejamninja/breeze-hacked-cursor-theme"
 EGIT_REPO_URI="${HOMEPAGE}.git"
 
 LICENSE="GPL-2"
-RESTRICT="mirror"
 SLOT="0"
 IUSE=""
 
