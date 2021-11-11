@@ -1,7 +1,7 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 DESCRIPTION="A Material Design-like flat theme for GTK3, GTK2 and GNOME Shell"
 HOMEPAGE="https://github.com/nana-4/materia-theme"
@@ -11,24 +11,22 @@ if [[ ${PV} == 99999999 ]];then
 	EGIT_REPO_URI="${HOMEPAGE}"
 else
 	SRC_URI="${HOMEPAGE}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 fi
 
 LICENSE="GPL-2"
 SLOT="0"
 
-DEPEND="
+DEPEND="dev-util/dart-sass
 	x11-libs/gtk+:2
 	>=x11-libs/gtk+-3.18:3
-	x11-themes/gtk-engines-murrine
-	x11-libs/gdk-pixbuf"
+	x11-themes/gtk-engines-murrine"
 RDEPEND="${DEPEND}"
-BDEPEND="
-	dev-lang/sassc
-	media-gfx/inkscape
-	media-gfx/optipng"
 
-src_install(){
-	mkdir -p "${ED}/usr/share/themes"
-	./install.sh --dest "${ED}/usr/share/themes" || die
+src_compile() {
+	meson _build -Dprefix="${ED}/usr"
+}
+
+src_install() {
+	meson install -C _build
 }
