@@ -3,6 +3,8 @@
 
 EAPI=8
 
+inherit meson
+
 DESCRIPTION="A Material Design-like flat theme for GTK3, GTK2 and GNOME Shell"
 HOMEPAGE="https://github.com/nana-4/materia-theme"
 
@@ -22,11 +24,3 @@ DEPEND="dev-util/dart-sass
 	>=x11-libs/gtk+-3.18:3
 	x11-themes/gtk-engines-murrine"
 RDEPEND="${DEPEND}"
-
-src_compile() {
-	meson _build -Dprefix="${ED}/usr"
-}
-
-src_install() {
-	meson install -C _build
-}
