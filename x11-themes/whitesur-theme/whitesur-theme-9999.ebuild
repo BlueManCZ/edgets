@@ -16,7 +16,7 @@ else
 fi
 
 LICENSE="MIT"
-RESTRICT="fetch"
+RESTRICT="mirror"
 SLOT="0"
 
 DEPEND="dev-lang/sassc
