@@ -23,5 +23,5 @@ S="${WORKDIR}/${PN}"
 
 src_install() {
 	exeinto "/usr/bin"
-  doexe "sass"
+	doexe "sass"
 }
