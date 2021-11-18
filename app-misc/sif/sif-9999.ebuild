@@ -3,7 +3,7 @@
 
 # Source overlay: https://github.com/BlueManCZ/edgets
 
-EAPI=7
+EAPI=8
 
 PYTHON_COMPAT=( python3_{7,8,9} )
 
@@ -23,6 +23,7 @@ REQUIRED_USE="${PYTHON_REQUIRED_USE}"
 RDEPEND="dev-python/pygobject[${PYTHON_USEDEP}]
 	dev-python/requests[${PYTHON_USEDEP}]
 	dev-python/vdf[${PYTHON_USEDEP}]
+	x11-libs/gtk+
 	x11-misc/xdotool"
 
 DISTUTILS_USE_SETUPTOOLS="no"
