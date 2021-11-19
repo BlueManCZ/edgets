@@ -1,0 +1,18 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -11,7 +11,6 @@
+ 	dlg_audiointerface.cpp
+ 	fourier.c
+ 	RWAudio_IO.cpp
+-	rtaudio/RtAudio.cpp
+ )
+
+ include_directories(.) # for local libfccp
+@@ -41,7 +40,7 @@
+
+ if (${CMAKE_HOST_SYSTEM_NAME} MATCHES "Linux")
+ 	add_definitions(-D__LINUX_ALSA__ -D__LINUX_PULSE__ -D__LINUX__ -DHAVE_GETTIMEOFDAY)
+-	target_link_libraries(${PROJECT_NAME} ${wxWidgets_LIBRARIES} asound pulse pulse-simple)
++	target_link_libraries(${PROJECT_NAME} ${wxWidgets_LIBRARIES} asound pulse pulse-simple rtaudio)
+ 	target_compile_options(${PROJECT_NAME} PRIVATE -Wall -Wextra)
+ endif()
