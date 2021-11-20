@@ -16,14 +16,17 @@ SRC_URI="${HOMEPAGE}/-/archive/${COMMIT}/libadwaita-${COMMIT}.tar.gz -> ${P}.tar
 KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~ppc ~ppc64 ~sparc ~x86"
 S="${WORKDIR}/${PN}-${COMMIT}"
 
-RESTRICT="mirror"
+RESTRICT="mirror !test? ( test )"
 LICENSE="LGPL-2.1+"
 SLOT="0"
 
+IUSE="examples gtk-doc inspector +introspection test"
+
 DEPEND="dev-libs/fribidi
 	dev-libs/glib:2
-	dev-libs/gobject-introspection
-	>=gui-libs/gtk-4.4.0"
+	introspection? ( dev-libs/gobject-introspection )
+	>=gui-libs/gtk-4.4.0[introspection?]
+	gtk-doc? ( dev-util/gtk-doc )"
 
 RDEPEND="${DEPEND}"
 
@@ -31,4 +34,15 @@ src_prepare() {
 	eapply_user
 	vala_src_prepare
 	export VALA_API_GEN="${VAPIGEN}"
+}
+
+src_configure() {
+	local emesonargs=(
+		$(meson_feature introspection)
+		$(meson_use examples)
+		$(meson_use inspector)
+		$(meson_use gtk-doc gtk_doc)
+		$(meson_use test tests)
+	)
+	meson_src_configure
 }
