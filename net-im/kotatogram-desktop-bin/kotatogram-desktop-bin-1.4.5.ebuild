@@ -14,7 +14,7 @@ LICENSE="GPL-3"
 RESTRICT="mirror"
 SLOT="0"
 
-SRC_URI="${HOMEPAGE}/releases/download/k${PV}/${PV}-appimage.tar.xz -> ${P}.tar.xz"
+SRC_URI="${HOMEPAGE}/releases/download/k${PV}/${PV}-linux.tar.xz -> ${P}.tar.xz"
 KEYWORDS="~amd64"
 
 DEPEND="sys-fs/fuse
