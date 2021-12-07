@@ -15,6 +15,8 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE="examples"
 
+RDEPEND="media-libs/fontconfig"
+
 QA_PREBUILT="*"
 S="${WORKDIR}/phantomjs-${PV}-linux-x86_64/"
 
