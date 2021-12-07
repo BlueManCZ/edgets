@@ -10,7 +10,7 @@ HOMEPAGE="http://phantomjs.org/"
 SRC_URI="https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-${PV}-linux-x86_64.tar.bz2 -> ${P}.tar.bz2"
 RESTRICT="mirror"
 
-LICENSE="BSD-3"
+LICENSE="BSD"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE="examples"
