@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<longdescription>
+		Layer based image and photo editor with many advanced features.
+		Quickly and easily crop, rotate and resize images.
+		Choose from a large selection of high-quality filters and effects.
+		Effortlessly remove spots and blemishes.
+		Apply high quality color corrections with a single click.
+		Create projects with any number of layers and masks.
+		Paint using realistic brushes.
+	</longdescription>
+	<use>
+		<flag name="doc">Install package documentation</flag>
+	</use>
+</pkgmetadata>

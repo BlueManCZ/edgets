@@ -1,0 +1,12 @@
+--- a/usr/share/applications/pixeluvo.desktop
++++ b/usr/share/applications/pixeluvo.desktop
+@@ -6,7 +6,8 @@
+ Comment=Edit and Enhance Photos and Images
+ Exec=pixeluvo %F
+ TryExec=pixeluvo
+-Icon=/opt/pixeluvo/pixeluvo.png
++Icon=pixeluvo
+ Terminal=false
+ Categories=Graphics;2DGraphics;RasterGraphics;
+ MimeType=image/bmp;image/gif;image/x-tga;image/tiff;image/jpeg;image/png;image/x-pxu;
++StartupWMClass=Pixeluvo64
