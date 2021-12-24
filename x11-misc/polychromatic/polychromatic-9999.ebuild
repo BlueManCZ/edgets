@@ -1,18 +1,19 @@
 # Copyright 1999-2021 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit meson xdg
 
 DESCRIPTION="An open source RGB lighting management front-end application to customise OpenRazer peripherals on GNU/Linux."
 HOMEPAGE="https://polychromatic.app"
+GITHUB="https://github.com/polychromatic/polychromatic"
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
-	EGIT_REPO_URI="https://github.com/polychromatic/polychromatic.git"
+	EGIT_REPO_URI="${GITHUB}"
 else
-	SRC_URI="https://github.com/polychromatic/polychromatic/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="${GITHUB}/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
 fi
 
