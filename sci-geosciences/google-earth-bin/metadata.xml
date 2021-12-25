@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<longdescription>
+		Google Earth lets you fly anywhere to see satellite imagery, 3D buildings, 3D trees, terrain, Street View, planets and much more.
+	</longdescription>
+	<use>
+		<flag name="alsa">Enable alsa support through media-libs/alsa-lib</flag>
+	</use>
+</pkgmetadata>
