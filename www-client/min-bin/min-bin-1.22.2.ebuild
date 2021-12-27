@@ -16,7 +16,7 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~arm64"
 RESTRICT="bindist mirror"
-IUSE="alsa doc libnotify pulseaudio system-ffmpeg system-mesa"
+IUSE="alsa doc libnotify pulseaudio system-mesa"
 
 RDEPEND="app-accessibility/at-spi2-core
 	dev-libs/libgcrypt
@@ -36,7 +36,6 @@ RDEPEND="app-accessibility/at-spi2-core
 	x11-misc/xdg-utils
 	alsa? ( media-libs/alsa-lib )
 	libnotify? ( x11-libs/libnotify )
-	system-ffmpeg? ( media-video/ffmpeg[chromium] )
 	system-mesa? ( media-libs/mesa )
 	|| (
 		app-misc/trash-cli
@@ -56,10 +55,6 @@ S=${WORKDIR}
 src_prepare() {
 	default
 
-	if use system-ffmpeg ; then
-		rm -f  "usr/lib/min/libffmpeg.so" || die "rm failed"
-	fi
-
 	if use system-mesa ; then
 		rm -fr "usr/lib/min/swiftshader" || die "rm failed"
 		rm -f  "usr/lib/min/libEGL.so" || die "rm failed"
@@ -77,9 +72,5 @@ src_install() {
 
 	if use doc ; then
 		dodoc -r "usr/share/doc/min/"* || die "dodoc failed"
-	fi
-
-	if use system-ffmpeg ; then
-		dosym "/usr/"$(get_libdir)"/chromium/libffmpeg.so" "/usr/lib/min/libffmpeg.so" || die "dosym failed"
 	fi
 }
