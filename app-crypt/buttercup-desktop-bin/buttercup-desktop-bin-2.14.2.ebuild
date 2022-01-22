@@ -1,4 +1,4 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Source overlay: https://github.com/BlueManCZ/edgets
@@ -10,7 +10,7 @@ MY_PN="buttercup"
 
 DESCRIPTION="A free, open-source and cross-platform password manager."
 HOMEPAGE="https://github.com/buttercup/buttercup-desktop"
-SRC_URI="${HOMEPAGE}/releases/download/v${PV}/Buttercup-linux-x64.AppImage -> ${P}.AppImage"
+SRC_URI="${HOMEPAGE}/releases/download/v${PV}/Buttercup-linux-x86_64.AppImage -> ${P}.AppImage"
 
 LICENSE="GPL-3"
 SLOT="0"
