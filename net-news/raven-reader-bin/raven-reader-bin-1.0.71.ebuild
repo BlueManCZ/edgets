@@ -1,4 +1,4 @@
-# Copyright 2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Source overlay: https://github.com/BlueManCZ/edgets
@@ -10,7 +10,7 @@ MY_PN="${PN/-bin/}"
 
 DESCRIPTION="Simple desktop RSS Reader"
 HOMEPAGE="https://github.com/hello-efficiency-inc/raven-reader"
-SRC_URI="https://github.com/hello-efficiency-inc/raven-reader/releases/download/v${PV}/Raven-Reader-${PV}.AppImage -> ${P}.AppImage"
+SRC_URI="${HOMEPAGE}/releases/download/v${PV}/Raven-Reader-${PV}.AppImage -> ${P}.AppImage"
 
 LICENSE="LGPL-3"
 SLOT="0"
