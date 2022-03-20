@@ -28,7 +28,7 @@ RDEPEND="app-accessibility/at-spi2-core
 	sys-apps/dbus
 	sys-apps/keyutils
 	sys-apps/util-linux
-	sys-libs/e2fsprogs-libs
+	|| ( >=sys-fs/e2fsprogs-1.46.5 sys-libs/e2fsprogs-libs )
 	sys-libs/glibc
 	sys-libs/zlib
 	x11-libs/gtk+:3
