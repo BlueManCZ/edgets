@@ -1,24 +1,24 @@
 --- a/src/meson.build
 +++ b/src/meson.build
-@@ -36,21 +36,3 @@
-   'search_provider.rs',
- )
-
--cargo_release = custom_target(
+@@ -33,21 +33,3 @@
+ 
+ cargo_env = [ 'CARGO_HOME=' + meson.project_build_root() / 'cargo-home' ]
+ 
+-cargo_build = custom_target(
 -  'cargo-build',
 -  build_by_default: true,
--  input: sources,
+-  build_always_stale: true,
 -  output: meson.project_name(),
 -  console: true,
 -  install: true,
 -  install_dir: bindir,
 -  depends: resources,
 -  command: [
--    cargo_script,
--    meson.build_root(),
--    meson.source_root(),
--    '@OUTPUT@',
--    profile,
--    meson.project_name(),
+-    'env',
+-    cargo_env,
+-    cargo, 'build',
+-    cargo_options,
+-    '&&',
+-    'cp', 'src' / rust_target / meson.project_name(), '@OUTPUT@',
 -  ]
 -)
