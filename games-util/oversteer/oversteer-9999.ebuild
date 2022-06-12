@@ -1,7 +1,7 @@
-# Copyright 1999-2020 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit meson udev xdg
 
@@ -23,6 +23,7 @@ fi
 DEPEND="dev-python/matplotlib
 	dev-python/python-evdev
 	dev-python/pyudev
+	dev-python/pyxdg
 	dev-python/scipy
 	virtual/libudev"
 
@@ -32,4 +33,12 @@ src_install() {
 	meson_src_install
 
 	udev_dorules "data/udev/99-logitech-wheel-perms.rules"
+}
+
+pkg_postinst() {
+	udev_reload
+}
+
+pkg_postrm() {
+	udev_reload
 }
