@@ -1,0 +1,17 @@
+--- a/borderless-camera.desktop
++++ b/borderless-camera.desktop
+@@ -1,11 +1,9 @@
+ [Desktop Entry]
+-Name=borderless-camera
+-Comment=a simple camera app without window borders, useful for the screencast recording
+-Exec=AppRun
++Name=Borderless Camera
++Comment=Simple camera app without window borders, useful for the screencast recording
++Exec=borderless-camera
+ Terminal=false
+ Type=Application
+ Icon=borderless-camera
+ StartupWMClass=borderless-camera
+-X-AppImage-Version=0.0.5
+ Categories=Development;
+-X-AppImage-BuildId=1B4RJ1LUJR9ho3KayhysMx8T0FB
