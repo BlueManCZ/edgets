@@ -24,6 +24,12 @@ Most of the packages are masked, so you have to unmask them or tell portage to d
 
 More information about unmasking [here](https://wiki.gentoo.org/wiki/Knowledge_Base:Unmasking_a_package).
 
+If you, for example, want to unmask all packages from this overlay for architecture `amd64`, create file `/etc/portage/package.accept_keywords/edgets` with following content:
+
+```
+*/*::edgets ~amd64
+```
+
 ## Installing packages
 
 Now, when overlay is added and package unmasked, you are ready to install it.
