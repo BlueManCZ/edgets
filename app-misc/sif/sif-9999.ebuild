@@ -1,17 +1,17 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2022 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Source overlay: https://github.com/BlueManCZ/edgets
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{7,8,9} )
+PYTHON_COMPAT=( python3_{7..10} )
 
 inherit git-r3 distutils-r1
 
 DESCRIPTION="Fix runtime icons of Steam games"
 HOMEPAGE="https://github.com/BlueManCZ/SIF"
-EGIT_REPO_URI="${HOMEPAGE}.git"
+EGIT_REPO_URI="${HOMEPAGE}"
 
 LICENSE="Apache-2.0"
 SLOT="0"
