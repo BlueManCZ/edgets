@@ -25,11 +25,6 @@ src_prepare() {
 	cmake_src_prepare
 }
 
-#src_configure() {
-	#cmake-utils_src_configure
-	#cmake .
-#}
-
 src_install() {
 	dobin "${BUILD_DIR}/${PN}"
 	insinto "/usr/share/${PN}"
