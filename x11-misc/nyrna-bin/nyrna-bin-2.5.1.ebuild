@@ -17,8 +17,11 @@ KEYWORDS="-* ~amd64"
 
 QA_PREBUILT="*"
 
-RDEPEND="x11-libs/gtk+
-	!x11-misc/nyrna"
+RDEPEND="dev-libs/keybinder
+	x11-libs/gtk+
+	!x11-misc/nyrna
+	x11-misc/wmctrl
+	x11-misc/xdotool"
 
 S="${WORKDIR}"
 
