@@ -30,9 +30,9 @@ DEPEND="dev-python/matplotlib
 RDEPEND="${DEPEND}"
 
 src_install() {
-	python -m compileall -o 0 -o 1 -f oversteer
+	python -m compileall -o 0 -o 1 -f "oversteer"
 	meson_src_install
-	udev_dorules "data/udev/99-logitech-wheel-perms.rules"
+	udev_dorules "data/udev/"*
 }
 
 pkg_postinst() {
