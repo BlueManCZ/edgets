@@ -3,7 +3,7 @@
 
 # Source overlay: https://github.com/BlueManCZ/edgets
 
-EAPI=7
+EAPI=8
 inherit desktop xdg
 
 MY_PN="${PN/-bin/}"
