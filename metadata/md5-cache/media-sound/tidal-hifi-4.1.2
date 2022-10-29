@@ -1,0 +1,15 @@
+DEFINED_PHASES=install postinst postrm preinst prepare unpack
+DEPEND=dev-util/desktop-file-utils x11-misc/shared-mime-info
+DESCRIPTION=Tidal on Electron with widevine(hifi) support
+EAPI=7
+HOMEPAGE=https://github.com/Mastermindzh/tidal-hifi
+INHERIT=unpacker xdg
+IUSE=appindicator doc libnotify
+KEYWORDS=-* ~amd64
+LICENSE=MIT
+RDEPEND=app-accessibility/at-spi2-core app-crypt/libsecret dev-libs/nss sys-apps/util-linux x11-libs/gtk+:3 x11-libs/libXScrnSaver x11-libs/libXtst x11-misc/xdg-utils appindicator? ( dev-libs/libappindicator ) libnotify? ( x11-libs/libnotify )
+RESTRICT=bindist mirror
+SLOT=0
+SRC_URI=https://github.com/Mastermindzh/tidal-hifi/releases/download/4.1.2/tidal-hifi_4.1.2_amd64.deb -> tidal-hifi-4.1.2.deb
+_eclasses_=multiprocessing	b4e253ab22cef7b1085e9b67c7a3b730	toolchain-funcs	441f754fd75cd4fd1fa06fbc17da6144	multilib	5ca4e49abed8e3a2f7b56920eadee157	unpacker	bc57272a0491765c71d973c8cfd35063	xdg-utils	ac0e315a3688929e34ac75b139e7349a	xdg	6024fbc93167fad782e2032933654857
+_md5_=ebbcbfb138ed2c068c5cb568c67cd919
