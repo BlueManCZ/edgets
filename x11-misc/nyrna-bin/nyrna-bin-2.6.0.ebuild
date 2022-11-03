@@ -4,6 +4,7 @@
 # Source overlay: https://github.com/BlueManCZ/edgets
 
 EAPI=8
+inherit desktop xdg
 
 DESCRIPTION="Simple program to suspend games and applications"
 HOMEPAGE="https://nyrna.merritt.codes/"
@@ -17,8 +18,11 @@ KEYWORDS="-* ~amd64"
 
 QA_PREBUILT="*"
 
-RDEPEND="x11-libs/gtk+
-	!x11-misc/nyrna"
+RDEPEND="dev-libs/keybinder
+	x11-libs/gtk+
+	!x11-misc/nyrna
+	x11-misc/wmctrl
+	x11-misc/xdotool"
 
 S="${WORKDIR}"
 
@@ -35,4 +39,7 @@ src_install() {
 	doexe "nyrna"
 
 	dosym "/usr/share/nyrna/nyrna" "/usr/bin/nyrna" || die "dosym failed"
+
+	doicon "data/flutter_assets/assets/icons/nyrna.png"
+	make_desktop_entry "nyrna" "Nyrna" "nyrna" "Utility" "StartupWMClass=nyrna"
 }
