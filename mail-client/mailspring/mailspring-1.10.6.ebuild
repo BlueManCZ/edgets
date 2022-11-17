@@ -15,19 +15,19 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="-* ~amd64"
 RESTRICT="bindist mirror"
-IUSE="doc libnotify system-ffmpeg system-mesa"
+IUSE="doc libnotify system-mesa"
 
 RDEPEND="app-crypt/libsecret
 	dev-libs/libgcrypt
 	dev-libs/nss
 	gnome-base/gconf:2
 	gnome-base/gnome-keyring
+	sys-libs/db
 	virtual/libudev
 	x11-libs/gtk+:2
 	x11-libs/libXtst
 	x11-misc/xdg-utils
 	libnotify? ( x11-libs/libnotify )
-	system-ffmpeg? ( media-video/ffmpeg[chromium] )
 	system-mesa? ( media-libs/mesa )
 	|| (
 		dev-libs/glib:2
@@ -40,10 +40,6 @@ S=${WORKDIR}
 
 src_prepare() {
 	default
-
-	if use system-ffmpeg ; then
-		rm -f  "usr/share/mailspring/libffmpeg.so" || die "rm failed"
-	fi
 
 	if use system-mesa ; then
 		rm -fr "usr/share/mailspring/swiftshader" || die "rm failed"
@@ -61,9 +57,5 @@ src_install() {
 
 	if use doc ; then
 		dodoc -r "usr/share/doc/mailspring/"* || die "dodoc failed"
-	fi
-
-	if use system-ffmpeg ; then
-		dosym "/usr/"$(get_libdir)"/chromium/libffmpeg.so" "/usr/share/mailspring/libffmpeg.so" || die "dosym failed"
 	fi
 }
