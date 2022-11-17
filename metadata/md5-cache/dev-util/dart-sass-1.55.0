@@ -1,0 +1,11 @@
+DEFINED_PHASES=install
+DESCRIPTION=The reference implementation of Sass, written in Dart.
+EAPI=8
+HOMEPAGE=https://sass-lang.com/dart-sass
+KEYWORDS=-* ~amd64
+LICENSE=MIT
+RDEPEND=!dev-ruby/sass
+RESTRICT=mirror
+SLOT=0
+SRC_URI=https://github.com/sass/dart-sass/releases/download/1.55.0/dart-sass-1.55.0-linux-x64.tar.gz
+_md5_=dcbf1de7b6e522b30ca33558af41967b
