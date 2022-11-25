@@ -17,7 +17,7 @@ SLOT="0"
 SRC_URI="${HOMEPAGE}/releases/download/k${PV}/${PV}-linux.tar.xz -> ${P}.tar.xz"
 KEYWORDS="~amd64"
 
-DEPEND="sys-fs/fuse
+DEPEND="sys-fs/fuse:0
 	sys-apps/xdg-desktop-portal
 	x11-misc/xdg-utils"
 
