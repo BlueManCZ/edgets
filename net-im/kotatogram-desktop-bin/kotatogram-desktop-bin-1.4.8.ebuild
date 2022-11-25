@@ -11,13 +11,13 @@ DESCRIPTION="Experimental Telegram Desktop fork"
 HOMEPAGE="https://github.com/kotatogram/kotatogram-desktop"
 
 LICENSE="GPL-3"
-RESTRICT="mirror"
+RESTRICT="mirror strip"
 SLOT="0"
 
 SRC_URI="${HOMEPAGE}/releases/download/k${PV}/${PV}-linux.tar.xz -> ${P}.tar.xz"
 KEYWORDS="~amd64"
 
-DEPEND="sys-fs/fuse
+DEPEND="sys-fs/fuse:0
 	sys-apps/xdg-desktop-portal
 	x11-misc/xdg-utils"
 
