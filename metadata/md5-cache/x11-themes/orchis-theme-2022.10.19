@@ -1,0 +1,12 @@
+DEFINED_PHASES=install
+DEPEND=x11-libs/gtk+:2 >=x11-libs/gtk+-3.18:3 x11-themes/gtk-engines-murrine
+DESCRIPTION=Material Design theme for GNOME/GTK based desktop environments
+EAPI=8
+HOMEPAGE=https://github.com/vinceliuice/Orchis-theme
+KEYWORDS=~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86
+LICENSE=GPL-3
+RDEPEND=x11-libs/gtk+:2 >=x11-libs/gtk+-3.18:3 x11-themes/gtk-engines-murrine
+RESTRICT=mirror
+SLOT=0
+SRC_URI=https://github.com/vinceliuice/Orchis-theme/archive/2022-10-19.tar.gz -> orchis-theme-2022.10.19.tar.gz
+_md5_=d29ca8499464ffd86a6b5509276cfc82
