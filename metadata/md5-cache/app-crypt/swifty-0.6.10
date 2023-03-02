@@ -11,5 +11,5 @@ RDEPEND=app-accessibility/at-spi2-core app-crypt/libsecret dev-libs/nss sys-apps
 RESTRICT=bindist mirror
 SLOT=0
 SRC_URI=https://github.com/swiftyapp/swifty/releases/download/v0.6.10/Swifty_0.6.10_amd64.deb -> swifty-0.6.10.deb
-_eclasses_=multiprocessing	b4e253ab22cef7b1085e9b67c7a3b730	toolchain-funcs	441f754fd75cd4fd1fa06fbc17da6144	multilib	5ca4e49abed8e3a2f7b56920eadee157	unpacker	bc57272a0491765c71d973c8cfd35063	xdg-utils	ac0e315a3688929e34ac75b139e7349a	xdg	6024fbc93167fad782e2032933654857
+_eclasses_=multiprocessing	b4e253ab22cef7b1085e9b67c7a3b730	toolchain-funcs	6001248ef162a5fa2a21ce132a212f6b	multilib	5ca4e49abed8e3a2f7b56920eadee157	unpacker	fdd15d854bf5e84f82d35524ab8ca6ba	xdg-utils	ac0e315a3688929e34ac75b139e7349a	xdg	6024fbc93167fad782e2032933654857
 _md5_=881ceba67515207c0c6a66ea8587c843
