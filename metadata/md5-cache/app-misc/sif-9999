@@ -1,0 +1,14 @@
+BDEPEND=>=dev-vcs/git-1.8.2.1[curl]
+DEFINED_PHASES=install unpack
+DESCRIPTION=Fix runtime icons of Steam games
+EAPI=8
+HOMEPAGE=https://github.com/BlueManCZ/SIF
+INHERIT=git-r3
+IUSE=doc
+KEYWORDS=~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86
+LICENSE=Apache-2.0
+PROPERTIES=live
+RDEPEND=dev-lang/python dev-python/pygobject dev-python/requests dev-python/vdf x11-libs/gtk+ x11-misc/xdotool
+SLOT=0
+_eclasses_=git-r3	27e13c09a4c7e4c78ac812f74727e676
+_md5_=695f95e453fde5d34f09ddb08878e308
