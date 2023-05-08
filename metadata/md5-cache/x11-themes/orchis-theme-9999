@@ -10,5 +10,5 @@ PROPERTIES=live
 RDEPEND=x11-libs/gtk+:2 >=x11-libs/gtk+-3.18:3 x11-themes/gtk-engines-murrine
 RESTRICT=mirror
 SLOT=0
-_eclasses_=git-r3	2347f8fe2d392b2a091191f94be37e6f
+_eclasses_=git-r3	27e13c09a4c7e4c78ac812f74727e676
 _md5_=ad83710ba81c0bf08fb3ec3106eeb3eb
