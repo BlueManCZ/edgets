@@ -14,7 +14,7 @@ __Mailspring is the best email app for people and teams at work.__
 
 ---
 
-### :notebook: Simplenote ([app-text/simplenote-bin](https://github.com/BlueManCZ/edgets/tree/master/app-text/simplenote-bin))
+### :notebook: Simplenote ([app-text/simplenote](https://github.com/BlueManCZ/edgets/tree/master/app-text/simplenote))
 
 Homepage: https://github.com/Automattic/simplenote-electron
 
