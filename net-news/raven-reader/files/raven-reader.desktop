@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Raven Reader
+Exec=raven-reader
+Terminal=false
+Type=Application
+Icon=raven-reader
+StartupWMClass=Raven Reader
+X-AppImage-Version=1.0.79
+Comment=Simple desktop RSS Reader
+Categories=News;

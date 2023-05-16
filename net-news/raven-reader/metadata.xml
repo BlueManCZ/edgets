@@ -10,8 +10,4 @@
 		experience. No login is required, and no personal data is collected.
 		Just select the websites you want to curate articles from and enjoy!
 	</longdescription>
-	<use>
-		<flag name="system-ffmpeg">Use the system-wide media-video/ffmpeg instead of bundled</flag>
-		<flag name="system-mesa">Use the system-wide media-libs/mesa instead of bundled</flag>
-	</use>
 </pkgmetadata>
