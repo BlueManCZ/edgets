@@ -9,7 +9,5 @@
 	<use>
 		<flag name="alsa">Enable alsa support through media-libs/alsa-lib</flag>
 		<flag name="doc">Install package documentation</flag>
-		<flag name="system-ffmpeg">Use the system-wide media-video/ffmpeg instead of bundled</flag>
-		<flag name="system-mesa">Use the system-wide media-libs/mesa instead of bundled</flag>
 	</use>
 </pkgmetadata>

@@ -23,7 +23,7 @@ Your notes stay in sync with all your devices for free.__
 
 ---
 
-### :earth_americas: Min ([www-client/min-bin](https://github.com/BlueManCZ/edgets/tree/master/www-client/min-bin))
+### :earth_americas: Min ([www-client/min](https://github.com/BlueManCZ/edgets/tree/master/www-client/min))
 
 Homepage: https://github.com/minbrowser/min
 
