@@ -9,7 +9,7 @@ inherit desktop xdg
 DESCRIPTION="A free, open-source and cross-platform password manager."
 HOMEPAGE="https://github.com/buttercup/buttercup-desktop"
 SRC_URI="${HOMEPAGE}/releases/download/v${PV}/Buttercup-linux-x86_64.AppImage -> ${P}.AppImage
-		${HOMEPAGE}/blob/master/resources/images/buttercup-256.png?raw=true -> ${PN}.png"
+	${HOMEPAGE}/blob/master/resources/images/buttercup-256.png?raw=true -> ${PN}.png"
 
 LICENSE="GPL-3"
 SLOT="0"
