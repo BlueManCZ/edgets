@@ -56,11 +56,10 @@ online platforms like YouTube, SoundCloud, Vimeo and more.__
 
 ---
 
-### :closed_lock_with_key: Buttercup ([app-crypt/buttercup-desktop-bin](https://github.com/BlueManCZ/edgets/tree/master/app-crypt/buttercup-desktop-bin))
+### :closed_lock_with_key: Buttercup ([app-crypt/buttercup-desktop](https://github.com/BlueManCZ/edgets/tree/master/app-crypt/buttercup-desktop))
 
 Homepage: https://github.com/buttercup/buttercup-desktop
-
-__Cross-platform, free and open-source password manager based on NodeJS.__
+__Cross-Platform Passwords & Secrets Vault.__
 
 ---
 
