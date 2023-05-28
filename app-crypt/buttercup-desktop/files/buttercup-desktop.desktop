@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Buttercup Password Manager
+Exec=buttercup-desktop --no-sandbox %U
+Terminal=false
+Type=Application
+Icon=buttercup
+StartupWMClass=Buttercup
+X-AppImage-Version=2.20.2
+Comment=Buttercup Password Manager
+MimeType=x-scheme-handler/buttercup;
+Categories=Utility;
