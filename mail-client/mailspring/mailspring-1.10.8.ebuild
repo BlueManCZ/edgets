@@ -15,12 +15,11 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="-* ~amd64"
 RESTRICT="bindist mirror"
-IUSE="doc libnotify system-mesa"
+IUSE="doc libnotify"
 
 RDEPEND="app-crypt/libsecret
 	dev-libs/libgcrypt
 	dev-libs/nss
-	gnome-base/gconf:2
 	gnome-base/gnome-keyring
 	sys-libs/db
 	virtual/libudev
@@ -28,7 +27,6 @@ RDEPEND="app-crypt/libsecret
 	x11-libs/libXtst
 	x11-misc/xdg-utils
 	libnotify? ( x11-libs/libnotify )
-	system-mesa? ( media-libs/mesa )
 	|| (
 		dev-libs/glib:2
 		gnome-base/gvfs
@@ -40,12 +38,6 @@ S=${WORKDIR}
 
 src_prepare() {
 	default
-
-	if use system-mesa ; then
-		rm -fr "usr/share/mailspring/swiftshader" || die "rm failed"
-		rm -f  "usr/share/mailspring/libEGL.so" || die "rm failed"
-		rm -f  "usr/share/mailspring/libGLESv2.so" || die "rm failed"
-	fi
 
 	mv "usr/share/appdata" "usr/share/metainfo" || die "mv failed"
 }
