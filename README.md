@@ -3,15 +3,13 @@ The main goal of edgets overlay is to bring you the newest versions of modern so
 
 ## Getting started
 
-Edgets is available through layman, so all you need to do is install layman (if you don't have already) and add an overlay.
+Edgets is available through [eselect/repository](https://wiki.gentoo.org/wiki/Eselect/Repository), so all you need to do is install `app-eselect/eselect-repository` (if you don't have already) and enable the repository.
 
 ```
-# emerge --ask app-portage/layman
-# layman --sync-all
-# layman --add edgets
+# emerge --ask app-eselect/eselect-repository
+# eselect repository enable edgets
+# emerge --sync
 ```
-
-More information about layman usage [here](https://wiki.gentoo.org/wiki/Layman#Usage).
 
 ## Unmasking packages
 
@@ -43,7 +41,7 @@ Now, when overlay is added and package unmasked, you are ready to install it.
 Synchronize overlay tree and unmask newest version of package.
 
 ```
-# layman --sync edgets
+# emerge --sync
 # emerge --ask <package-name> --autounmask   # type yes
 # dispatch-conf                              # press u
 # emerge --ask <package-name>
