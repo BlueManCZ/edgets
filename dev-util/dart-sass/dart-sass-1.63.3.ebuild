@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Source overlay: https://github.com/BlueManCZ/edgets
@@ -22,6 +22,7 @@ RDEPEND="!dev-ruby/sass"
 S="${WORKDIR}/${PN}"
 
 src_install() {
-	exeinto "/usr/bin"
-	doexe "sass"
+	mkdir -p "${ED}/usr/share/sass" || die "mkdir failed"
+	cp -a *  "${ED}/usr/share/sass" || die "cp failed"
+	dosym "/usr/share/sass/sass" "/usr/bin/sass" || die "dosym failed"
 }
