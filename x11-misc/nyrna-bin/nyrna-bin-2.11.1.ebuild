@@ -1,4 +1,4 @@
-# Copyright 1999-2022 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Source overlay: https://github.com/BlueManCZ/edgets
@@ -40,6 +40,6 @@ src_install() {
 
 	dosym "/usr/share/nyrna/nyrna" "/usr/bin/nyrna" || die "dosym failed"
 
-	doicon "data/flutter_assets/assets/icons/nyrna.png"
+	newicon "data/flutter_assets/assets/icons/codes.merritt.Nyrna.svg" "nyrna.svg" || die "icon not found"
 	make_desktop_entry "nyrna" "Nyrna" "nyrna" "Utility" "StartupWMClass=nyrna"
 }
