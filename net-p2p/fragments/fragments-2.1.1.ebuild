@@ -1,0 +1,396 @@
+# Copyright 1999-2023 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+# Source overlay:	https://github.com/BlueManCZ/edgets
+# Thanks to:		https://github.com/gentoo/cargo-ebuild
+
+EAPI=8
+
+CRATES="
+	aead-0.3.2
+	aes-0.6.0
+	aes-0.7.5
+	aes-gcm-0.8.0
+	aes-soft-0.6.4
+	aesni-0.10.0
+	aho-corasick-1.0.1
+	anyhow-1.0.71
+	ashpd-0.3.2
+	async-broadcast-0.4.1
+	async-channel-1.8.0
+	async-executor-1.5.1
+	async-global-executor-2.3.1
+	async-io-1.13.0
+	async-lock-2.7.0
+	async-process-1.7.0
+	async-recursion-0.3.2
+	async-std-1.12.0
+	async-task-4.4.0
+	async-trait-0.1.68
+	atomic-waker-1.1.1
+	atty-0.2.14
+	autocfg-1.1.0
+	base-x-0.2.11
+	base64-0.13.1
+	bitflags-1.3.2
+	block-0.1.6
+	block-buffer-0.9.0
+	block-modes-0.8.1
+	block-padding-0.2.1
+	blocking-1.3.1
+	bumpalo-3.13.0
+	byteorder-1.4.3
+	bytes-0.5.6
+	bytes-1.4.0
+	cairo-rs-0.15.12
+	cairo-sys-rs-0.15.1
+	castaway-0.1.2
+	cc-1.0.79
+	cfg-expr-0.15.1
+	cfg-if-1.0.0
+	cipher-0.2.5
+	cipher-0.3.0
+	concurrent-queue-2.2.0
+	const_fn-0.4.9
+	cookie-0.14.4
+	cpufeatures-0.2.7
+	cpuid-bool-0.2.0
+	crossbeam-utils-0.8.15
+	crypto-mac-0.10.1
+	crypto-mac-0.11.1
+	ctr-0.6.0
+	curl-0.4.44
+	curl-sys-0.4.62+curl-8.1.0
+	derivative-2.2.0
+	digest-0.9.0
+	dirs-4.0.0
+	dirs-sys-0.3.7
+	discard-1.0.4
+	dtoa-0.4.8
+	encoding_rs-0.8.32
+	enumflags2-0.6.4
+	enumflags2-0.7.7
+	enumflags2_derive-0.6.4
+	enumflags2_derive-0.7.7
+	env_logger-0.7.1
+	errno-0.3.1
+	errno-dragonfly-0.1.2
+	event-listener-2.5.3
+	fastrand-1.9.0
+	field-offset-0.3.5
+	flume-0.9.2
+	fnv-1.0.7
+	form_urlencoded-1.1.0
+	futures-0.3.28
+	futures-channel-0.3.28
+	futures-core-0.3.28
+	futures-executor-0.3.28
+	futures-io-0.3.28
+	futures-lite-1.13.0
+	futures-macro-0.3.28
+	futures-sink-0.3.28
+	futures-task-0.3.28
+	futures-util-0.3.28
+	gdk-pixbuf-0.15.11
+	gdk-pixbuf-sys-0.15.10
+	gdk4-0.4.8
+	gdk4-sys-0.4.8
+	generic-array-0.12.4
+	generic-array-0.14.7
+	getrandom-0.1.16
+	getrandom-0.2.9
+	gettext-rs-0.7.0
+	gettext-sys-0.21.3
+	ghash-0.3.1
+	gio-0.15.12
+	gio-sys-0.15.10
+	glib-0.15.12
+	glib-macros-0.15.13
+	glib-sys-0.15.10
+	gloo-timers-0.2.6
+	gobject-sys-0.15.10
+	graphene-rs-0.15.1
+	graphene-sys-0.15.10
+	gsk4-0.4.8
+	gsk4-sys-0.4.8
+	gtk-macros-0.3.0
+	gtk4-0.4.9
+	gtk4-macros-0.4.10
+	gtk4-sys-0.4.8
+	hashbrown-0.12.3
+	heck-0.3.3
+	heck-0.4.1
+	hermit-abi-0.1.19
+	hermit-abi-0.3.1
+	hex-0.4.3
+	hkdf-0.10.0
+	hkdf-0.11.0
+	hmac-0.10.1
+	hmac-0.11.0
+	http-0.2.9
+	http-client-6.5.3
+	http-types-2.12.0
+	humantime-1.3.0
+	idna-0.1.5
+	idna-0.3.0
+	indexmap-1.9.3
+	infer-0.2.3
+	instant-0.1.12
+	io-lifetimes-1.0.11
+	isahc-0.9.14
+	isahc-1.7.2
+	itoa-0.4.8
+	itoa-1.0.6
+	js-sys-0.3.63
+	kv-log-macro-1.0.7
+	lazy_static-1.4.0
+	libadwaita-0.2.0-alpha.3
+	libadwaita-sys-0.2.0-alpha.3
+	libc-0.2.144
+	libnghttp2-sys-0.1.7+1.45.0
+	libz-sys-1.1.9
+	linux-raw-sys-0.3.8
+	locale_config-0.3.0
+	lock_api-0.4.9
+	log-0.4.18
+	magnet-uri-0.2.0
+	malloc_buf-0.0.6
+	matches-0.1.10
+	memchr-2.5.0
+	memoffset-0.6.5
+	memoffset-0.8.0
+	mime-0.3.17
+	mime_guess-2.0.4
+	nb-connect-1.2.0
+	nix-0.22.3
+	nix-0.23.2
+	num-0.2.1
+	num-0.4.0
+	num-bigint-0.4.3
+	num-complex-0.2.4
+	num-complex-0.4.3
+	num-integer-0.1.45
+	num-iter-0.1.43
+	num-rational-0.2.4
+	num-rational-0.4.1
+	num-traits-0.2.15
+	num_enum-0.5.11
+	num_enum_derive-0.5.11
+	objc-0.2.7
+	objc-foundation-0.1.1
+	objc_id-0.1.1
+	once_cell-1.17.1
+	opaque-debug-0.3.0
+	openssl-probe-0.1.5
+	openssl-sys-0.9.87
+	ordered-stream-0.0.1
+	pango-0.15.10
+	pango-sys-0.15.10
+	parking-2.1.0
+	parking_lot-0.12.1
+	parking_lot_core-0.9.7
+	percent-encoding-1.0.1
+	percent-encoding-2.2.0
+	pin-project-1.1.0
+	pin-project-internal-1.1.0
+	pin-project-lite-0.2.9
+	pin-utils-0.1.0
+	pkg-config-0.3.27
+	polling-2.8.0
+	polyval-0.4.5
+	ppv-lite86-0.2.17
+	pretty_env_logger-0.4.0
+	proc-macro-crate-0.1.5
+	proc-macro-crate-1.3.1
+	proc-macro-error-1.0.4
+	proc-macro-error-attr-1.0.4
+	proc-macro-hack-0.5.20+deprecated
+	proc-macro2-1.0.59
+	quick-error-1.2.3
+	quick-xml-0.22.0
+	quote-1.0.28
+	rand-0.7.3
+	rand-0.8.5
+	rand_chacha-0.2.2
+	rand_chacha-0.3.1
+	rand_core-0.5.1
+	rand_core-0.6.4
+	rand_hc-0.2.0
+	redox_syscall-0.2.16
+	redox_syscall-0.3.5
+	redox_users-0.4.3
+	regex-1.8.3
+	regex-syntax-0.7.2
+	rustc_version-0.2.3
+	rustc_version-0.4.0
+	rustix-0.37.19
+	ryu-1.0.13
+	schannel-0.1.21
+	scoped-tls-1.0.1
+	scopeguard-1.1.0
+	secret-service-2.0.2
+	semver-0.9.0
+	semver-1.0.17
+	semver-parser-0.7.0
+	serde-1.0.163
+	serde_derive-1.0.163
+	serde_json-1.0.96
+	serde_qs-0.8.5
+	serde_repr-0.1.12
+	serde_spanned-0.6.2
+	serde_urlencoded-0.5.5
+	serde_urlencoded-0.7.1
+	sha1-0.6.1
+	sha1_smol-1.0.0
+	sha2-0.9.9
+	signal-hook-0.3.15
+	signal-hook-registry-1.4.1
+	size_format-1.0.2
+	slab-0.4.8
+	sluice-0.5.5
+	smallvec-1.10.0
+	socket2-0.4.9
+	spinning_top-0.2.5
+	standback-0.2.17
+	static_assertions-1.1.0
+	stdweb-0.4.20
+	stdweb-derive-0.5.3
+	stdweb-internal-macros-0.2.9
+	stdweb-internal-runtime-0.1.5
+	strum-0.20.0
+	strum_macros-0.20.1
+	subtle-2.4.1
+	surf-2.3.2
+	syn-1.0.109
+	syn-2.0.18
+	system-deps-6.1.0
+	target-lexicon-0.12.7
+	temp-dir-0.1.11
+	tempfile-3.5.0
+	termcolor-1.2.0
+	thiserror-1.0.40
+	thiserror-impl-1.0.40
+	time-0.2.27
+	time-macros-0.1.1
+	time-macros-impl-0.1.2
+	tinyvec-1.6.0
+	tinyvec_macros-0.1.1
+	toml-0.5.11
+	toml-0.7.4
+	toml_datetime-0.6.2
+	toml_edit-0.19.10
+	tracing-0.1.37
+	tracing-attributes-0.1.24
+	tracing-core-0.1.31
+	tracing-futures-0.2.5
+	transmission-client-0.1.3
+	transmission-gobject-0.1.4
+	typenum-1.16.0
+	uds_windows-1.0.2
+	unicase-2.6.0
+	unicode-bidi-0.3.13
+	unicode-ident-1.0.9
+	unicode-normalization-0.1.22
+	unicode-segmentation-1.10.1
+	universal-hash-0.4.1
+	url-1.7.2
+	url-2.3.1
+	urlencoding-1.3.3
+	uuid-0.8.2
+	value-bag-1.4.0
+	vcpkg-0.2.15
+	version-compare-0.1.1
+	version_check-0.9.4
+	waker-fn-1.1.0
+	wasi-0.9.0+wasi-snapshot-preview1
+	wasi-0.11.0+wasi-snapshot-preview1
+	wasm-bindgen-0.2.86
+	wasm-bindgen-backend-0.2.86
+	wasm-bindgen-futures-0.4.36
+	wasm-bindgen-macro-0.2.86
+	wasm-bindgen-macro-support-0.2.86
+	wasm-bindgen-shared-0.2.86
+	web-sys-0.3.63
+	winapi-0.3.9
+	winapi-i686-pc-windows-gnu-0.4.0
+	winapi-util-0.1.5
+	winapi-x86_64-pc-windows-gnu-0.4.0
+	windows-sys-0.42.0
+	windows-sys-0.45.0
+	windows-sys-0.48.0
+	windows-targets-0.42.2
+	windows-targets-0.48.0
+	windows_aarch64_gnullvm-0.42.2
+	windows_aarch64_gnullvm-0.48.0
+	windows_aarch64_msvc-0.42.2
+	windows_aarch64_msvc-0.48.0
+	windows_i686_gnu-0.42.2
+	windows_i686_gnu-0.48.0
+	windows_i686_msvc-0.42.2
+	windows_i686_msvc-0.48.0
+	windows_x86_64_gnu-0.42.2
+	windows_x86_64_gnu-0.48.0
+	windows_x86_64_gnullvm-0.42.2
+	windows_x86_64_gnullvm-0.48.0
+	windows_x86_64_msvc-0.42.2
+	windows_x86_64_msvc-0.48.0
+	winnow-0.4.6
+	zbus-1.9.3
+	zbus-2.3.2
+	zbus_macros-1.9.3
+	zbus_macros-2.3.2
+	zbus_names-2.5.1
+	zvariant-2.10.0
+	zvariant-3.13.0
+	zvariant_derive-2.10.0
+	zvariant_derive-3.13.0
+	zvariant_utils-1.0.0
+"
+
+inherit gnome2-utils cargo meson xdg
+
+DESCRIPTION="Easy to use BitTorrent client"
+HOMEPAGE="https://apps.gnome.org/app/de.haeckerfelix.Fragments"
+GITLAB="https://gitlab.gnome.org/World/Fragments"
+
+SRC_URI="$(cargo_crate_uris)
+	${GITLAB}/-/archive/${PV}/${P^}.tar.gz"
+
+LICENSE="GPL-3"
+SLOT="0"
+KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+RESTRICT="mirror"
+
+DEPEND="dev-libs/dbus-glib
+	dev-libs/glib
+	dev-libs/openssl
+	gui-libs/gtk:4
+	gui-libs/libadwaita
+	net-p2p/transmission"
+RDEPEND="${DEPEND}"
+
+QA_FLAGS_IGNORED="usr/bin/${PN}"
+
+S="${WORKDIR}/${PN^}-${PV}"
+
+src_compile() {
+	sed '/post-install/,$d' -i data/meson.build
+	meson --prefix="/usr" build || die "Meson failed"
+	sed 's/\/usr\/bin\/cargo build/\/usr\/bin\/cargo build --offline/' -i build/build.ninja
+	ln -s "${WORKDIR}/cargo_home" "build/cargo-home" || die "symlink to cargo_home cannot be created"
+	ninja -C build || die "Ninja failed"
+}
+
+src_install() {
+	DESTDIR="${ED}" ninja -C build install
+}
+
+pkg_postinst() {
+	gnome2_schemas_update
+	xdg_pkg_postinst
+}
+
+pkg_postrm() {
+	gnome2_schemas_update
+	xdg_pkg_postrm
+}
