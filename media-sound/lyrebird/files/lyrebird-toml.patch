@@ -1,0 +1,60 @@
+diff --git a/app/core/config.py b/app/core/config.py
+index c6e0ff8..7d638dc 100644
+--- a/app/core/config.py
++++ b/app/core/config.py
+@@ -1,4 +1,4 @@
+-import toml
++import tomllib
+ 
+ from dataclasses import dataclass
+ from pathlib import Path
+@@ -22,7 +22,7 @@ def load_config():
+     config = {}
+     path = config_path
+     with open(path, 'r') as f:
+-        config = toml.loads(f.read())['config'][0]
++        config = tomllib.loads(f.read())['config'][0]
+ 
+     return Configuration(buffer_size=int(config['buffer_size']))
+ 
+diff --git a/app/core/launch.py b/app/core/launch.py
+index e5ae4e2..bb84e4c 100644
+--- a/app/core/launch.py
++++ b/app/core/launch.py
+@@ -21,7 +21,8 @@ class Launch:
+     @staticmethod
+     def check_py_toml():
+         try:
+-            import toml
++            import tomllib
++            import tomli_w
+             return True
+         except ModuleNotFoundError:
+             return False
+diff --git a/app/core/presets.py b/app/core/presets.py
+index 2dfe871..f0c189f 100644
+--- a/app/core/presets.py
++++ b/app/core/presets.py
+@@ -1,4 +1,5 @@
+-import toml
++import tomli_w
++import tomllib
+ import pathlib
+ from pathlib import Path
+ 
+@@ -95,7 +96,7 @@ def load_presets():
+         return { "presets": [], "failed": [] }
+ 
+     with open(path, 'r') as f:
+-        presets_data = toml.loads(f.read())['presets']
++        presets_data = tomllib.loads(f.read())['presets']
+         for item in presets_data:
+             # name
+             if "name" not in item:
+@@ -171,5 +172,5 @@ def create_presets(presets=[]):
+ 
+         presets = map(lambda x: x.dictionary(), presets)
+         presets = list(presets)
+-        toml_data = toml.dumps({ "presets": presets })
++        toml_data = tomli_w.dumps({ "presets": presets })
+         f.write(toml_data)
