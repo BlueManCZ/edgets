@@ -1,7 +1,7 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=7
+EAPI=8
 
 inherit gnome2-utils meson xdg
 
@@ -22,10 +22,10 @@ RESTRICT="mirror"
 SLOT="0"
 
 DEPEND="dev-python/dbus-python
-	dev-python/googletrans
 	dev-python/gTTS
 	dev-python/httpx
 	dev-python/pygobject
+	dev-util/blueprint-compiler
 	gui-libs/libhandy
 	media-libs/gstreamer
 	x11-libs/gtk+:3"
