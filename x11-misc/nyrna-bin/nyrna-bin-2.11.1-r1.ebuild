@@ -22,7 +22,8 @@ RDEPEND="dev-libs/keybinder
 	x11-libs/gtk+
 	!x11-misc/nyrna
 	x11-misc/wmctrl
-	x11-misc/xdotool"
+	x11-misc/xdotool
+	dev-libs/libappindicator"
 
 S="${WORKDIR}"
 
