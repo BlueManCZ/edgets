@@ -17,14 +17,15 @@ if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 else
 	SRC_URI="${HOMEPAGE}/archive/${PV}.tar.gz -> ${P}.tar.gz"
-	KEYWORDS="~amd64 ~arm ~arm64 ~ppc ~ppc64 ~x86"
+	KEYWORDS="~amd64 ~arm ~arm64 ~x86"
 fi
 
 DEPEND="dev-python/matplotlib
 	dev-python/pyudev
 	dev-python/pyxdg
 	dev-python/scipy
-	virtual/libudev"
+	virtual/libudev
+	dev-python/evdev"
 
 RDEPEND="${DEPEND}"
 
