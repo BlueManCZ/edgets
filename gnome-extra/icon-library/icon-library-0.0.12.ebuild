@@ -1,10 +1,10 @@
-# Copyright 1999-2021 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 # Source overlay:	https://github.com/BlueManCZ/edgets
 # Thanks to:		https://github.com/cardoe/cargo-ebuild
 
-EAPI=7
+EAPI=8
 
 CRATES="
 aho-corasick-0.7.18
