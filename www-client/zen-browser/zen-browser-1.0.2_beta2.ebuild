@@ -8,8 +8,8 @@ DESCRIPTION="Experience tranquillity while browsing the web without people track
 HOMEPAGE="https://zen-browser.app/"
 GITHUB="https://github.com/zen-browser/desktop"
 SRC_URI="
-	generic? ( ${GITHUB}/releases/download/${PV/_alpha/-a.}/zen.linux-generic.tar.bz2 -> ${P}-generic.tar.bz2 )
-	specific? ( ${GITHUB}/releases/download/${PV/_alpha/-a.}/zen.linux-specific.tar.bz2 -> ${P}-specific.tar.bz2 )
+	generic? ( ${GITHUB}/releases/download/${PV/_beta/-b.}/zen.linux-generic.tar.bz2 -> ${P}-generic.tar.bz2 )
+	specific? ( ${GITHUB}/releases/download/${PV/_beta/-b.}/zen.linux-specific.tar.bz2 -> ${P}-specific.tar.bz2 )
 "
 
 LICENSE="MPL-2.0"
