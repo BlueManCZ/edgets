@@ -7,10 +7,7 @@ inherit desktop xdg
 DESCRIPTION="Experience tranquillity while browsing the web without people tracking you!"
 HOMEPAGE="https://zen-browser.app/"
 GITHUB="https://github.com/zen-browser/desktop"
-SRC_URI="
-	generic? ( ${GITHUB}/releases/download/${PV/_beta/-b.}/zen.linux-generic.tar.bz2 -> ${P}-generic.tar.bz2 )
-	specific? ( ${GITHUB}/releases/download/${PV/_beta/-b.}/zen.linux-specific.tar.bz2 -> ${P}-specific.tar.bz2 )
-"
+SRC_URI="${GITHUB}/releases/download/${PV/_beta/-b.}/zen.linux-x86_64.tar.bz2 -> ${P}.tar.bz2"
 
 LICENSE="MPL-2.0"
 SLOT="0"
