@@ -2,10 +2,6 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<longdescription>
-		A simple, clean and cross-platform music player, written with Node.js, Electron and React.js.
+		A simple, clean and cross-platform music player
 	</longdescription>
-	<use>
-		<flag name="doc">Install package documentation</flag>
-		<flag name="system-mesa">Use the system-wide media-libs/mesa instead of bundled</flag>
-	</use>
 </pkgmetadata>
