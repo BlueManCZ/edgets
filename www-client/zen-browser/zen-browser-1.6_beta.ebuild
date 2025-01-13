@@ -12,8 +12,6 @@ SRC_URI="${GITHUB}/releases/download/${PV/_beta/b}/zen.linux-x86_64.tar.bz2 -> $
 LICENSE="MPL-2.0"
 SLOT="0"
 KEYWORDS="-* ~amd64"
-IUSE="+specific generic"
-REQUIRED_USE="^^ ( generic specific )"
 RESTRICT="bindist mirror strip"
 
 DEPEND=""
