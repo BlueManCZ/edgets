@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -17,8 +17,9 @@ IUSE=""
 DEPEND="
 	dev-python/lxml
 	dev-python/pygobject
-	>=gui-libs/gtk-4.0.0[broadway]
-	>=x11-libs/gtk+-2.24.0[broadway]
+	>=gui-libs/gtk-4.0.0[broadway,introspection]
+	>=gui-libs/gtksourceview-5[introspection]
+	>=x11-libs/gtk+-2.24.0[broadway,introspection]
 "
 
 S=${WORKDIR}/${P}

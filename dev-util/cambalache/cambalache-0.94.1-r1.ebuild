@@ -1,4 +1,4 @@
-# Copyright 1999-2024 Gentoo Authors
+# Copyright 1999-2025 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -15,12 +15,13 @@ RESTRICT="bindist mirror"
 IUSE=""
 
 DEPEND="
-	>=dev-libs/glib-2.80.0
+	>=dev-libs/glib-2.80.0[introspection]
 	dev-python/lxml
 	>=dev-python/pygobject-3.48.0
-	>=gui-libs/gtk-4.16.0
-	>=gui-libs/libadwaita-1.6.0
-	>=x11-libs/gtk+-2.24.0
+	>=gui-libs/gtk-4.16.0[introspection]
+	>=gui-libs/gtksourceview-5[introspection]
+	>=gui-libs/libadwaita-1.6.0[introspection]
+	>=x11-libs/gtk+-2.24.0[introspection]
 "
 
 S=${WORKDIR}/${P}
