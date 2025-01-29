@@ -15,14 +15,11 @@ RESTRICT="bindist mirror"
 IUSE=""
 
 DEPEND="
-	>=dev-libs/glib-2.80.0[introspection]
 	dev-python/lxml
-	>=dev-python/pygobject-3.48.0
-	>=gui-libs/casilda-0.1
-	>=gui-libs/gtk-4.16.0[introspection]
+	dev-python/pygobject
+	>=gui-libs/gtk-4.0.0[broadway,introspection,wayland]
 	>=gui-libs/gtksourceview-5[introspection]
-	>=gui-libs/libadwaita-1.6.0[introspection]
-	>=x11-libs/gtk+-2.24.0[introspection]
+	>=x11-libs/gtk+-2.24.0[broadway,introspection,wayland]
 "
 
 S=${WORKDIR}/${P}
