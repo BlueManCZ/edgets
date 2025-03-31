@@ -29,9 +29,9 @@ src_install() {
 
 	newicon -s 128 "zen/browser/chrome/icons/default/default128.png" "${PN}.png" || die "doicon failed"
 
-	dosym "/opt/zen-browser/zen" "/usr/bin/zen-browser" || die "dosym failed"
+	dosym "/opt/zen-browser-bin/zen" "/usr/bin/zen-browser" || die "dosym failed"
 
 	MIMETYPE="MimeType=application/pdf;application/rdf+xml;application/rss+xml;application/xhtml+xml;application/xhtml_xml;application/xml;image/gif;image/jpeg;image/png;image/webp;text/html;text/xml;x-scheme-handler/http;x-scheme-handler/https;"
 
-	make_desktop_entry "${PN} %U" "Zen Browser" ${PN} "Network;WebBrowser" "StartupWMClass=zen-alpha\n${MIMETYPE}"
+	make_desktop_entry "zen-browser %U" "Zen Browser" ${PN} "Network;WebBrowser" "StartupWMClass=zen-alpha\n${MIMETYPE}"
 }
