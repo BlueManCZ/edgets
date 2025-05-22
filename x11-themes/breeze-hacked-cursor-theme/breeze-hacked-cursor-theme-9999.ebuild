@@ -20,7 +20,7 @@ DEPEND="media-gfx/inkscape
 RDEPEND="${DEPEND}"
 
 src_compile() {
-	./build.sh
+	./build.py
 }
 
 src_install() {
