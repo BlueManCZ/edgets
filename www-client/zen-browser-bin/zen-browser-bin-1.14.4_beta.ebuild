@@ -31,17 +31,5 @@ src_install() {
 
 	dosym "/opt/zen-browser-bin/zen" "/usr/bin/zen-browser" || die "dosym failed"
 
-	insinto /usr/share/applications
-	cat > "${T}/${PN}.desktop" <<-EOF
-	[Desktop Entry]
-	Version=1.0
-	Type=Application
-	Name=Zen Browser
-	Exec=zen-browser %U
-	Icon=${PN}
-	Categories=Network;WebBrowser;
-	StartupWMClass=zen
-	MimeType=application/pdf;application/rdf+xml;application/rss+xml;application/xhtml+xml;application/xhtml_xml;application/xml;image/gif;image/jpeg;image/png;image/webp;text/html;text/xml;x-scheme-handler/http;x-scheme-handler/https;
-	EOF
-	doins "${T}/${PN}.desktop"
+	domenu "${FILESDIR}/${PN}.desktop"
 }
