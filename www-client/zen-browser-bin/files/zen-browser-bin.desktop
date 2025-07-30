@@ -2,6 +2,7 @@
 Version=1.0
 Type=Application
 Name=Zen Browser
+Comment=Experience tranquillity while browsing the web without people tracking you!
 Exec=zen-browser %U
 Icon=zen-browser-bin
 Categories=Network;WebBrowser;
