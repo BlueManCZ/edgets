@@ -16,7 +16,7 @@ LICENSE="Apache-2.0"
 SLOT="0"
 KEYWORDS="-* ~amd64 ~arm64"
 RESTRICT="bindist mirror"
-IUSE="alsa doc libnotify pulseaudio"
+IUSE="alsa doc libnotify"
 
 RDEPEND="app-accessibility/at-spi2-core
 	dev-libs/libgcrypt
@@ -43,7 +43,6 @@ RDEPEND="app-accessibility/at-spi2-core
 	)
 	|| (
 		alsa? ( media-libs/alsa-lib )
-		pulseaudio? ( media-sound/pulseaudio )
 	)"
 
 QA_PREBUILT="*"
