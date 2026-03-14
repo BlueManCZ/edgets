@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<longdescription>
+		Meru is a desktop app for Gmail, providing a native desktop
+		experience without losing your inbox in browser tabs. Formerly
+		known as Gmail Desktop.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">zoidsh/meru</remote-id>
+	</upstream>
+
+</pkgmetadata>
