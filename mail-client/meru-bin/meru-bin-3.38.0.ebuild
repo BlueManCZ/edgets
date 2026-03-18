@@ -31,15 +31,6 @@ QA_PREBUILT="*"
 
 S=${WORKDIR}
 
-src_prepare() {
-	default
-
-	# Fix duplicate MimeType entries in desktop file (upstream bug:
-	# protocols.schemes and linux.mimeTypes both add x-scheme-handler/mailto)
-	sed -i 's/MimeType=.*/MimeType=x-scheme-handler\/mailto;x-scheme-handler\/meru;/' \
-		usr/share/applications/meru.desktop || die "sed failed"
-}
-
 src_install() {
 	cp -a . "${ED}" || die "cp failed"
 
