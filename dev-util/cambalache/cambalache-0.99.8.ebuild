@@ -44,6 +44,7 @@ S=${WORKDIR}/${P}
 
 src_install() {
     meson_src_install
+	python_fix_shebang "${D}"
     python_optimize
 }
 
