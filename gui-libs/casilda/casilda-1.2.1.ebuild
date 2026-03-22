@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -13,9 +13,19 @@ LICENSE="LGPL-2.1"
 SLOT="0"
 KEYWORDS="~amd64"
 
+IUSE="doc"
+
 DEPEND="
-	gui-libs/gtk
-	gui-libs/wlroots
+    >=media-libs/libepoxy-1.5
+    >=gui-libs/gtk-4.14:4
+    >=x11-libs/pixman-0.42.0
+    >=dev-libs/wayland-protocols-1.32
+    >=dev-libs/wayland-1.22
+    >=gui-libs/wlroots-0.19
+    >=x11-libs/libxkbcommon-1.5
 "
 RDEPEND="${DEPEND}"
-BDEPEND=""
+BDEPEND="
+    dev-libs/wayland
+    doc? ( dev-util/gi-docgen )
+"
