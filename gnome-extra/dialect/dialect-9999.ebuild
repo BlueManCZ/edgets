@@ -1,11 +1,13 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
 
-inherit gnome2-utils meson xdg
+PYTHON_COMPAT=( python3_{11,12,13} )
 
-DESCRIPTION="A translation app for GNOME."
+inherit gnome2-utils meson python-single-r1 xdg
+
+DESCRIPTION="A translation app for GNOME"
 HOMEPAGE="https://github.com/dialect-app/dialect"
 
 if [[ ${PV} == 9999 ]]; then
@@ -21,21 +23,44 @@ LICENSE="GPL-3"
 RESTRICT="mirror"
 SLOT="0"
 
-DEPEND="app-crypt/libsecret
+REQUIRED_USE="${PYTHON_REQUIRED_USE}"
+
+DEPEND="
+	${PYTHON_DEPS}
+	dev-libs/glib:2
+	>=dev-libs/gobject-introspection-1.35.0
+	>=media-libs/gstreamer-1.18:1.0
+	>=gui-libs/gtk-4.17.5:4
+	>=gui-libs/libadwaita-1.7
+	>=net-libs/libsoup-3.0
 	app-text/libspelling
-	dev-python/beautifulsoup4
-	dev-python/gTTS
-	>=dev-python/pygobject-3.51.0
-	gui-libs/gtk
-	gui-libs/libadwaita
-	media-libs/gstreamer
-	net-libs/libsoup"
+	app-crypt/libsecret
+	$(python_gen_cond_dep '
+		>=dev-python/pygobject-3.51[${PYTHON_USEDEP}]
+		dev-python/beautifulsoup4[${PYTHON_USEDEP}]
+		dev-python/gTTS[${PYTHON_USEDEP}]
+	')
+"
+
+RDEPEND="${DEPEND}"
+
+BDEPEND="
+	${PYTHON_DEPS}
+	dev-util/blueprint-compiler
+	virtual/pkgconfig
+"
 
 src_prepare() {
-	eapply_user
 	if [[ ${PV} != 9999 ]]; then
-		mv "../po-${PV}/"* "po"
+		mv "${WORKDIR}/po-${PV}"/* po || die
 	fi
+	eapply_user
+}
+
+src_install() {
+	meson_src_install
+	python_fix_shebang "${D}"
+	python_optimize
 }
 
 pkg_postinst() {
