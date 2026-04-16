@@ -12,10 +12,15 @@ jobs:
     container:
       image: gentoo/stage3:latest
     steps:
-      - name: Install dependencies
+      - name: Sync Gentoo tree
         run: |
-          emerge --sync --quiet
-          emerge -q1 dev-python/pkgcheck
+          # Use webrsync (HTTPS) — rsync is unreliable in CI
+          emerge-webrsync --quiet
+          # Ensure a valid profile is set
+          eselect profile set default/linux/amd64/23.0
+
+      - name: Install pkgcheck
+        run: emerge -q1 dev-python/pkgcheck
 
       - uses: actions/checkout@v4
         with:
