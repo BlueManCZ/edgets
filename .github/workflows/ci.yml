@@ -16,8 +16,8 @@ jobs:
         run: |
           mkdir -p /var/db/repos/gentoo
           emerge-webrsync --quiet
-          python3 -m ensurepip --upgrade
-          pip install pkgcheck
+          python3 -m venv /tmp/venv
+          /tmp/venv/bin/pip install pkgcheck
 
       - uses: actions/checkout@v4
         with:
@@ -39,7 +39,7 @@ jobs:
           EOF
 
       - name: Run pkgcheck
-        run: pkgcheck scan --repo edgets
+        run: /tmp/venv/bin/pkgcheck scan --repo edgets
 
   version-limit:
     name: Max 4 versions per package
