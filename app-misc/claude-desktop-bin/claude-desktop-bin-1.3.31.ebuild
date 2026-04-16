@@ -158,13 +158,17 @@ src_install() {
 		fi
 	done
 
-	# Desktop entry
-	make_desktop_entry \
-		"/usr/bin/claude-desktop %u" \
-		"Claude" \
-		"claude-desktop" \
-		"Office;Utility;" \
-		"MimeType=x-scheme-handler/claude;\nStartupWMClass=Claude"
+	# Desktop entry — the launcher-common.sh doctor check expects
+	# exactly /usr/share/applications/claude-desktop.desktop
+	make_desktop_entry --eapi9 \
+		--desktopid claude-desktop \
+		"/usr/bin/claude-desktop" \
+		--args "%u" \
+		--name "Claude" \
+		--icon claude-desktop \
+		--categories "Office;Utility;" \
+		--entry "MimeType=x-scheme-handler/claude;" \
+		--entry "StartupWMClass=Claude"
 }
 
 pkg_postinst() {
