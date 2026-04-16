@@ -9,34 +9,33 @@ jobs:
   pkgcheck:
     name: pkgcheck scan
     runs-on: ubuntu-latest
+    container:
+      image: gentoo/stage3:latest
     steps:
-      - uses: actions/checkout@v4
-
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.x"
-
-      - name: Install pkgcheck
-        run: pip install pkgcheck
-
-      - name: Fetch Gentoo tree
+      - name: Setup environment
         run: |
-          wget -q http://distfiles.gentoo.org/snapshots/gentoo-latest.tar.xz -O /tmp/gentoo.tar.xz
-          tar xf /tmp/gentoo.tar.xz -C /tmp/
-          mv /tmp/gentoo-* /tmp/gentoo
+          mkdir -p /var/db/repos/gentoo
+          emerge-webrsync --quiet
+          python3 -m ensurepip --upgrade
+          pip install pkgcheck
+
+      - uses: actions/checkout@v4
+        with:
+          path: edgets
 
       - name: Configure repos
         run: |
-          sudo mkdir -p /etc/portage
-          cat <<'EOF' | sudo tee /etc/portage/repos.conf > /dev/null
+          ln -s "$GITHUB_WORKSPACE/edgets" /var/db/repos/edgets
+          rm -rf /etc/portage/repos.conf
+          cat > /etc/portage/repos.conf <<'EOF'
           [DEFAULT]
           main-repo = gentoo
 
           [gentoo]
-          location = /tmp/gentoo
+          location = /var/db/repos/gentoo
 
           [edgets]
-          location = ${{ github.workspace }}
+          location = /var/db/repos/edgets
           EOF
 
       - name: Run pkgcheck
