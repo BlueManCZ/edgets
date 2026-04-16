@@ -14,13 +14,15 @@ jobs:
     steps:
       - name: Sync Gentoo tree
         run: |
+          # Create the repo location that repos.conf expects
+          mkdir -p /var/db/repos/gentoo
           # Use webrsync (HTTPS) — rsync is unreliable in CI
           emerge-webrsync --quiet
           # Ensure a valid profile is set
           eselect profile set default/linux/amd64/23.0
 
       - name: Install pkgcheck
-        run: emerge -q1 dev-python/pkgcheck
+        run: emerge -q1 dev-util/pkgcheck
 
       - uses: actions/checkout@v4
         with:
