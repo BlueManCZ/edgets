@@ -1,0 +1,111 @@
+name: CI
+
+on:
+  push:
+    branches: [master, main]
+  pull_request:
+
+jobs:
+  pkgcheck:
+    name: pkgcheck scan
+    runs-on: ubuntu-latest
+    container:
+      image: gentoo/stage3:latest
+    steps:
+      - name: Setup environment
+        run: |
+          mkdir -p /var/db/repos/gentoo
+          emerge-webrsync --quiet
+          python3 -m venv /tmp/venv
+          /tmp/venv/bin/pip install pkgcheck
+
+      - uses: actions/checkout@v4
+        with:
+          path: edgets
+
+      - name: Configure repos
+        run: |
+          ln -s "$GITHUB_WORKSPACE/edgets" /var/db/repos/edgets
+          rm -rf /etc/portage/repos.conf
+          cat > /etc/portage/repos.conf <<'EOF'
+          [DEFAULT]
+          main-repo = gentoo
+
+          [gentoo]
+          location = /var/db/repos/gentoo
+
+          [edgets]
+          location = /var/db/repos/edgets
+          EOF
+
+      - name: Run pkgcheck
+        run: /tmp/venv/bin/pkgcheck scan --repo edgets
+
+  version-limit:
+    name: Max 4 versions per package
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check version limit
+        run: |
+          status=0
+          for pkg_dir in */*/; do
+            # Skip non-package directories
+            [[ "$pkg_dir" == metadata/* ]] && continue
+            [[ "$pkg_dir" == profiles/* ]] && continue
+            [[ "$pkg_dir" == eclass/* ]]   && continue
+            [[ "$pkg_dir" == .github/* ]]  && continue
+
+            count=$(find "$pkg_dir" -maxdepth 1 -name '*.ebuild' | wc -l)
+            if [ "$count" -gt 4 ]; then
+              echo "::error file=${pkg_dir%/}::${pkg_dir%/} has $count versions (max 4)"
+              status=1
+            fi
+          done
+          exit "$status"
+
+  manifests:
+    name: Manifest consistency
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Every package with ebuilds has a Manifest
+        run: |
+          status=0
+          for pkg_dir in */*/; do
+            [[ "$pkg_dir" == metadata/* ]] && continue
+            [[ "$pkg_dir" == profiles/* ]] && continue
+            [[ "$pkg_dir" == eclass/* ]]   && continue
+            [[ "$pkg_dir" == .github/* ]]  && continue
+
+            ebuild_count=$(find "$pkg_dir" -maxdepth 1 -name '*.ebuild' | wc -l)
+            if [ "$ebuild_count" -gt 0 ] && [ ! -f "${pkg_dir}Manifest" ]; then
+              echo "::error file=${pkg_dir%/}::${pkg_dir%/} has ebuilds but no Manifest"
+              status=1
+            fi
+          done
+          exit "$status"
+
+      - name: Every ebuild is listed in its Manifest
+        run: |
+          status=0
+          for pkg_dir in */*/; do
+            [[ "$pkg_dir" == metadata/* ]] && continue
+            [[ "$pkg_dir" == profiles/* ]] && continue
+            [[ "$pkg_dir" == eclass/* ]]   && continue
+            [[ "$pkg_dir" == .github/* ]]  && continue
+
+            [ -f "${pkg_dir}Manifest" ] || continue
+
+            for ebuild in "$pkg_dir"*.ebuild; do
+              [ -f "$ebuild" ] || continue
+              basename=$(basename "$ebuild")
+              if ! grep -q "$basename" "${pkg_dir}Manifest"; then
+                echo "::error file=${ebuild}::${ebuild} not found in Manifest"
+                status=1
+              fi
+            done
+          done
+          exit "$status"
