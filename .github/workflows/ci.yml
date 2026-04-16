@@ -9,32 +9,34 @@ jobs:
   pkgcheck:
     name: pkgcheck scan
     runs-on: ubuntu-latest
-    container:
-      image: gentoo/stage3:latest
     steps:
-      - name: Sync Gentoo tree
-        run: |
-          # Create the repo location that repos.conf expects
-          mkdir -p /var/db/repos/gentoo
-          # Use webrsync (HTTPS) — rsync is unreliable in CI
-          emerge-webrsync --quiet
-          # Ensure a valid profile is set
-          eselect profile set default/linux/amd64/23.0
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
 
       - name: Install pkgcheck
-        run: emerge -q1 dev-util/pkgcheck
+        run: pip install pkgcheck
 
-      - uses: actions/checkout@v4
-        with:
-          path: edgets
-
-      - name: Register overlay
+      - name: Fetch Gentoo tree
         run: |
-          mkdir -p /var/db/repos
-          ln -s "$GITHUB_WORKSPACE/edgets" /var/db/repos/edgets
-          cat >> /etc/portage/repos.conf <<'EOF'
+          wget -q http://distfiles.gentoo.org/snapshots/gentoo-latest.tar.xz -O /tmp/gentoo.tar.xz
+          tar xf /tmp/gentoo.tar.xz -C /tmp/
+          mv /tmp/gentoo-* /tmp/gentoo
+
+      - name: Configure repos
+        run: |
+          sudo mkdir -p /etc/portage
+          cat <<'EOF' | sudo tee /etc/portage/repos.conf > /dev/null
+          [DEFAULT]
+          main-repo = gentoo
+
+          [gentoo]
+          location = /tmp/gentoo
+
           [edgets]
-          location = /var/db/repos/edgets
+          location = ${{ github.workspace }}
           EOF
 
       - name: Run pkgcheck
