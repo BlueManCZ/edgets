@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=T3 Code
+Exec=t3code-bin --no-sandbox %U
+Terminal=false
+Type=Application
+Icon=t3code-bin
+StartupWMClass=T3 Code
+Comment=A minimal web GUI for coding agents
+Categories=Development;IDE;
