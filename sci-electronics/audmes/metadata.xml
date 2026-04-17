@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<longdescription>
+		AUDio MEasurement System (AudMeS) is a PC based oscilloscope and
+		spectrum analyzer using the sound card for audio measurements.
+		It supports ALSA and PulseAudio on Linux.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">swwa/audmes</remote-id>
+		<remote-id type="sourceforge">audmes</remote-id>
+	</upstream>
+</pkgmetadata>

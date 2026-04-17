@@ -1,10 +1,12 @@
 --- a/CMakeLists.txt
-+++ b/CMakeLists_patched.txt
-@@ -67,8 +67,6 @@
++++ b/CMakeLists.txt
+@@ -122,9 +122,7 @@
  if (${CMAKE_HOST_SYSTEM_NAME} MATCHES "Linux")
  	install(TARGETS ${PROJECT_NAME} DESTINATION "bin")
  	install(FILES "audmes.desktop" DESTINATION "share/applications")
+-	install(FILES "net.sourceforge.audmes.audmes.appdata.xml" DESTINATION "share/appdata")
 -	install(FILES "README.md" DESTINATION "share/doc/audmes")
 -	install(FILES "NEWS" DESTINATION "share/doc/audmes")
++	install(FILES "net.sourceforge.audmes.audmes.appdata.xml" DESTINATION "share/metainfo")
  	install(FILES "audmes.png" DESTINATION "share/pixmaps")
  	install(FILES "audmes.png" DESTINATION "share/icons/hicolor/128x128/apps/")
