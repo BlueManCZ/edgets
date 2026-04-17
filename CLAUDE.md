@@ -3,7 +3,7 @@
 ## Package management rules
 
 - Keep only the latest 4 versions of each package. When bumping, delete older ebuilds to stay within this limit.
-- After adding/removing ebuilds, run `manifest` (alias for `pkgdev manifest -f --if-modified`) to regenerate the Manifest.
+- Always run `manifest` (alias for `pkgdev manifest -f --if-modified`) after modifying ebuilds or metadata to regenerate the Manifest.
 
 ## metadata.xml conventions
 

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<longdescription>
+		Viber for Desktop provides free calls, text and picture sharing
+		with anyone, anywhere. It syncs your contacts, messages and call
+		history with your mobile device.
+	</longdescription>
+	<upstream>
+		<remote-id type="homepage">https://viber.com</remote-id>
+	</upstream>
+</pkgmetadata>
