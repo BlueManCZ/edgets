@@ -5,7 +5,7 @@
  Terminal=false
  Name=GanttProject
 -Icon=/usr/share/icons/gnome/scalable/mimetypes/application-x-ganttproject.svg
-+Comment=A tool for creating a project schedule by means of Gantt chart and resource load chart
++Comment=Project scheduling and management with Gantt charts
 +Icon=ganttproject
  Exec=/usr/bin/ganttproject %U
  MimeType=application/x-ganttproject;

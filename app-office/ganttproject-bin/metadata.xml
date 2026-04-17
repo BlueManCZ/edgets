@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<longdescription>
+		GanttProject is a free, open-source project management application
+		for creating Gantt charts, resource load charts, and PERT charts.
+		It supports task hierarchies, dependencies, milestones, resource
+		assignments, and can import/export MS Project files.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">bardsoftware/ganttproject</remote-id>
+		<bugs-to>https://github.com/bardsoftware/ganttproject/issues</bugs-to>
+	</upstream>
+</pkgmetadata>
