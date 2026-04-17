@@ -11,6 +11,11 @@
 - Include a `<longdescription>` with a brief summary of the package.
 - Include `<upstream>` with the appropriate `<remote-id>` (e.g. `sourceforge`, `github`).
 
+## Ebuild conventions
+
+- Copyright header must use the format `# Copyright 1999-YYYY Gentoo Authors`, where YYYY is the current year.
+- When HOMEPAGE has multiple URLs, put each on its own indented line.
+
 ## Commit message conventions
 
 - `category/package: Bump version to X.Y.Z` — for version bumps

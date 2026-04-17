@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<longdescription>
+		Polyphone is a free software for editing soundfonts in format sf2, sf3
+		and sfz. It includes tools to facilitate and automate the editing of
+		different parameters, making it possible to create musical instruments
+		quickly and efficiently.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">davy7125/polyphone</remote-id>
+	</upstream>
+</pkgmetadata>
