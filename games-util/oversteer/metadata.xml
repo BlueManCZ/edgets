@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<longdescription>
+		Oversteer is a steering wheel manager for Linux that allows
+		configuration of force feedback, rotation range, and other
+		settings for Logitech, Thrustmaster, and Fanatec wheels.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">berarma/oversteer</remote-id>
+	</upstream>
+</pkgmetadata>
