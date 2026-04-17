@@ -2,15 +2,19 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-inherit git-r3
 
 DESCRIPTION="Fast header-only CSV parser library for C++"
 HOMEPAGE="https://github.com/ben-strasser/fast-cpp-csv-parser"
-EGIT_REPO_URI="${HOMEPAGE}"
+
+COMMIT="574a9fe4d323ba63416877a4a5fe59088d37aa34"
+SRC_URI="https://github.com/ben-strasser/fast-cpp-csv-parser/archive/${COMMIT}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}/fast-cpp-csv-parser-${COMMIT}"
 
 LICENSE="BSD"
 SLOT="0"
+KEYWORDS="~amd64 ~x86"
 IUSE="doc"
+RESTRICT="mirror"
 
 src_prepare() {
 	default

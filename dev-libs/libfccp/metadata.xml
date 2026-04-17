@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<longdescription>
+		A small, easy-to-use and fast header-only library for reading
+		comma separated value (CSV) files.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">ben-strasser/fast-cpp-csv-parser</remote-id>
+	</upstream>
+</pkgmetadata>
