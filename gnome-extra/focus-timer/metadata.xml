@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<longdescription>
+		Focus Timer (formerly GNOME Pomodoro) is a time management utility
+		for GNOME that helps you stay focused using the pomodoro technique.
+		It features a timer with customizable durations, desktop notifications,
+		and integration with the GNOME Shell.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">focustimerhq/FocusTimer</remote-id>
+	</upstream>
+</pkgmetadata>
