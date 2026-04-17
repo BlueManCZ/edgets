@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<longdescription>
+		A lightweight C implementation of the BitTorrent DHT (Distributed
+		Hash Table) protocol for peer discovery in decentralized networks.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">jech/dht</remote-id>
+	</upstream>
+</pkgmetadata>
