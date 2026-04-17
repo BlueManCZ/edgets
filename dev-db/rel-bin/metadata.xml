@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<longdescription>
+		Rel is a database management system with a user-friendly graphical
+		interface that faithfully implements Date and Darwen's Tutorial D
+		query language, based on the relational model of data.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">DaveVoorhis/Rel</remote-id>
+		<remote-id type="sourceforge">dbappbuilder</remote-id>
+	</upstream>
+</pkgmetadata>
