@@ -1,1 +1,0 @@
-webtorrent-desktop-bin-0.23.0.ebuild
