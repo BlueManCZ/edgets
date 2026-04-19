@@ -2,9 +2,15 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<longdescription>
-		 The best email app for people and teams at work
+		Mailspring is a modern, beautifully designed email client with a focus on
+		productivity. It supports IMAP and Office 365 accounts, and ships with
+		features such as unified inbox, quick replies, snoozing, read receipts,
+		link tracking, send later, templates and a powerful plugin system.
 	</longdescription>
 	<use>
 		<flag name="doc">Install package documentation</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">Foundry376/Mailspring</remote-id>
+	</upstream>
 </pkgmetadata>
