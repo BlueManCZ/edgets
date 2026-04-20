@@ -2,19 +2,20 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-inherit desktop unpacker xdg
+inherit unpacker xdg
 
 MY_PN="${PN/-bin/}"
 
 DESCRIPTION="Desktop app for Gmail — the Gmail experience you deserve"
-HOMEPAGE="https://meru.so https://github.com/zoidsh/meru"
+HOMEPAGE="https://meru.so
+	https://github.com/zoidsh/meru"
 SRC_URI="https://github.com/zoidsh/meru/releases/download/v${PV}/${MY_PN}_${PV}_amd64.deb -> ${P}.deb"
 
 LICENSE="AGPL-3"
 SLOT="0"
 KEYWORDS="-* ~amd64"
-RESTRICT="bindist mirror strip"
 IUSE="appindicator libnotify"
+RESTRICT="bindist mirror strip"
 
 RDEPEND="app-accessibility/at-spi2-core
 	app-crypt/libsecret
@@ -24,7 +25,7 @@ RDEPEND="app-accessibility/at-spi2-core
 	x11-libs/libXScrnSaver
 	x11-libs/libXtst
 	x11-misc/xdg-utils
-	appindicator? ( dev-libs/libappindicator )
+	appindicator? ( x11-libs/libappindicator )
 	libnotify? ( x11-libs/libnotify )"
 
 QA_PREBUILT="*"
@@ -37,5 +38,5 @@ src_install() {
 	# Remove upstream doc directory, let portage handle it
 	rm -rf "${ED}/usr/share/doc/${MY_PN}" || true
 
-	dosym "/opt/Meru/${MY_PN}" "/usr/bin/${MY_PN}" || die "dosym failed"
+	dosym -r "/opt/Meru/${MY_PN}" "/usr/bin/${MY_PN}" || die "dosym failed"
 }
