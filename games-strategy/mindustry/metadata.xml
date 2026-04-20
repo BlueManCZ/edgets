@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<longdescription>
+		Mindustry is a hybrid tower-defense sandbox factory game. Players are
+		tasked with creating elaborate supply chains of conveyor belts to feed
+		ammo into their turrets, producing materials to build with, and
+		defending their structures from waves of enemies. The game can be
+		played cooperatively, competitively, or alone across hand-crafted
+		campaign missions, procedurally generated sectors, and custom maps,
+		with both PvE and PvP multiplayer modes available.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">Anuken/Mindustry</remote-id>
+	</upstream>
+</pkgmetadata>
