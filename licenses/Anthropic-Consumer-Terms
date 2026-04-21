@@ -1,0 +1,18 @@
+Claude Desktop is proprietary software by Anthropic, PBC. Its use is
+governed by Anthropic's Consumer Terms of Service and Usage Policy.
+
+By using Claude Desktop you agree to abide by these terms:
+
+  Consumer Terms of Service: https://www.anthropic.com/legal/consumer-terms
+  Usage Policy:              https://www.anthropic.com/legal/aup
+  Privacy Policy:            https://www.anthropic.com/legal/privacy
+
+This ebuild repackages the official Windows Claude Desktop installer
+for use on Linux via an Electron wrapper. The build wrapper scripts
+are separately licensed under MIT and Apache-2.0; the Claude Desktop
+application itself (the code extracted from the Windows installer and
+executed at runtime) remains proprietary to Anthropic and is not
+redistributed by the Gentoo or overlay maintainers.
+
+Refer to the canonical terms at the URLs above for the authoritative
+and current license text.
