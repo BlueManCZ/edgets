@@ -1,0 +1,200 @@
+# Copyright 1999-2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=8
+
+inherit desktop xdg
+
+# Upstream version scheme: v${PV}+claude${CLAUDE_PV}
+# PV tracks the wrapper version; CLAUDE_PV is the upstream app version.
+# Update both when bumping.
+CLAUDE_PV="1.3883.0"
+CLAUDE_EXE_HASH="93ff6cb984386882b4bd9b6bca80d4cf5af8e13b"
+MY_TAG="v${PV}+claude${CLAUDE_PV}"
+
+DESCRIPTION="Claude Desktop for Linux (unofficial, repackaged from Windows)"
+HOMEPAGE="https://github.com/aaddrick/claude-desktop-debian"
+SRC_URI="
+	https://github.com/aaddrick/claude-desktop-debian/archive/${MY_TAG}.tar.gz
+		-> ${P}-scripts.tar.gz
+	amd64? (
+		https://downloads.claude.ai/releases/win32/x64/${CLAUDE_PV}/Claude-${CLAUDE_EXE_HASH}.exe
+			-> claude-desktop-${CLAUDE_PV}-x64.exe
+	)
+	arm64? (
+		https://downloads.claude.ai/releases/win32/arm64/${CLAUDE_PV}/Claude-${CLAUDE_EXE_HASH}.exe
+			-> claude-desktop-${CLAUDE_PV}-arm64.exe
+	)
+"
+S="${WORKDIR}"
+
+# Build scripts: MIT + Apache-2.0; Claude Desktop itself: proprietary (Anthropic Consumer Terms)
+LICENSE="MIT Apache-2.0 Anthropic-Consumer-Terms"
+SLOT="0"
+KEYWORDS="~amd64 ~arm64"
+
+# The build needs network to npm-install electron and @electron/asar.
+# This is inherent to the upstream build system.
+RESTRICT="mirror strip network-sandbox"
+
+BDEPEND="
+	app-arch/p7zip
+	media-gfx/icoutils
+	media-gfx/imagemagick
+	net-misc/wget
+	>=net-libs/nodejs-20[npm]
+"
+
+# Runtime deps: electron is bundled by the build; these cover its shared lib needs
+RDEPEND="
+	app-accessibility/at-spi2-core
+	dev-libs/expat
+	dev-libs/glib:2
+	dev-libs/nspr
+	dev-libs/nss
+	media-libs/alsa-lib
+	media-libs/mesa
+	sys-apps/dbus
+	x11-libs/cairo
+	x11-libs/gdk-pixbuf:2
+	x11-libs/gtk+:3
+	x11-libs/libdrm
+	x11-libs/libX11
+	x11-libs/libxcb
+	x11-libs/libXcomposite
+	x11-libs/libXdamage
+	x11-libs/libXext
+	x11-libs/libXfixes
+	x11-libs/libXrandr
+	x11-libs/libxkbcommon
+	x11-libs/pango
+"
+
+QA_PREBUILT="
+	usr/lib/claude-desktop/*
+"
+
+src_unpack() {
+	unpack "${P}-scripts.tar.gz"
+
+	# The GitHub tarball directory name is mangled due to the + in the tag.
+	# Find it and give it a predictable name.
+	local extracted_dir
+	extracted_dir=$(ls -d "${WORKDIR}"/claude-desktop-debian-* 2>/dev/null | head -n 1)
+	if [[ -n "${extracted_dir}" ]]; then
+		mv "${extracted_dir}" "${WORKDIR}/source" || die "Failed to rename source directory"
+	fi
+}
+
+src_compile() {
+	local exe_name
+	if use amd64; then
+		exe_name="claude-desktop-${CLAUDE_PV}-x64.exe"
+	elif use arm64; then
+		exe_name="claude-desktop-${CLAUDE_PV}-arm64.exe"
+	fi
+
+	# Run the upstream build script from its own directory (it uses
+	# relative paths to find scripts/).
+	# --clean no: keep staged files for src_install
+	# --build deb: the staging in build/electron-app/ is format-independent;
+	#   we stub out dpkg-deb so the final packaging step is a no-op.
+	cd "${WORKDIR}/source" || die
+
+	# Create a fake dpkg-deb that exits successfully — we only need
+	# the staged files, not the actual .deb package.
+	local fake_bin="${T}/fake-bin"
+	mkdir -p "${fake_bin}" || die
+	printf '#!/bin/sh\nexit 0\n' > "${fake_bin}/dpkg-deb" || die
+	chmod +x "${fake_bin}/dpkg-deb" || die
+
+	PATH="${fake_bin}:${PATH}" \
+	bash build.sh \
+		--exe "${DISTDIR}/${exe_name}" \
+		--source-dir "${WORKDIR}/source" \
+		--clean no \
+		--release-tag "${MY_TAG}" \
+		--build deb \
+		|| die "build.sh failed"
+}
+
+src_install() {
+	# The deb packaging script assembles the final layout under
+	# build/package/usr/ — use that tree directly.
+	local pkg_root="${WORKDIR}/source/build/package/usr"
+	local pkg_lib="${pkg_root}/lib/claude-desktop"
+
+	# Main application tree
+	insinto /usr/lib/claude-desktop
+	doins -r "${pkg_lib}"/node_modules
+	doins "${pkg_lib}"/launcher-common.sh
+	doins "${pkg_lib}"/doctor.sh
+
+	# Make the electron binary executable
+	fperms 0755 /usr/lib/claude-desktop/node_modules/electron/dist/electron
+
+	# chrome-sandbox needs suid for the Chromium sandbox
+	fperms 4755 /usr/lib/claude-desktop/node_modules/electron/dist/chrome-sandbox
+
+	# Ensure native .node modules are executable
+	local f
+	for f in "${pkg_lib}"/node_modules/electron/dist/resources/app.asar.unpacked/node_modules/node-pty/build/Release/*.node; do
+		[[ -f "${f}" ]] || continue
+		local rel="${f#${pkg_lib}/}"
+		fperms 0755 "/usr/lib/claude-desktop/${rel}"
+	done
+
+	# SSH helper (in claude-ssh/ subdirectory as of upstream v2.0.0)
+	local ssh_base="node_modules/electron/dist/resources/claude-ssh"
+	local ssh_helper
+	for ssh_helper in "${pkg_lib}/${ssh_base}"/claude-ssh-linux-*; do
+		[[ -f "${ssh_helper}" ]] || continue
+		fperms 0755 "/usr/lib/claude-desktop/${ssh_base}/${ssh_helper##*/}"
+	done
+
+	# Cowork plugin shim (MCP plugin sandboxing helper, introduced in v2.0.0)
+	local cowork_rel="node_modules/electron/dist/resources/cowork-plugin-shim.sh"
+	[[ -f "${pkg_lib}/${cowork_rel}" ]] \
+		&& fperms 0755 "/usr/lib/claude-desktop/${cowork_rel}"
+
+	# Install the launcher script generated by the deb packaging script
+	dobin "${pkg_root}"/bin/claude-desktop
+
+	# Icons — the deb packaging script installs them under the standard
+	# hicolor hierarchy after icotool extraction.
+	local icon_dir="${pkg_root}/share/icons/hicolor"
+	local size
+	for size in 16 24 32 48 64 256; do
+		if [[ -f "${icon_dir}/${size}x${size}/apps/claude-desktop.png" ]]; then
+			newicon -s ${size} "${icon_dir}/${size}x${size}/apps/claude-desktop.png" claude-desktop.png
+		fi
+	done
+
+	# Desktop entry — the launcher-common.sh doctor check expects
+	# exactly /usr/share/applications/claude-desktop.desktop
+	make_desktop_entry --eapi9 \
+		--desktopid claude-desktop \
+		"/usr/bin/claude-desktop" \
+		--args "%u" \
+		--name "Claude" \
+		--icon claude-desktop \
+		--categories "Office;Utility;" \
+		--entry "MimeType=x-scheme-handler/claude;" \
+		--entry "StartupWMClass=Claude"
+}
+
+pkg_postinst() {
+	xdg_pkg_postinst
+
+	elog "Claude Desktop has been installed."
+	elog ""
+	elog "NOTE: This is an unofficial build. Anthropic does not officially"
+	elog "support Linux. For official support, visit https://anthropic.com"
+	elog ""
+	elog "MCP configuration: ~/.config/Claude/claude_desktop_config.json"
+	elog "Run 'claude-desktop --doctor' to check your setup."
+	elog ""
+	elog "If you experience sandbox issues, you may need to run:"
+	elog "  chmod 4755 /usr/lib/claude-desktop/node_modules/electron/dist/chrome-sandbox"
+	elog "or start with --no-sandbox (not recommended)."
+}
