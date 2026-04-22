@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<longdescription>
+		Typed Python library for Hyprland IPC via Unix sockets. Supports
+		querying compositor state, applying live settings, executing batch
+		commands, and monitoring events through both synchronous command
+		operations and long-lived event socket connections.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">BlueManCZ/hyprland-socket</remote-id>
+		<remote-id type="pypi">hyprland-socket</remote-id>
+	</upstream>
+</pkgmetadata>
