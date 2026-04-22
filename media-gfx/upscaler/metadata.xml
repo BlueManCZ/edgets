@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<longdescription>
+		Upscaler is a GTK4/libadwaita application that enhances and
+		enlarges images up to four times their original size, with
+		special modes for photos and digital art. It is a front-end for
+		Real-ESRGAN ncnn Vulkan (media-gfx/realesrgan-ncnn-vulkan) —
+		upstream targets the Upscayl-NCNN fork, but this ebuild wires it
+		to the Gentoo-packaged Real-ESRGAN binary, which ships the
+		realesrgan-x4plus and realesrgan-x4plus-anime models used by
+		the app.
+	</longdescription>
+	<upstream>
+		<remote-id type="gnome-gitlab">World/Upscaler</remote-id>
+	</upstream>
+</pkgmetadata>
