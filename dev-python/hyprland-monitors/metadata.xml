@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<longdescription>
+		Monitor management utilities for Hyprland. Provides scale
+		computation, layout geometry detection, configuration parsing,
+		and hardware capability detection (VRR, HDR, 10-bit) for the
+		Hyprland Wayland compositor.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">BlueManCZ/hyprland-monitors</remote-id>
+		<remote-id type="pypi">hyprland-monitors</remote-id>
+	</upstream>
+</pkgmetadata>
