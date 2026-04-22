@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<longdescription>
+		HyprMod is a native GTK4/libadwaita settings app for Hyprland —
+		tweak any option, see it change live, save when you are happy.
+		Provides live preview, monitor layout editor with VRR/HDR/10-bit
+		detection, bezier curve editor, keybind editor with interactive
+		key capture, cursor theme picker, profiles, undo, and global
+		search. Writes only to its own hyprland-gui.conf so the
+		hand-crafted config stays untouched.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">BlueManCZ/hyprmod</remote-id>
+	</upstream>
+</pkgmetadata>
