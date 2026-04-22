@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<longdescription>
+		Typed Python schema for every Hyprland configuration option, with
+		built-in defaults, ranges, and descriptions. Generated from
+		Hyprland's ConfigDescriptions.hpp. Pure standard library, no
+		external runtime dependencies.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">BlueManCZ/hyprland-schema</remote-id>
+		<remote-id type="pypi">hyprland-schema</remote-id>
+	</upstream>
+</pkgmetadata>
