@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<longdescription>
+		Round-trip parser and editor for Hyprland configuration files.
+		Preserves formatting, comments, and blank lines when making
+		edits. Handles nested category blocks, source directives with
+		glob expansion, variable definitions, and special keywords like
+		bind, monitor, animation, and bezier. Atomic writes via temp
+		file plus fsync and rename.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">BlueManCZ/hyprland-config</remote-id>
+		<remote-id type="pypi">hyprland-config</remote-id>
+	</upstream>
+</pkgmetadata>
