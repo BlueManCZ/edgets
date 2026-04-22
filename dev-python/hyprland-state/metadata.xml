@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<longdescription>
+		Live state interface for Hyprland — read, write, and inspect the
+		running compositor's configuration. Provides a unified API for
+		managing options, animations, monitors, keybinds, and input
+		devices on top of hyprland-config, hyprland-monitors,
+		hyprland-schema, and hyprland-socket.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">BlueManCZ/hyprland-state</remote-id>
+		<remote-id type="pypi">hyprland-state</remote-id>
+	</upstream>
+</pkgmetadata>
