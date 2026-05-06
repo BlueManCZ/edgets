@@ -8,8 +8,8 @@ inherit desktop xdg
 # Upstream version scheme: v${PV}+claude${CLAUDE_PV}
 # PV tracks the wrapper version; CLAUDE_PV is the upstream app version.
 # Update both when bumping.
-CLAUDE_PV="1.3561.0"
-CLAUDE_EXE_HASH="fbc74be3fdc714a2c46ef1fb84f71d4e4c062930"
+CLAUDE_PV="1.6259.0"
+CLAUDE_EXE_HASH="dc89db3be9b2bc795e0fda0ea3738b035a76ed46"
 MY_TAG="v${PV}+claude${CLAUDE_PV}"
 
 DESCRIPTION="Claude Desktop for Linux (unofficial, repackaged from Windows)"
@@ -84,6 +84,19 @@ src_unpack() {
 	if [[ -n "${extracted_dir}" ]]; then
 		mv "${extracted_dir}" "${WORKDIR}/source" || die "Failed to rename source directory"
 	fi
+}
+
+src_prepare() {
+	default
+
+	# electron@42 (released 2026-05-06) dropped the postinstall script
+	# that downloads the prebuilt binary distribution, so the upstream
+	# `npm install --no-save electron` leaves node_modules/electron/dist
+	# missing. Pin to the latest 41.x until upstream adapts.
+	sed -i \
+		-e 's|npm install --no-save electron @electron/asar|npm install --no-save electron@^41 @electron/asar|' \
+		"${WORKDIR}/source/scripts/setup/dependencies.sh" \
+		|| die "Failed to pin electron version"
 }
 
 src_compile() {
@@ -193,8 +206,4 @@ pkg_postinst() {
 	elog ""
 	elog "MCP configuration: ~/.config/Claude/claude_desktop_config.json"
 	elog "Run 'claude-desktop --doctor' to check your setup."
-	elog ""
-	elog "If you experience sandbox issues, you may need to run:"
-	elog "  chmod 4755 /usr/lib/claude-desktop/node_modules/electron/dist/chrome-sandbox"
-	elog "or start with --no-sandbox (not recommended)."
 }
