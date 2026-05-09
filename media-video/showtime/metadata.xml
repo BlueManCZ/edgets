@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<longdescription>
+		Showtime is GNOME's modern video player. Built with GTK4 and
+		libadwaita, it offers distraction-free playback through a
+		GStreamer backend that renders video into a GTK4 paintable
+		sink, with MPRIS integration for desktop media-key control
+		and an adaptive layout that follows the rest of the GNOME
+		platform.
+	</longdescription>
+	<upstream>
+		<remote-id type="gnome-gitlab">GNOME/showtime</remote-id>
+	</upstream>
+</pkgmetadata>
