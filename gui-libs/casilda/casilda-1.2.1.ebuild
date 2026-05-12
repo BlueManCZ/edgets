@@ -21,7 +21,7 @@ DEPEND="
     >=x11-libs/pixman-0.42.0
     >=dev-libs/wayland-protocols-1.32
     >=dev-libs/wayland-1.22
-    >=gui-libs/wlroots-0.19
+    gui-libs/wlroots:0.19
     >=x11-libs/libxkbcommon-1.5
 "
 RDEPEND="${DEPEND}"
