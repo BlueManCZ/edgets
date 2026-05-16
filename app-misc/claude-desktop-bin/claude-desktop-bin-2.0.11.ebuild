@@ -8,8 +8,8 @@ inherit desktop xdg
 # Upstream version scheme: v${PV}+claude${CLAUDE_PV}
 # PV tracks the wrapper version; CLAUDE_PV is the upstream app version.
 # Update both when bumping.
-CLAUDE_PV="1.3883.0"
-CLAUDE_EXE_HASH="93ff6cb984386882b4bd9b6bca80d4cf5af8e13b"
+CLAUDE_PV="1.7196.1"
+CLAUDE_EXE_HASH="abcd6556f79f4cca317ff02bfe0bedbeeb6e56a9"
 MY_TAG="v${PV}+claude${CLAUDE_PV}"
 
 DESCRIPTION="Claude Desktop for Linux (unofficial, repackaged from Windows)"
@@ -193,8 +193,4 @@ pkg_postinst() {
 	elog ""
 	elog "MCP configuration: ~/.config/Claude/claude_desktop_config.json"
 	elog "Run 'claude-desktop --doctor' to check your setup."
-	elog ""
-	elog "If you experience sandbox issues, you may need to run:"
-	elog "  chmod 4755 /usr/lib/claude-desktop/node_modules/electron/dist/chrome-sandbox"
-	elog "or start with --no-sandbox (not recommended)."
 }
