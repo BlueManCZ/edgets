@@ -8,12 +8,13 @@ inherit unpacker xdg
 DESCRIPTION="The best email app for people and teams at work"
 HOMEPAGE="https://getmailspring.com"
 SRC_URI="https://github.com/Foundry376/Mailspring/releases/download/${PV}/mailspring-${PV}-amd64.deb -> ${P}.deb"
+S="${WORKDIR}"
 
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="-* ~amd64"
-RESTRICT="bindist mirror"
 IUSE="doc libnotify wayland"
+RESTRICT="bindist mirror"
 
 RDEPEND="
 	app-crypt/libsecret
@@ -34,14 +35,6 @@ RDEPEND="
 "
 
 QA_PREBUILT="*"
-
-S="${WORKDIR}"
-
-src_prepare() {
-	default
-
-	mv usr/share/appdata usr/share/metainfo || die
-}
 
 src_install() {
 	cp -a . "${ED}" || die "cp failed"
