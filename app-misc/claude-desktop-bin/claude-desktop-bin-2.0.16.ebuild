@@ -8,8 +8,8 @@ inherit desktop xdg
 # Upstream version scheme: v${PV}+claude${CLAUDE_PV}
 # PV tracks the wrapper version; CLAUDE_PV is the upstream app version.
 # Update both when bumping.
-CLAUDE_PV="1.6259.0"
-CLAUDE_EXE_HASH="dc89db3be9b2bc795e0fda0ea3738b035a76ed46"
+CLAUDE_PV="1.9255.2"
+CLAUDE_EXE_HASH="1dc8f7b0f46a151e8522f24f6656aab10182bf92"
 MY_TAG="v${PV}+claude${CLAUDE_PV}"
 
 DESCRIPTION="Claude Desktop for Linux (unofficial, repackaged from Windows)"
@@ -84,19 +84,6 @@ src_unpack() {
 	if [[ -n "${extracted_dir}" ]]; then
 		mv "${extracted_dir}" "${WORKDIR}/source" || die "Failed to rename source directory"
 	fi
-}
-
-src_prepare() {
-	default
-
-	# electron@42 (released 2026-05-06) dropped the postinstall script
-	# that downloads the prebuilt binary distribution, so the upstream
-	# `npm install --no-save electron` leaves node_modules/electron/dist
-	# missing. Pin to the latest 41.x until upstream adapts.
-	sed -i \
-		-e 's|npm install --no-save electron @electron/asar|npm install --no-save electron@^41 @electron/asar|' \
-		"${WORKDIR}/source/scripts/setup/dependencies.sh" \
-		|| die "Failed to pin electron version"
 }
 
 src_compile() {
