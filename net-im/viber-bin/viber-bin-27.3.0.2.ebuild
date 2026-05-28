@@ -15,9 +15,11 @@ KEYWORDS="-* ~amd64"
 RESTRICT="bindist mirror strip"
 
 RDEPEND="
+	app-arch/snappy
 	dev-libs/nss
 	dev-libs/openssl
 	media-libs/alsa-lib
+	media-libs/jbigkit
 	media-libs/libglvnd
 	media-libs/mesa
 	net-libs/libssh
