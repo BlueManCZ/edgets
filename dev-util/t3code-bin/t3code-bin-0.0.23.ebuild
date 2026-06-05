@@ -5,8 +5,9 @@ EAPI=8
 inherit desktop xdg
 
 DESCRIPTION="A minimal web GUI for coding agents."
-HOMEPAGE="https://t3.codes https://github.com/pingdotgg/t3code"
-SRC_URI="${HOMEPAGE}/releases/download/v${PV}/T3-Code-${PV}-x86_64.AppImage -> ${P}.AppImage
+HOMEPAGE="https://t3.codes
+	https://github.com/pingdotgg/t3code"
+SRC_URI="https://github.com/pingdotgg/t3code/releases/download/v${PV}/T3-Code-${PV}-x86_64.AppImage -> ${P}.AppImage
 	https://raw.githubusercontent.com/pingdotgg/t3code/v${PV}/assets/prod/black-universal-1024.png -> ${PN}.png"
 
 LICENSE="MIT"

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<longdescription>
+		T3 Code is a minimal web GUI for coding agents, providing a
+		lightweight interface for interacting with AI coding tools.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">pingdotgg/t3code</remote-id>
+	</upstream>
+</pkgmetadata>
