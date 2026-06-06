@@ -42,5 +42,19 @@ src_install() {
 	# Remove upstream doc directory, let portage handle it
 	rm -r "${ED}/usr/share/doc/${MY_PN}" || die "rm failed"
 
-	dosym -r "/opt/Meru/${MY_PN}" "/usr/bin/${MY_PN}"
+	# Install a wrapper that redirects stdout/stderr to /dev/null to
+	# suppress the "A JavaScript error occurred in the main process" EIO
+	# error thrown by Meru's internal logger (console.info ->
+	# SyncWriteStream) when launched from a desktop environment where the
+	# inherited stdout fd returns EIO on write.
+	dodir /usr/bin
+	cat > "${ED}/usr/bin/${MY_PN}" <<-EOF || die "wrapper write failed"
+		#!/bin/sh
+		exec /opt/Meru/${MY_PN} "\$@" >/dev/null 2>&1
+	EOF
+	fperms 0755 "/usr/bin/${MY_PN}"
+
+	# Point the desktop entry at the wrapper so GUI launches use it too.
+	sed -i "s|^Exec=.*|Exec=${MY_PN} %U|" \
+		"${ED}/usr/share/applications/${MY_PN}.desktop" || die "sed failed"
 }
