@@ -8,8 +8,8 @@ inherit desktop xdg
 # Upstream version scheme: v${PV}+claude${CLAUDE_PV}
 # PV tracks the wrapper version; CLAUDE_PV is the upstream app version.
 # Update both when bumping.
-CLAUDE_PV="1.8555.0"
-CLAUDE_EXE_HASH="8245b7a72393fec67fa946b26a825bfbd3f947b3"
+CLAUDE_PV="1.11847.5"
+CLAUDE_EXE_HASH="9692f0b44ffa0158a501a91309e361c0d48ed8e4"
 MY_TAG="v${PV}+claude${CLAUDE_PV}"
 
 DESCRIPTION="Claude Desktop for Linux (unofficial, repackaged from Windows)"
