@@ -2,9 +2,14 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<longdescription>
-		WordPress.com
+		WordPress.com Desktop Client is an Electron-based desktop application
+		by Automattic for managing WordPress.com sites, writing posts and
+		reading blogs outside the browser.
 	</longdescription>
 	<use>
 		<flag name="doc">Install package documentation</flag>
 	</use>
+	<upstream>
+		<remote-id type="github">Automattic/wp-desktop</remote-id>
+	</upstream>
 </pkgmetadata>
