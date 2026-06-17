@@ -8,19 +8,13 @@ DESCRIPTION="Experience tranquillity while browsing the web without people track
 HOMEPAGE="https://zen-browser.app/"
 GITHUB="https://github.com/zen-browser/desktop"
 SRC_URI="${GITHUB}/releases/download/${PV/_beta/b}/zen.linux-x86_64.tar.xz -> ${P}.tar.xz"
+S=${WORKDIR}
 
 LICENSE="MPL-2.0"
 SLOT="0"
 KEYWORDS="-* ~amd64"
-RESTRICT="bindist mirror strip"
-
-DEPEND=""
-RDEPEND="${DEPEND}"
-BDEPEND=""
-
 QA_PREBUILT="*"
-
-S=${WORKDIR}
+RESTRICT="bindist mirror strip"
 
 src_install() {
 	DEST="${ED}/opt/${PN}"
@@ -29,7 +23,7 @@ src_install() {
 
 	newicon -s 128 "zen/browser/chrome/icons/default/default128.png" "${PN}.png" || die "doicon failed"
 
-	dosym "/opt/zen-browser-bin/zen" "/usr/bin/zen-browser" || die "dosym failed"
+	dosym "../../opt/${PN}/zen" "/usr/bin/zen-browser" || die "dosym failed"
 
 	domenu "${FILESDIR}/${PN}.desktop"
 }

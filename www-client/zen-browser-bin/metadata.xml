@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<longdescription>
+		Zen Browser is a privacy-focused web browser based on Firefox. It
+		provides a customizable browsing experience with tracking protection,
+		workspace-oriented tab management, and regular upstream binary releases
+		for desktop Linux systems.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">zen-browser/desktop</remote-id>
+	</upstream>
+</pkgmetadata>
