@@ -6,7 +6,7 @@ EAPI=8
 inherit unpacker xdg
 
 DESCRIPTION="The best email app for people and teams at work"
-HOMEPAGE="https://getmailspring.com"
+HOMEPAGE="https://www.getmailspring.com/"
 SRC_URI="https://github.com/Foundry376/Mailspring/releases/download/${PV}/mailspring-${PV}-amd64.deb -> ${P}.deb"
 S="${WORKDIR}"
 
