@@ -1,84 +1,79 @@
 Fix segfault on startup when built with AVX (-march=native etc.)
 
 The FastMaths SIMD helpers tell the compiler the buffers they receive are
-32-byte aligned via __builtin_assume_aligned(ptr, 32). However the audio
-buffers in SoundEngine (and the other engine buffers reaching these helpers)
-are allocated with plain `new float[]`, which on x86-64 only guarantees
-16-byte alignment.
+32-byte aligned via __builtin_assume_aligned(ptr, 32). The buffers actually
+passed in are not guaranteed to be: the SoundEngine buffers come from plain
+`new float[]` (16-byte aligned on x86-64), SoundEngine::addData runs
+addVectors() on the sound card output buffer the engine does not allocate,
+and multiply4()/multiply8() receive sinc-table coefficients at arbitrary
+offsets (&sincWindow[frac * order + j]).
 
 When polyphone is compiled with AVX enabled (any -march that turns on AVX,
 e.g. -march=native), GCC trusts the 32-byte promise and auto-vectorizes the
-generic loops with aligned 256-bit moves (vmovaps %ymm). Whenever two such
-buffers happen to differ by 16 bytes modulo 32 at runtime, the aligned move
-hits a 16-byte-aligned (not 32) address and raises a general-protection fault,
-crashing the audio thread at startup. Distro/baseline builds (-march=x86-64,
-SSE only, 16-byte movaps) never hit this, which is why it goes unnoticed.
+generic loops with aligned 256-bit moves (vmovaps %ymm). Whenever a buffer is
+not actually 32-byte aligned at runtime, that move raises a general-protection
+fault and the audio thread crashes on startup. Distro/baseline builds
+(-march=x86-64, SSE only, 16-byte movaps) never hit this.
 
-Correct the assumed alignment to the value new[] actually guarantees (16).
-The aarch64 NEON paths are unaffected (they already use unaligned vld1q_f32),
-and on modern x86 unaligned 256-bit moves cost the same as aligned ones.
+Remove the unsafe alignment assumptions. Auto-vectorization still applies with
+unaligned moves (no measurable cost on current x86), and the aarch64 NEON
+paths already use unaligned vld1q_f32.
+
+Upstream: https://github.com/davy7125/polyphone/pull/331
 
 --- a/core/fastmaths.cpp
 +++ b/core/fastmaths.cpp
-@@ -86,8 +86,8 @@
+@@ -86,8 +86,6 @@
 
  void FastMaths::addVectors(float * __restrict a, const float * __restrict b, unsigned int size)
  {
 -    a = (float*)__builtin_assume_aligned(a, 32);
 -    b = (const float*)__builtin_assume_aligned(b, 32);
-+    a = (float*)__builtin_assume_aligned(a, 16);
-+    b = (const float*)__builtin_assume_aligned(b, 16);
      unsigned int i = 0;
 
  #ifdef __aarch64__
-@@ -113,7 +113,7 @@
+@@ -113,7 +111,6 @@
 
  void FastMaths::clamp(float * values, unsigned int size)
  {
 -    values = (float*)__builtin_assume_aligned(values, 32);
-+    values = (float*)__builtin_assume_aligned(values, 16);
      unsigned int i = 0;
 
  #ifdef __aarch64__
-@@ -141,8 +141,8 @@
+@@ -141,8 +138,6 @@
 
  void FastMaths::multiplyAdd(float * __restrict data, const float * __restrict dataToMultiplyAndAdd, unsigned int size, float coeff)
  {
 -    data = (float*)__builtin_assume_aligned(data, 32);
 -    dataToMultiplyAndAdd = (float*)__builtin_assume_aligned(dataToMultiplyAndAdd, 32);
-+    data = (float*)__builtin_assume_aligned(data, 16);
-+    dataToMultiplyAndAdd = (float*)__builtin_assume_aligned(dataToMultiplyAndAdd, 16);
      unsigned int i = 0;
 
  #ifdef __aarch64__
-@@ -169,8 +169,8 @@
+@@ -169,8 +164,6 @@
 
  void FastMaths::multiply(float * __restrict data, const float * __restrict dataToMultiply, unsigned int size, float coeff)
  {
 -    data = (float*)__builtin_assume_aligned(data, 32);
 -    dataToMultiply = (const float*)__builtin_assume_aligned(dataToMultiply, 32);
-+    data = (float*)__builtin_assume_aligned(data, 16);
-+    dataToMultiply = (const float*)__builtin_assume_aligned(dataToMultiply, 16);
      unsigned int i = 0;
 
  #ifdef __aarch64__
-@@ -196,7 +196,7 @@
+@@ -196,8 +189,6 @@
 
  float FastMaths::multiply8(const float * __restrict coeffs, const qint16 * __restrict srcData16, const quint8 * __restrict srcData24)
  {
 -    coeffs = (const float*)__builtin_assume_aligned(coeffs, 32);
-+    coeffs = (const float*)__builtin_assume_aligned(coeffs, 16);
-
+-
  #ifdef __aarch64__
      // Load 8 int16 and convert to int32
-@@ -241,8 +241,8 @@
+     int16x8_t s16 = vld1q_s16(srcData16);
+@@ -241,9 +232,6 @@
 
  float FastMaths::multiply4(const float * __restrict coeffs, const float * __restrict srcDataF)
  {
 -    coeffs = (const float*)__builtin_assume_aligned(coeffs, 32);
 -    srcDataF = (const float*)__builtin_assume_aligned(srcDataF, 32);
-+    coeffs = (const float*)__builtin_assume_aligned(coeffs, 16);
-+    srcDataF = (const float*)__builtin_assume_aligned(srcDataF, 16);
-
+-
  #ifdef __aarch64__
      // Load all values
+     float32x4_t a = vld1q_f32(coeffs);
