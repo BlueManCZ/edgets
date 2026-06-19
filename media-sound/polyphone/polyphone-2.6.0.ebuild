@@ -41,6 +41,13 @@ RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/${P}/sources"
 
+PATCHES=(
+	# Fix general-protection fault on startup when built with AVX-enabled
+	# CFLAGS: FastMaths assumes 32-byte buffer alignment but the engine
+	# buffers are only 16-byte aligned (plain new float[]).
+	"${FILESDIR}/${P}-buffer-alignment.patch"
+)
+
 src_configure() {
 	eqmake5 PREFIX="${EPREFIX}/usr"
 }
