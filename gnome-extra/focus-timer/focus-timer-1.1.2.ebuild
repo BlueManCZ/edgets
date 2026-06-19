@@ -21,10 +21,6 @@ KEYWORDS="~amd64"
 IUSE="bash-completion"
 RESTRICT="mirror"
 
-PATCHES=(
-	"${FILESDIR}/${P}-lower-libpeas-requirement.patch"
-)
-
 RDEPEND="
 	dev-db/sqlite:3
 	>=dev-libs/glib-2.50:2
@@ -32,7 +28,7 @@ RDEPEND="
 	>=dev-libs/json-glib-1.6.2
 	dev-libs/libpeas:2
 	>=gui-libs/gtk-4.18:4
-	>=gui-libs/libadwaita-1.8.0:1
+	>=gui-libs/libadwaita-1.7.0:1
 	media-libs/graphene[introspection]
 	>=media-libs/gstreamer-1.0.10:1.0
 	x11-libs/cairo
