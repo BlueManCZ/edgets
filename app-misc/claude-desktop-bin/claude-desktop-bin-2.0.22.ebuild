@@ -8,8 +8,8 @@ inherit desktop xdg
 # Upstream version scheme: v${PV}+claude${CLAUDE_PV}
 # PV tracks the wrapper version; CLAUDE_PV is the upstream app version.
 # Update both when bumping.
-CLAUDE_PV="1.9255.0"
-CLAUDE_EXE_HASH="a22af1fabbbc85af5502e695ed8fbea9f74276fc"
+CLAUDE_PV="1.15200.0"
+CLAUDE_EXE_HASH="250bae744478f92cc2796a6dcc060a867d66cb85"
 MY_TAG="v${PV}+claude${CLAUDE_PV}"
 
 DESCRIPTION="Claude Desktop for Linux (unofficial, repackaged from Windows)"
@@ -135,6 +135,12 @@ src_install() {
 
 	# chrome-sandbox needs suid for the Chromium sandbox
 	fperms 4755 /usr/lib/claude-desktop/node_modules/electron/dist/chrome-sandbox
+
+	# chrome_crashpad_handler must be executable — Electron ships it +x,
+	# but doins flattens it to 0644. Claude >=1.15200.0 starts the crash
+	# reporter at launch, so a non-executable handler makes Chromium
+	# posix_spawn fail with EACCES and abort (SIGTRAP, exit 133).
+	fperms 0755 /usr/lib/claude-desktop/node_modules/electron/dist/chrome_crashpad_handler
 
 	# Ensure native .node modules are executable
 	local f
