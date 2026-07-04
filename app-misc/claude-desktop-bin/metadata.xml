@@ -2,14 +2,14 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<longdescription>
-		Claude Desktop for Linux — an unofficial repackaging of Anthropic's
-		Windows Claude Desktop application, rebuilt on Electron to run on
-		Linux. The build wrapper extracts the official Windows installer,
-		stages the app.asar, and bundles a local Electron runtime. Claude
-		Desktop itself remains proprietary software governed by Anthropic's
-		Consumer Terms; only the build scripts are open source.
+		Anthropic's official Claude desktop application for Linux,
+		repackaged from the upstream apt repository. Provides the Chat,
+		Cowork and Claude Code tabs with parallel sessions, visual diff
+		review, an integrated terminal and editor, and live app preview.
+		Claude Desktop is proprietary software governed by Anthropic's
+		Consumer Terms.
 	</longdescription>
 	<upstream>
-		<remote-id type="github">aaddrick/claude-desktop-debian</remote-id>
+		<doc>https://code.claude.com/docs/en/desktop-linux</doc>
 	</upstream>
 </pkgmetadata>
