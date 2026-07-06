@@ -1,0 +1,58 @@
+# Copyright 1999-2026 Gentoo Authors
+# Distributed under the terms of the GNU General Public License v2
+
+EAPI=8
+
+inherit unpacker xdg
+
+DESCRIPTION="A fast, minimal browser that protects your privacy"
+HOMEPAGE="https://minbrowser.org"
+SRC_URI="
+	amd64? ( https://github.com/minbrowser/min/releases/download/v${PV}/min-${PV}-amd64.deb )
+	arm64? ( https://github.com/minbrowser/min/releases/download/v${PV}/min-${PV}-arm64.deb )
+"
+
+LICENSE="Apache-2.0"
+SLOT="0"
+KEYWORDS="-* ~amd64 ~arm64"
+RESTRICT="bindist mirror"
+IUSE="alsa doc libnotify"
+
+RDEPEND="
+	app-accessibility/at-spi2-core
+	dev-libs/libgcrypt
+	dev-libs/nss
+	gnome-base/gnome-keyring
+	media-libs/mesa
+	sys-libs/glibc
+	sys-libs/libcap
+	virtual/libudev
+	x11-libs/gtk+:3
+	x11-libs/libXScrnSaver
+	x11-libs/libXtst
+	x11-libs/libdrm
+	x11-libs/libxcb
+	x11-misc/xdg-utils
+	alsa? ( media-libs/alsa-lib )
+	libnotify? ( x11-libs/libnotify )
+	|| (
+		app-misc/trash-cli
+		dev-libs/glib:2
+		gnome-base/gvfs
+		kde-plasma/kde-cli-tools
+	)
+"
+
+QA_PREBUILT="*"
+
+S="${WORKDIR}"
+
+src_install() {
+	cp -a . "${ED}" || die
+
+	rm -r "${ED}/usr/share/doc/min" || die
+
+	if use doc; then
+		dodoc -r usr/share/doc/min/*
+	fi
+}
