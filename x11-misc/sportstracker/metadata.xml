@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<longdescription>
+		SportsTracker is an application for tracking sporting activities such as
+		running and cycling, including workout history and statistics.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">ssaring/sportstracker</remote-id>
+	</upstream>
+</pkgmetadata>
