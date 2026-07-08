@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<longdescription>
+		WhiteSur is a macOS Big Sur-inspired GTK theme for GTK applications and
+		desktop environments. It provides WhiteSur-style theme assets and install
+		options for supported GTK desktops.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">vinceliuice/WhiteSur-gtk-theme</remote-id>
+	</upstream>
+</pkgmetadata>
