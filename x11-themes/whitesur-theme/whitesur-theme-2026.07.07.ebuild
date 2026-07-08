@@ -29,5 +29,5 @@ RDEPEND="${DEPEND}"
 
 src_install() {
 	mkdir -p "${ED}/usr/share/themes"
-	./install.sh --dest "${ED}/usr/share/themes" --nautilus-style "mojave"
+	./install.sh --dest "${ED}/usr/share/themes" --nautilus "mojave" || die
 }
