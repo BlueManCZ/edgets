@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<longdescription>
+		Orchis is a Material Design GTK theme for GNOME/GTK based desktop
+		environments. It provides multiple theme variants and tweaks for modern
+		GTK desktops.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">vinceliuice/Orchis-theme</remote-id>
+	</upstream>
+</pkgmetadata>
