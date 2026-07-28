@@ -8,7 +8,7 @@ DESCRIPTION="A minimal web GUI for coding agents."
 HOMEPAGE="https://t3.codes
 	https://github.com/pingdotgg/t3code"
 SRC_URI="https://github.com/pingdotgg/t3code/releases/download/v${PV}/T3-Code-${PV}-x86_64.AppImage -> ${P}.AppImage
-	https://raw.githubusercontent.com/pingdotgg/t3code/v${PV}/assets/prod/black-universal-1024.png -> ${PN}.png"
+	https://raw.githubusercontent.com/pingdotgg/t3code/v${PV}/assets/prod/black-universal-1024.png -> ${P}.png"
 
 LICENSE="MIT"
 SLOT="0"
@@ -25,6 +25,6 @@ src_install() {
 	exeinto "/opt/${PN}"
 	doexe "${P}.AppImage"
 	dosym "/opt/${PN}/${P}.AppImage" "/usr/bin/${PN}"
-	doicon -s 256 "${PN}.png"
+	doicon -s 256 "${P}.png"
 	domenu "${FILESDIR}/${PN}.desktop"
 }
