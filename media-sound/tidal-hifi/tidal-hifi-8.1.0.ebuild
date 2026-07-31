@@ -9,7 +9,7 @@ inherit unpacker xdg
 
 DESCRIPTION="Tidal on Electron with widevine(hifi) support"
 HOMEPAGE="https://github.com/Mastermindzh/tidal-hifi"
-SRC_URI="https://github.com/Mastermindzh/tidal-hifi/releases/download/${PV}-Mavy/tidal-hifi_${PV}_amd64.deb -> ${P}.deb"
+SRC_URI="https://github.com/Mastermindzh/tidal-hifi/releases/download/${PV}/tidal-hifi_${PV}_amd64.deb -> ${P}.deb"
 
 LICENSE="MIT"
 SLOT="0"
