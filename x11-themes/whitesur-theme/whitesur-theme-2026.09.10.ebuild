@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -29,5 +29,5 @@ RDEPEND="${DEPEND}"
 
 src_install() {
 	mkdir -p "${ED}/usr/share/themes"
-	./install.sh --dest "${ED}/usr/share/themes" --nautilus-style "mojave"
+	./install.sh --dest "${ED}/usr/share/themes" --nautilus "mojave" || die
 }
