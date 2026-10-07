@@ -17,7 +17,10 @@ jobs:
           mkdir -p /var/db/repos/gentoo
           emerge-webrsync --quiet
           python3 -m venv /tmp/venv
-          /tmp/venv/bin/pip install pkgcheck
+          # tree-sitter 0.26.0 has a use-after-free bug that causes random
+          # SIGSEGVs; pkgcheck 0.10.44 is the last release using 0.25.x.
+          # https://github.com/tree-sitter/py-tree-sitter/issues/472
+          /tmp/venv/bin/pip install pkgcheck==0.10.44
 
       - uses: actions/checkout@v4
         with:
