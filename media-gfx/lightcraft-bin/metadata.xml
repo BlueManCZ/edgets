@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<longdescription>
+		LightCraft is a native photo library and non-destructive raw developer
+		written in Rust. It provides photo organisation, raw processing, local
+		adjustments, presets, and automation through a command-line interface.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">storytold/lightcraft</remote-id>
+	</upstream>
+</pkgmetadata>
