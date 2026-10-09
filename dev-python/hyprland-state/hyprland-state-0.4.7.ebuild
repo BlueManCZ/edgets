@@ -8,7 +8,7 @@ PYTHON_COMPAT=( python3_{12,13,14} )
 
 inherit distutils-r1 pypi
 
-DESCRIPTION="Live state interface for Hyprland — options, animations, monitors, binds"
+DESCRIPTION="Live state interface for Hyprland — options, animations, binds, devices"
 HOMEPAGE="
 	https://github.com/BlueManCZ/hyprland-state/
 	https://pypi.org/project/hyprland-state/
@@ -19,8 +19,8 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 RDEPEND="
-	>=dev-python/hyprland-config-0.3.0[${PYTHON_USEDEP}]
-	>=dev-python/hyprland-monitors-0.4.0[${PYTHON_USEDEP}]
-	>=dev-python/hyprland-schema-0.3.0[${PYTHON_USEDEP}]
-	>=dev-python/hyprland-socket-0.9.0[${PYTHON_USEDEP}]
+	>=dev-python/hyprland-config-0.6.1[${PYTHON_USEDEP}]
+	>=dev-python/hyprland-monitors-0.6.0[${PYTHON_USEDEP}]
+	>=dev-python/hyprland-schema-0.6.0[${PYTHON_USEDEP}]
+	>=dev-python/hyprland-socket-0.12.1[${PYTHON_USEDEP}]
 "
