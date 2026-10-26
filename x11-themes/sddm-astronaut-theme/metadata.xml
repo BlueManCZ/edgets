@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<longdescription>
+		sddm-astronaut-theme is a series of modern looking Qt6 themes for the
+		SDDM display manager, bundling several preconfigured variants with
+		virtual keyboard support and animated or video backgrounds.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">Keyitdev/sddm-astronaut-theme</remote-id>
+	</upstream>
+</pkgmetadata>
