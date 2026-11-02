@@ -4,9 +4,6 @@
 EAPI=8
 inherit unpacker xdg
 
-# Upstream renamed the project from Swifty to Rowel
-MY_PN="rowel"
-
 DESCRIPTION="Local-first secrets manager, formerly known as Swifty"
 HOMEPAGE="
 	https://rowel.app
@@ -20,10 +17,13 @@ KEYWORDS="-* ~amd64"
 RESTRICT="bindist mirror"
 
 # The tray icon is created unconditionally on startup and loads appindicator at runtime
-RDEPEND="dev-libs/libayatana-appindicator
+RDEPEND="
+	dev-libs/libayatana-appindicator
 	net-libs/webkit-gtk:4.1
+	>=sys-libs/glibc-2.39
 	x11-libs/gtk+:3
-	x11-misc/xdg-utils"
+	x11-misc/xdg-utils
+"
 
 QA_PREBUILT="*"
 
@@ -33,5 +33,14 @@ src_install() {
 	cp -a . "${ED}" || die "cp failed"
 
 	# Only holds the license text, which LICENSE already covers
-	rm -r "${ED}/usr/share/doc/${MY_PN}" || die "rm failed"
+	rm -r "${ED}/usr/share/doc/${PN}" || die "rm failed"
+}
+
+pkg_postinst() {
+	xdg_pkg_postinst
+
+	if has_version app-crypt/swifty; then
+		ewarn "Rowel is the successor to Swifty, with a new application and storage layout."
+		ewarn "Back up your Swifty vault before migrating; this package does not migrate it."
+	fi
 }
