@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<longdescription>
+		Local-first secrets manager for passwords, passkeys, cards, IDs, SSH keys
+		and .env files. Formerly known as Swifty, now developed as Rowel.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">fwdai/rowel</remote-id>
+	</upstream>
+</pkgmetadata>
