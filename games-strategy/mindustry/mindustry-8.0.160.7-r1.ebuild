@@ -23,14 +23,14 @@ RDEPEND=">=virtual/jre-1.8:*"
 BDEPEND="app-arch/unzip"
 
 src_unpack() {
-	unzip -jq "${DISTDIR}/${A}" icons/icon_64.png || die
+	unzip -jq "${DISTDIR}/${A}" icons/icon.png || die "Failed to extract icons/icon.png from ${A}"
 }
 
 src_compile() { :; }
 
 src_install() {
 	java-pkg_newjar "${DISTDIR}/${A}" "${PN}.jar"
-	newicon -s 64 icon_64.png "${PN}.png"
+	newicon -s 256 icon.png "${PN}.png"
 
 	echo "export SDL_VIDEO_X11_WMCLASS=${PN}" > environment.txt || die
 	java-pkg_dolauncher "${PN}" \
