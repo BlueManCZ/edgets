@@ -10,20 +10,19 @@ inherit unpacker xdg
 DESCRIPTION="WordPress.com Desktop Client"
 HOMEPAGE="https://desktop.wordpress.com/"
 SRC_URI="https://github.com/Automattic/wp-desktop/releases/download/v${PV}/wordpress.com-linux-deb-${PV}.deb -> ${P}.deb"
+S=${WORKDIR}
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="-* ~amd64"
-RESTRICT="bindist mirror"
 IUSE="doc libnotify"
+RESTRICT="bindist mirror"
 
 RDEPEND="dev-libs/nss
 	x11-libs/libXtst
 	libnotify? ( x11-libs/libnotify )"
 
 QA_PREBUILT="*"
-
-S=${WORKDIR}
 
 src_prepare() {
 	default
@@ -46,5 +45,5 @@ src_install() {
 		dodoc -r "usr/share/doc/wordpress.com/"* || die "dodoc failed"
 	fi
 
-	dosym "/opt/WordPress.com/wpcom" "/usr/bin/wordpress.com" || die "dosym failed"
+	dosym "../../opt/WordPress.com/wpcom" "/usr/bin/wordpress.com" || die "dosym failed"
 }
