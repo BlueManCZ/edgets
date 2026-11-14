@@ -19,8 +19,8 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 RDEPEND="
-	>=dev-python/hyprland-config-0.3.0[${PYTHON_USEDEP}]
-	>=dev-python/hyprland-monitors-0.4.0[${PYTHON_USEDEP}]
-	>=dev-python/hyprland-schema-0.3.0[${PYTHON_USEDEP}]
-	>=dev-python/hyprland-socket-0.9.0[${PYTHON_USEDEP}]
+	>=dev-python/hyprland-config-0.9.21[${PYTHON_USEDEP}]
+	>=dev-python/hyprland-monitors-0.9.1[${PYTHON_USEDEP}]
+	>=dev-python/hyprland-schema-0.7.1[${PYTHON_USEDEP}]
+	>=dev-python/hyprland-socket-0.12.1[${PYTHON_USEDEP}]
 "
