@@ -19,5 +19,5 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 RDEPEND="
-	>=dev-python/hyprland-socket-0.9.0[${PYTHON_USEDEP}]
+	>=dev-python/hyprland-socket-0.12.2[${PYTHON_USEDEP}]
 "
