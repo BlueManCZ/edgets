@@ -18,12 +18,13 @@ KEYWORDS="~amd64"
 
 RDEPEND="
 	dev-libs/glib:2
-	>=dev-python/hyprland-config-0.4.5[${PYTHON_USEDEP}]
-	>=dev-python/hyprland-monitors-0.4.0[${PYTHON_USEDEP}]
-	>=dev-python/hyprland-schema-0.4.0[${PYTHON_USEDEP}]
-	>=dev-python/hyprland-socket-0.9.1[${PYTHON_USEDEP}]
-	>=dev-python/hyprland-state-0.2.1[${PYTHON_USEDEP}]
-	>=dev-python/pygobject-3.50.1:3[${PYTHON_USEDEP}]
+	>=dev-python/hyprland-config-0.9.21[${PYTHON_USEDEP}]
+	>=dev-python/hyprland-monitors-0.9.1[${PYTHON_USEDEP}]
+	>=dev-python/hyprland-schema-0.8.2[${PYTHON_USEDEP}]
+	>=dev-python/hyprland-socket-0.12.2[${PYTHON_USEDEP}]
+	>=dev-python/hyprland-state-0.4.8[${PYTHON_USEDEP}]
+	>=dev-python/pycairo-1.16[${PYTHON_USEDEP}]
+	>=dev-python/pygobject-3.56.2:3[${PYTHON_USEDEP}]
 	gnome-base/gnome-desktop:4
 	gui-libs/gtk:4[introspection]
 	gui-libs/libadwaita[introspection]
