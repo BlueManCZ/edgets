@@ -17,3 +17,7 @@ HOMEPAGE="
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
+
+RDEPEND="
+	>=dev-python/hyprland-schema-0.7.1[${PYTHON_USEDEP}]
+"
