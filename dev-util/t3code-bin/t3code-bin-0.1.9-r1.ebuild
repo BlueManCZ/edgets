@@ -25,6 +25,6 @@ src_install() {
 	exeinto "/opt/${PN}"
 	doexe "${P}.AppImage"
 	dosym "/opt/${PN}/${P}.AppImage" "/usr/bin/${PN}"
-	doicon -s 256 "${P}.png"
+	newicon -s 1024 "${P}.png" "${PN}.png"
 	domenu "${FILESDIR}/${PN}.desktop"
 }
