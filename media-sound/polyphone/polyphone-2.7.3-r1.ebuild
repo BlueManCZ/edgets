@@ -10,9 +10,11 @@ HOMEPAGE="
 	https://www.polyphone-soundfonts.com
 	https://github.com/davy7125/polyphone
 "
-SRC_URI="https://github.com/davy7125/${PN}/archive/refs/tags/${PV}.tar.gz -> ${P}.tar.gz"
+# The 2.7.3 tag changed after initial packaging; pin to an immutable commit.
+COMMIT="4a9f66043523fd867e3de1ef110f4f359acf7a4c"
+SRC_URI="https://github.com/davy7125/${PN}/archive/${COMMIT}.tar.gz -> ${PN}-${COMMIT}.tar.gz"
 
-S="${WORKDIR}/${P}/sources"
+S="${WORKDIR}/${PN}-${COMMIT}/sources"
 
 LICENSE="GPL-3"
 SLOT="0"
