@@ -7,6 +7,9 @@
 		It features a timer with customizable durations, desktop notifications,
 		and integration with the GNOME Shell.
 	</longdescription>
+	<use>
+		<flag name="layer-shell">Use <pkg>gui-libs/gtk4-layer-shell</pkg> for the screen overlay on Wayland compositors supporting the Layer Shell protocol</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">focustimerhq/FocusTimer</remote-id>
 	</upstream>
