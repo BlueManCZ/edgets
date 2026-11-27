@@ -1,4 +1,4 @@
-# Copyright 2026 Gentoo Authors
+# Copyright 1999-2026 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,7 +18,7 @@ S="${WORKDIR}/FocusTimer-${PV}"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="bash-completion"
+IUSE="bash-completion layer-shell"
 RESTRICT="mirror"
 
 RDEPEND="
@@ -29,9 +29,9 @@ RDEPEND="
 	dev-libs/libpeas:2
 	>=gui-libs/gtk-4.18:4
 	>=gui-libs/libadwaita-1.7.0:1
+	layer-shell? ( >=gui-libs/gtk4-layer-shell-1.0[introspection,vala] )
 	media-libs/graphene[introspection]
 	>=media-libs/gstreamer-1.0.10:1.0
-	x11-libs/cairo
 	x11-libs/pango
 "
 DEPEND="${RDEPEND}"
@@ -43,6 +43,17 @@ BDEPEND="
 	sys-devel/gettext
 	virtual/pkgconfig
 "
+
+src_prepare() {
+	xdg_src_prepare
+
+	# gtk4-layer-shell is detected automagically, make it follow the USE flag
+	if use layer-shell; then
+		sed -i -e "/gtk4-layer-shell-0/s/required: false/required: true/" meson.build || die
+	else
+		sed -i -e "s/dependency('gtk4-layer-shell-0'[^)]*)/dependency('', required: false)/" meson.build || die
+	fi
+}
 
 src_configure() {
 	vala_setup
